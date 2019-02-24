@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="509. Fibonacci NumberThe Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such t">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -366,7 +366,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-25
+                    2019-01-26
                 </div>
 
                 
@@ -382,36 +382,59 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
-<p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
+                <h4 id="509-Fibonacci-Number"><a href="#509-Fibonacci-Number" class="headerlink" title="509. Fibonacci Number"></a><a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">509. Fibonacci Number</a></h4><p>The <strong>Fibonacci numbers</strong>, commonly denoted <code>F(n)</code> form a sequence, called the <strong>Fibonacci sequence</strong>, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,</p>
+<pre><code>F(0) = 0,   F(1) = 1
+F(N) = F(N - 1) + F(N - 2), for N &gt; 1.
+</code></pre><p>Given <code>N</code>, calculate <code>F(N)</code>.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> <code>2</code></p>
+<p><strong>Output:</strong> <code>1</code></p>
+<p><strong>Explanation:</strong> <code>F(2) = F(1) + F(0) = 1 + 0 = 1.</code></p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> <code>3</code></p>
+<p><strong>Output:</strong> <code>2</code></p>
+<p><strong>Explanation:</strong> <code>F(3) = F(2) + F(1) = 1 + 1 = 2.</code></p>
+<p><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> <code>4</code></p>
+<p><strong>Output:</strong> <code>3</code></p>
+<p><strong>Explanation:</strong> <code>F(4) = F(3) + F(2) = 2 + 1 = 3.</code></p>
+<p><strong>Note:</strong><br>0 ≤ <code>N</code> ≤ 30.</p>
+<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul>
+<li>思路1：采用递归的方法</li>
+<li>思路2：采用数组，将斐波那契数存入到数组中。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1：
+//效率较低，运行时间20ms
+int fibonacci(int n)
+{
+  if(n == 0)
+      return 0;
+  else if(n == 1)
+      return 1;
+  return fibonacci(n-1) + fibonacci(n-2); 
+}
 class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
-    {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
-        {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
-            {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
-            }
-        }
-        return result;
-    }
+  int fib(int N) {
+      return fibonacci(N);     
+  }
 };
-</code></pre>
+//方法2：
+//运行时间0ms
+class Solution {
+public:
+  int fib(int N) {
+      int *p = new int[N+1];//开辟大小为N+1的数组
+      p[0] = 0;
+      p[1] = 1;
+      for(int i = 2; i &lt; N+1; ++i)
+      {
+          p[i] = p[i-1] + p[i-2];
+      }
+      return p[N];
+  }
+};
+</code></pre></li>
+</ul>
+
             </div>
             <hr>
 
@@ -558,7 +581,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/01/26/fibonacci_number/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,7 +606,7 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/01/26/transpose_matrix/">
                     <div class="card-image">
                         
                         
@@ -593,10 +616,10 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">867. Transpose MatrixGiven a matrix A, return the transpose of A.The transpose of a matrix is the matrix flipped over it</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
                         </span>
                         <span class="publish-author">
                             
@@ -613,10 +636,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/01/25/max_increase_to_keep_city_skyline/">
                     <div class="card-image">
                         
                         
@@ -626,7 +649,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">807. Max Increase to Keep City SkylineIn a 2 dimensional array grid, each value grid[i][j] represents the height of a bu</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -639,7 +662,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

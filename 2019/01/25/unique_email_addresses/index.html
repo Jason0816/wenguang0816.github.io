@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="929. Unique Email AddressesEvery email consists of a local name and a domain name, separated by the @ sign.For example, ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -382,36 +382,55 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
-<p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
-class Solution {
+                <h4 id="929-Unique-Email-Addresses"><a href="#929-Unique-Email-Addresses" class="headerlink" title="929. Unique Email Addresses"></a><a href="https://leetcode-cn.com/problems/unique-email-addresses/" target="_blank" rel="noopener">929. Unique Email Addresses</a></h4><p>Every email consists of a local name and a domain name, separated by the @ sign.<br>For example, in <a href="mailto:`alice@leetcode.com" target="_blank" rel="noopener">`alice@leetcode.com</a><code>,</code>alice<code>is the local name, and</code>leetcode.com<code>is the domain name.
+Besides lowercase letters, these emails may contain</code>‘.’<code>s or</code>‘+’<code>s.
+If you add periods (</code>‘.’<code>) between some characters in the **local name** part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example,</code>“<a href="mailto:alice.z@leetcode.com" target="_blank" rel="noopener">alice.z@leetcode.com</a>“<code>and</code>“<a href="mailto:alicez@leetcode.com" target="_blank" rel="noopener">alicez@leetcode.com</a>“<code>forward to the same email address.  (Note that this rule does not apply for domain names.)
+If you add a plus (</code>‘+’<code>) in the **local name**, everything after the first plus sign will be **ignored**. This allows certain emails to be filtered, for example</code><a href="mailto:m.y+name@email.com" target="_blank" rel="noopener">m.y+name@email.com</a><code>will be forwarded to</code><a href="mailto:my@email.com" target="_blank" rel="noopener">my@email.com</a><code>.  (Again, this rule does not apply for domain names.)
+It is possible to use both of these rules at the same time.
+Given a list of</code>emails`, we send one email to each address in the list.  How many different addresses actually receive mails? </p>
+<p><strong>Example 1:</strong></p>
+<pre><code>Input:[&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]
+Output: 2
+Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails
+</code></pre><p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= emails[i].length &lt;= 100</code></li>
+<li><code>1 &lt;= emails.length &lt;= 100</code></li>
+<li>Each <code>emails[i]</code>contains exactly one <code>&#39;@&#39;</code>character.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li>
+</ul>
+<ol>
+<li>若邮箱中含有‘+’，先将‘+’和‘@’之间的字符删掉</li>
+<li>将新的邮箱中‘@’之前的‘.’删掉</li>
+<li>将最后的邮箱插入到无序容器<code>unordered_set&lt;string&gt; result;</code><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
-    {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
-        {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
-            {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
-            }
-        }
-        return result;
-    }
+ int numUniqueEmails(vector&lt;string&gt;&amp; emails) {
+     unordered_set&lt;string&gt; result; //无序容器-C++ Primer P394；
+     for(auto email = emails.begin(); email != emails.end(); ++email)
+     {
+         auto plus_pos = (*email).find(&#39;+&#39;);//获取‘+’的位置
+         auto at_pos = (*email).find(&#39;@&#39;);
+         if(plus_pos &lt; at_pos)
+         {
+             auto len = at_pos - plus_pos;
+             (*email).erase(plus_pos, len);//移除‘+’和‘@’中间的内容
+         }
+         auto dot_pos = (*email).find(&#39;.&#39;);
+         at_pos = (*email).find(&#39;@&#39;);
+         while(dot_pos &lt; at_pos)
+         {
+             //删除所有‘@’前的‘.’
+             (*email).erase(dot_pos, 1);
+             dot_pos = (*email).find(&#39;.&#39;);
+             at_pos--;
+         }
+         result.insert(*email);
+     }
+     return result.size();
+ }
 };
-</code></pre>
+</code></pre></li>
+</ol>
+
             </div>
             <hr>
 
@@ -558,7 +577,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/01/25/unique_email_addresses/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,7 +602,7 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/01/25/di_string_match/">
                     <div class="card-image">
                         
                         
@@ -593,7 +612,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">942. DI String MatchGiven a string S that only contains “I” (increase) or “D” (decrease), let N = S.length.Return any pe</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -613,10 +632,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/01/25/sort_array_by_parity_ii/">
                     <div class="card-image">
                         
                         
@@ -626,7 +645,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">922. Sort Array By Parity IIGiven an array A of non-negative integers, half of the integers in A are odd, and half of th</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -639,7 +658,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

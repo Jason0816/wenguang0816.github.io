@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="922. Sort Array By Parity IIGiven an array A of non-negative integers, half of the integers in A are odd, and half of th">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -382,36 +382,89 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
-<p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
+                <h4 id="922-Sort-Array-By-Parity-II"><a href="#922-Sort-Array-By-Parity-II" class="headerlink" title="922. Sort Array By Parity II"></a><a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/" target="_blank" rel="noopener">922. Sort Array By Parity II</a></h4><p>Given an array <code>A</code> of non-negative integers, half of the integers in A are odd, and half of the integers are even.<br>Sort the array so that whenever <code>A[i]</code> is odd, <code>i</code> is odd; and whenever <code>A[i]</code> is even, <code>i</code> is even.<br>You may return any answer array that satisfies this condition.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> <code>[4,2,5,7]</code></p>
+<p><strong>Output:</strong> <code>[4,5,2,7]</code></p>
+<p><strong>Explanation:</strong> <code>[4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.</code></p>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>2 &lt;= A.length &lt;= 20000</code></li>
+<li><code>A.length % 2 == 0</code></li>
+<li><code>0 &lt;= A[i] &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li>
+<li>先将数组A按照奇偶分为两个数组odd和even，然后按照偶数、奇数的顺序依次插入到结果数组；</li>
+<li><p>思路和1类似，利用vector的<code>top()</code>取出栈顶元素和<code>pop()</code>删除栈顶元素；</p>
+<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1:
+// 80ms
 class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
-    {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
-        {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
-            {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
-            }
-        }
-        return result;
-    }
+ vector&lt;int&gt; sortArrayByParityII(vector&lt;int&gt;&amp; A) {
+     vector&lt;int&gt; odd, even, result;
+     for(auto vint = A.begin(); vint != A.end(); ++vint)
+     {
+         if((*vint) % 2 == 0)
+             even.push_back(*vint);
+         else
+             odd.push_back(*vint);
+     }
+     size_t len = A.size();
+     auto e = even.begin();
+     auto o = odd.begin();
+     for(auto i = 0; i &lt; len; ++i)
+     {
+         if(i % 2 == 0)
+         {
+             result.push_back(*e);
+             e++;
+         }                
+         else
+         {
+             result.push_back(*o);
+             o++;
+         }
+
+     }
+     return result;
+ }
 };
-</code></pre>
+// code 2：
+// 64ms
+class Solution {
+public:
+ vector&lt;int&gt; sortArrayByParityII(vector&lt;int&gt;&amp; A) 
+ {
+     stack&lt;int&gt; odd;
+     stack&lt;int&gt; even;
+     vector&lt;int&gt;::iterator iter;
+     int a=0;//奇偶标志位
+     for(iter=A.begin();iter!=A.end();iter++)
+     {
+         if(*iter%2==0)
+             even.push(*iter);
+         else
+             odd.push(*iter);
+     }
+     for(iter=A.begin();iter!=A.end();iter++)
+     {
+           //top()取出栈顶元素，pop()删除栈顶元素；
+           if(a==0)
+           {
+             *iter=even.top();
+              even.pop();
+           }
+         else
+         {
+             *iter=odd.top();
+              odd.pop();
+         }
+         a=1-a;//奇偶变换
+     }
+     return A;
+ }
+};
+</code></pre></li>
+</ol>
+
             </div>
             <hr>
 
@@ -558,7 +611,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/01/25/sort_array_by_parity_ii/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,7 +636,7 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/01/25/unique_email_addresses/">
                     <div class="card-image">
                         
                         
@@ -593,7 +646,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">929. Unique Email AddressesEvery email consists of a local name and a domain name, separated by the @ sign.For example, </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -613,10 +666,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/01/25/sort_array_by_parity/">
                     <div class="card-image">
                         
                         
@@ -626,7 +679,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">905. Sort Array By ParityGiven an array A of non-negative integers, return an array consisting of all the even elements </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -639,7 +692,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="461. Hamming DistanceThe Hamming distance between two integers is the number of positions at which the corresponding bit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -382,33 +382,26 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
+                <h4 id="461-Hamming-Distance"><a href="#461-Hamming-Distance" class="headerlink" title="461. Hamming Distance"></a><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" rel="noopener">461. Hamming Distance</a></h4><p>The <a href="https://en.wikipedia.org/wiki/Hamming_distance" target="_blank" rel="noopener">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.<br>Given two integers <code>x</code> and <code>y</code>, calculate the Hamming distance.</p>
+<p><strong>Note:</strong><br>0 ≤ <code>x</code>, <code>y</code> &lt; 2<sup>31</sup>.</p>
 <p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
-class Solution {
+<pre><code>Input: x = 1, y = 4
+Output: 2
+Explanation:
+1   (0 0 0 1)
+4   (0 1 0 0)
+       ↑   ↑
+The above arrows point to positions where the corresponding bits are different.
+</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>n = x ^ y，两数对应位置若不相同，则n的相应位置置1<br>利用n = n &amp; (n - 1)获取n中1的个数</p>
+<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
-    {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
-        {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
-            {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
-            }
+    int hammingDistance(int x, int y) {
+        int n = x^y, count = 0;
+        while(n){
+            count ++;
+            n = n&amp;(n-1);
         }
-        return result;
+        return count;
     }
 };
 </code></pre>
@@ -558,7 +551,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/01/25/hamming_distance/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,7 +576,7 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/01/25/number_complement/">
                     <div class="card-image">
                         
                         
@@ -593,7 +586,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">476. Number ComplementGiven a positive integer, output its complement number. The complement strategy is to flip the bit</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -613,10 +606,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/01/25/reverse_string/">
                     <div class="card-image">
                         
                         
@@ -626,7 +619,9 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">344. Reverse StringWrite a function that takes a string as input and returns the string reversed.
+Example 1:
+Input: “hel</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -639,7 +634,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

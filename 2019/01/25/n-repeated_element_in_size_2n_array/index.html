@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="961. N-Repeated Element in Size 2N ArrayIn a array A of size 2N, there are N+1 unique elements, and exactly one of these">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -382,36 +382,32 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
-<p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
-class Solution {
+                <h4 id="961-N-Repeated-Element-in-Size-2N-Array"><a href="#961-N-Repeated-Element-in-Size-2N-Array" class="headerlink" title="961. N-Repeated Element in Size 2N Array"></a><a href="https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/" target="_blank" rel="noopener">961. N-Repeated Element in Size 2N Array</a></h4><p>In a array <code>A</code> of size <code>2N</code>, there are <code>N+1</code> unique elements, and exactly one of these elements is repeated N times.<br>Return the element repeated <code>N</code> times.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> <code>[1,2,3,3]</code></p>
+<p><strong>Output:</strong> <code>3</code></p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> <code>[2,1,2,5,3,2]</code></p>
+<p><strong>Output:</strong> <code>2</code><br><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> <code>[5,1,5,2,5,3,5,4]</code></p>
+<p><strong>Output:</strong> <code>5</code></p>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>4 &lt;= A.length &lt;= 10000</code></li>
+<li><code>0 &lt;= A[i] &lt; 10000</code></li>
+<li><code>A.length</code> is even<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>根据题意，其余数字都是不同的，仅有目标值重复，故寻找出现次数大于1的数<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
-    {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
-        {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
-            {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
-            }
-        }
-        return result;
-    }
+int repeatedNTimes(vector&lt;int&gt;&amp; A) {
+    int len = A.size();
+    for(int i  = 0; i &lt; len; ++i)
+        for(int j = i + 1; j &lt; len; ++j)
+            if(A[i] == A[j])
+                return A[i];
+}
 };
-</code></pre>
+</code></pre></li>
+</ol>
+
             </div>
             <hr>
 
@@ -558,7 +554,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/01/25/n-repeated_element_in_size_2n_array/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,7 +579,7 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/01/25/subsets/">
                     <div class="card-image">
                         
                         
@@ -593,7 +589,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">78. SubsetsGiven a set of distinct integers, nums, return all possible subsets (the power set).Note: The solution set mu</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -613,10 +609,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/01/25/delete_columns_to_make_sorted/">
                     <div class="card-image">
                         
                         
@@ -626,7 +622,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">944. Delete Columns to Make SortedWe are given an array A of N lowercase letter strings, all of the same length.Now, we </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -639,7 +635,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

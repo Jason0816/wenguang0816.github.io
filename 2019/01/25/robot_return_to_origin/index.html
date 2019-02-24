@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="657. Robot Return to OriginThere is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -382,35 +382,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
-<p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
+                <h4 id="657-Robot-Return-to-Origin"><a href="#657-Robot-Return-to-Origin" class="headerlink" title="657. Robot Return to Origin"></a><a href="https://leetcode-cn.com/problems/robot-return-to-origin/" target="_blank" rel="noopener">657. Robot Return to Origin</a></h4><p>There is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot <strong>ends up at (0, 0)</strong> after it completes its moves.<br>The move sequence is represented by a string, and the character moves[i] represents its ith move. Valid moves are R (right), L (left), U (up), and D (down). If the robot returns to the origin after it finishes all of its moves, return true. Otherwise, return false.</p>
+<p><strong>Note</strong>: The way that the robot is “facing” is irrelevant. “R” will always make the robot move to the right once, “L” will always make it move left, etc. Also, assume that the magnitude of the robot’s movement is the same for each move.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> “UD”</p>
+<p><strong>Output:</strong> true </p>
+<p><strong>Explanation</strong>: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> “LL”</p>
+<p><strong>Output:</strong> false</p>
+<p><strong>Explanation</strong>: The robot moves left twice. It ends up two “moves” to the left of the origin. We return false because it is not at the origin at the end of its moves.</p>
+<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>设置四个标志位，利用switch-case判断moves的值，相应标志位+1。<br>当‘上’=‘下’并且‘左’=‘右’的时候，机器人回到原点。</p>
+<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1：
+// 8ms
 class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
-    {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
+    bool judgeCircle(string moves) {
+        vector&lt;int&gt; sign(4,0);
+        for(auto c : moves)
         {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
+            switch(c)
             {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
+                case &#39;U&#39;:
+                    sign[0]++;
+                    break;
+                case &#39;D&#39;:
+                    sign[1]++;
+                    break;
+                case &#39;L&#39;:
+                    sign[2]++;
+                    break;
+                case &#39;R&#39;:
+                    sign[3]++;
+                    break;
             }
         }
-        return result;
+        return sign[0] == sign[1] &amp;&amp; sign[2] == sign[3];
     }
 };
+// code 2：
+// 4ms
+class Solution {
+public:
+    bool judgeCircle(string moves) {
+        int a = 0, b = 0, c = 0, d = 0;
+        for(int i=0;i&lt;moves.size();i++){
+            a+=moves[i]==&#39;R&#39;;
+            b+=moves[i]==&#39;L&#39;;
+            c+=moves[i]==&#39;U&#39;;
+            d+=moves[i]==&#39;D&#39;;
+        }
+        return a == b &amp;&amp; c == d;
+    }
+};
+
 </code></pre>
             </div>
             <hr>
@@ -558,7 +583,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/01/25/robot_return_to_origin/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,7 +608,7 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/01/25/to_lower_case/">
                     <div class="card-image">
                         
                         
@@ -593,7 +618,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">709. To Lower CaseImplement function ToLowerCase() that has a string parameter str, and returns the same string in lower</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -613,10 +638,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/01/25/swap_salary/">
                     <div class="card-image">
                         
                         
@@ -626,7 +651,9 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">627. Swap SalarySQL架构
+create table if not exists salary(id int, name varchar(100), sex char(1), salary int)
+Truncate tab</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -639,7 +666,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

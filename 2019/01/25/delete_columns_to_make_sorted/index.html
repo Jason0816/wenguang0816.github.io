@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="944. Delete Columns to Make SortedWe are given an array A of N lowercase letter strings, all of the same length.Now, we ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -382,36 +382,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
-<p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
-class Solution {
+                <h4 id="944-Delete-Columns-to-Make-Sorted"><a href="#944-Delete-Columns-to-Make-Sorted" class="headerlink" title="944. Delete Columns to Make Sorted"></a><a href="https://leetcode-cn.com/problems/delete-columns-to-make-sorted/" target="_blank" rel="noopener">944. Delete Columns to Make Sorted</a></h4><p>We are given an array <code>A</code> of <code>N</code> lowercase letter strings, all of the same length.<br>Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.<br>For example, if we have an array <code>A = [&quot;`</code>abcdef<code>&quot;,&quot;uvwxyz&quot;]` and deletion indices `{0, 2, 3}`, then the final array after deletions is `[&quot;bef&quot;, &quot;vyz&quot;]`, and the remaining columns of `A` are `[&quot;b&quot;</code>,”<code></code>v”]<code>,</code>[“e”,”y”]<code>, and</code>[“f”,”z”]<code>.  (Formally, the</code>c<code>-th column is</code>[A[0][c], A[1][c], …, A[A.length-1][c]]<code>.)
+Suppose we chose a set of deletion indices</code>D<code>such that after deletions, each remaining column in A is in **non-decreasing** sorted order.
+Return the minimum possible value of</code>D.length`.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong><code>[&quot;cba&quot;,&quot;daf&quot;,&quot;ghi&quot;]</code></p>
+<p><strong>Output:</strong> <code>1</code></p>
+<p><strong>Explanation:</strong><br><code>After choosing D = {1}, each column [&quot;c&quot;,&quot;d&quot;,&quot;g&quot;] and [&quot;a&quot;,&quot;f&quot;,&quot;i&quot;] are in non-decreasing sorted order.
+If we chose D = {}, then a column [&quot;b&quot;,&quot;a&quot;,&quot;h&quot;] would not be in non-decreasing sorted order.</code></p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> <code>[&quot;a&quot;,&quot;b&quot;]</code></p>
+<p><strong>Output:</strong> <code>0</code></p>
+<p><strong>Explanation:</strong> <code>D = {}</code></p>
+<p><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> <code>[&quot;zyx&quot;,&quot;wvu&quot;,&quot;tsr&quot;]</code></p>
+<p><strong>Output:</strong> <code>3</code></p>
+<p><strong>Explanation:</strong> <code>D = {0, 1, 2}</code></p>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 100</code></li>
+<li><code>1 &lt;= A[i].length &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>题意解析，非降序意味着列中不存在降序<br>故进行两次for循环，外层循环为列，内层循环为行，如果前一行某列字母大于后一行（ASCII），则返回值+1；<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
+int minDeletionSize(vector&lt;string&gt;&amp; A) {
+    int strLen = A[0].length();
+    int vLen = A.size();
+    int result = 0;
+    //列序号
+    for(int i = 0; i &lt; strLen; ++i)
     {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
+        //行序号
+        for(int j = 0; j &lt; vLen - 1; ++j)
         {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
+            if(A[j][i] &gt; A[j+1][i])
             {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
+                result++;
+                break;//跳出循环
             }
         }
-        return result;
     }
+    return result;
+}
 };
-</code></pre>
+</code></pre></li>
+</ol>
+
             </div>
             <hr>
 
@@ -558,7 +572,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/01/25/delete_columns_to_make_sorted/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,7 +597,7 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/01/25/n-repeated_element_in_size_2n_array/">
                     <div class="card-image">
                         
                         
@@ -593,7 +607,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">961. N-Repeated Element in Size 2N ArrayIn a array A of size 2N, there are N+1 unique elements, and exactly one of these</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -613,10 +627,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/01/25/di_string_match/">
                     <div class="card-image">
                         
                         
@@ -626,7 +640,7 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">942. DI String MatchGiven a string S that only contains “I” (increase) or “D” (decrease), let N = S.length.Return any pe</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
@@ -639,7 +653,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

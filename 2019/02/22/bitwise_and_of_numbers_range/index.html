@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m">
+    <meta name="description" content="201. Bitwise AND of Numbers RangeGiven a range [m, n] where 0 &amp;lt;= m &amp;lt;= n &amp;lt;= 2147483647, return the bitwise AND o">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -366,7 +366,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-25
+                    2019-02-22
                 </div>
 
                 
@@ -382,33 +382,36 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
-<p><strong>Example:</strong></p>
-<pre><code>Given nums = [2, 7, 11, 15], target = 9,
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p>
-<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）
+                <h4 id="201-Bitwise-AND-of-Numbers-Range"><a href="#201-Bitwise-AND-of-Numbers-Range" class="headerlink" title="201. Bitwise AND of Numbers Range"></a><a href="https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="noopener">201. Bitwise AND of Numbers Range</a></h4><p>Given a range [m, n] where 0 &lt;= m &lt;= n &lt;= 2147483647, return the bitwise AND of all numbers in this range, inclusive.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> <code>[5,7]</code></p>
+<p><strong>Output:</strong> <code>4</code></p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> <code>[0,1]</code></p>
+<p><strong>Output:</strong> <code>0</code></p>
+<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>通过观察可以知道5的二进制为<strong>1</strong>01，6的二进制为<strong>1</strong>10，7的二进制为<strong>1</strong>11，输出4的二进制为<strong>1</strong>00，可以发现，只要找到二进制的左边公共部分即可。<br>可以先建立一个32位都是1的mask，然后每次左移一位，比较m和n是否相同，不同再继续左移一位，直至相同，然后把m和mask相与即得最终结果。</p>
+<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1
 class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) 
-    {
-        vector&lt;int&gt; result;
-        int size = nums.size();
-        for (int i = 0; i &lt; size; i++)
-        {
-            int complement = target - nums[i];
-            for (int j = i + 1; j &lt; size; j++)
-            {
-                if (nums[j] == complement)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }    
-            }
+    int rangeBitwiseAnd(int m, int n) {
+        unsigned int mask = UINT_MAX;
+        while ((m &amp; mask) != (n &amp; mask)) {
+            mask &lt;&lt;= 1;
         }
-        return result;
+        return mask &amp; m;
+    }
+};
+//方法2
+class Solution {
+public:
+    int rangeBitwiseAnd(int m, int n) {
+        int cnt = 0;
+        while(m!= n){
+            m&gt;&gt;=1;
+            n&gt;&gt;=1;
+            ++cnt;
+        }
+        return m&lt;&lt;cnt;
     }
 };
 </code></pre>
@@ -558,7 +561,7 @@ public:
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">Hexo</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/25/two_sum/" class="b-link-green"></a>
+                    <a href="/2019/02/22/bitwise_and_of_numbers_range/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -583,20 +586,20 @@ public:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/two_sum 2/">
+                <a href="/2019/02/24/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt>
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-24
                         </span>
                         <span class="publish-author">
                             
@@ -613,10 +616,10 @@ public:
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/two_sum/">
+                <a href="/2019/02/22/power_of_two/">
                     <div class="card-image">
                         
                         
@@ -626,10 +629,17 @@ public:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You m</div>
+                    <div class="summary">231. Power of TwoExample 1:
+Input: 1
+Output: true
+Explanation: 20 = 1
+Example 2:
+Input: 16
+Output: true
+Explanation: 24 </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-22
                             </span>
                         <span class="publish-author">
                             
@@ -639,7 +649,6 @@ public:
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
