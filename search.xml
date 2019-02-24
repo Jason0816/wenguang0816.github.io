@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>LeetCode刷题：561、Array Partition I</title>
+      <link href="/2019/02/24/array-partition-i/"/>
+      <url>/2019/02/24/array-partition-i/</url>
+      
+        <content type="html"><![CDATA[<h4 id="561-Array-Partition-I"><a href="#561-Array-Partition-I" class="headerlink" title="561. Array Partition I"></a><a href="https://leetcode-cn.com/problems/array-partition-i/" target="_blank" rel="noopener">561. Array Partition I</a></h4><p>Given an array of <strong>2n</strong> integers, your task is to group these integers into <strong>n</strong> pairs of integer, say (a<sub>1</sub>, b<sub>1</sub>), (a<sub>2</sub>, b<sub>2</sub>), …, (a<sub>n</sub>, b<sub>n</sub>) which makes sum of min(a<sub>i</sub>, b<sub>i</sub>) for all i from 1 to n as large as possible.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[1,4,3,2]</code></p><p><strong>Output:</strong> <code>4</code></p><p><strong>Explanation:</strong> <code>n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).</code></p><p><strong>Note:</strong></p><ol><li><strong>n</strong> is a positive integer, which is in the range of [1, 10000].</li><li>All the integers in the array will be in the range of [-10000, 10000].<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>为得到最大的和，所以要保证第2大的数字和第1大的数字进行组合，第4大的数字和第3大的数字进行组合，以此类推。可以看出，我们将数组进行排序后，取<code>2n+1</code>项进行相加，即可得结果。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int arrayPairSum(vector&lt;int&gt;&amp; nums) {    int len = nums.size();    sort(nums.begin(), nums.end());    int result = 0;    for(int i = 0; i &lt; len; ++i)    {        result += nums[i];        ++i;    }    return result;}};</code></pre></li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2019/02/24/hello-world/"/>
       <url>/2019/02/24/hello-world/</url>
@@ -61,19 +74,6 @@
       <url>/2019/01/26/pascals-triangle/</url>
       
         <content type="html"><![CDATA[<h4 id="118-Pascal’s-Triangle"><a href="#118-Pascal’s-Triangle" class="headerlink" title="118. Pascal’s Triangle"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">118. Pascal’s Triangle</a></h4><p>Given a non-negative integer <em>numRows</em>, generate the first <em>numRows</em> of Pascal’s triangle.<br><img src="http://upload-images.jianshu.io/upload_images/14484228-f1bcb06c89999105.gif?imageMogr2/auto-orient/strip" alt="In Pascal&#39;s triangle, each number is the sum of the two numbers directly above it."></p><p><strong>Example:</strong></p><p><strong>Input:</strong> <code>5</code></p><p><strong>Output:</strong></p><pre><code>[     [1],    [1,1],   [1,2,1],  [1,3,3,1], [1,4,6,4,1]]</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>根据杨辉三角的特点创建容器，并将每行开头和结尾赋值为1，当行数大于2时，根据杨辉三角的运算规则进行运算</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    vector&lt;vector&lt;int&gt;&gt; generate(int numRows) {        vector&lt;vector&lt;int&gt;&gt; res(numRows, vector&lt;int&gt;());        for (int i = 0; i &lt; numRows; ++i)        {            res[i].resize(i + 1);  //确定每行数字的个数            //每行开头和结尾都为1            res[i][0] = 1;            res[i][i] = 1;        }        if (numRows &gt; 2)        {            for (int i = 2; i &lt; numRows; ++i)             {                for (int j = 1; j &lt; i; ++j)                     res[i][j] = res[i-1][j] + res[i-1][j-1];            }        }        return res;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/26/array-partition-i/"/>
-      <url>/2019/01/26/array-partition-i/</url>
-      
-        <content type="html"><![CDATA[<h4 id="561-Array-Partition-I"><a href="#561-Array-Partition-I" class="headerlink" title="561. Array Partition I"></a><a href="https://leetcode-cn.com/problems/array-partition-i/" target="_blank" rel="noopener">561. Array Partition I</a></h4><p>Given an array of <strong>2n</strong> integers, your task is to group these integers into <strong>n</strong> pairs of integer, say (a<sub>1</sub>, b<sub>1</sub>), (a<sub>2</sub>, b<sub>2</sub>), …, (a<sub>n</sub>, b<sub>n</sub>) which makes sum of min(a<sub>i</sub>, b<sub>i</sub>) for all i from 1 to n as large as possible.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[1,4,3,2]</code></p><p><strong>Output:</strong> <code>4</code></p><p><strong>Explanation:</strong> <code>n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).</code></p><p><strong>Note:</strong></p><ol><li><strong>n</strong> is a positive integer, which is in the range of [1, 10000].</li><li>All the integers in the array will be in the range of [-10000, 10000].<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>为得到最大的和，所以要保证第2大的数字和第1大的数字进行组合，第4大的数字和第3大的数字进行组合，以此类推。可以看出，我们将数组进行排序后，取<code>2n+1</code>项进行相加，即可得结果。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int arrayPairSum(vector&lt;int&gt;&amp; nums) {    int len = nums.size();    sort(nums.begin(), nums.end());    int result = 0;    for(int i = 0; i &lt; len; ++i)    {        result += nums[i];        ++i;    }    return result;}};</code></pre></li></ol>]]></content>
       
       
       
