@@ -4,11 +4,581 @@
   
     
     <entry>
-      <title>LeetCode刷题：561、Array Partition I</title>
+      <title>LeetCode刷题：961.N-Repeated Element in Size 2N Array</title>
+      <link href="/2019/02/24/n-repeated-element-in-size-2n-array/"/>
+      <url>/2019/02/24/n-repeated-element-in-size-2n-array/</url>
+      
+        <content type="html"><![CDATA[<h4 id="961-N-Repeated-Element-in-Size-2N-Array"><a href="#961-N-Repeated-Element-in-Size-2N-Array" class="headerlink" title="961. N-Repeated Element in Size 2N Array"></a><a href="https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/" target="_blank" rel="noopener">961. N-Repeated Element in Size 2N Array</a></h4><p>In a array <code>A</code> of size <code>2N</code>, there are <code>N+1</code> unique elements, and exactly one of these elements is repeated N times.<br>Return the element repeated <code>N</code> times.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[1,2,3,3]</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[2,1,2,5,3,2]</code></p><p><strong>Output:</strong> <code>2</code><br><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>[5,1,5,2,5,3,5,4]</code></p><p><strong>Output:</strong> <code>5</code></p><p><strong>Note:</strong></p><ol><li><code>4 &lt;= A.length &lt;= 10000</code></li><li><code>0 &lt;= A[i] &lt; 10000</code></li><li><code>A.length</code> is even<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>根据题意，其余数字都是不同的，仅有目标值重复，故寻找出现次数大于1的数<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int repeatedNTimes(vector&lt;int&gt;&amp; A) {    int len = A.size();    for(int i  = 0; i &lt; len; ++i)        for(int j = i + 1; j &lt; len; ++j)            if(A[i] == A[j])                return A[i];}};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：944.Delete Columns to Make Sorted</title>
+      <link href="/2019/02/24/delete-columns-to-make-sorted/"/>
+      <url>/2019/02/24/delete-columns-to-make-sorted/</url>
+      
+        <content type="html"><![CDATA[<h4 id="944-Delete-Columns-to-Make-Sorted"><a href="#944-Delete-Columns-to-Make-Sorted" class="headerlink" title="944. Delete Columns to Make Sorted"></a><a href="https://leetcode-cn.com/problems/delete-columns-to-make-sorted/" target="_blank" rel="noopener">944. Delete Columns to Make Sorted</a></h4><p>We are given an array <code>A</code> of <code>N</code> lowercase letter strings, all of the same length.<br>Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.<br>For example, if we have an array <code>A = [&quot;`</code>abcdef<code>&quot;,&quot;uvwxyz&quot;]` and deletion indices `{0, 2, 3}`, then the final array after deletions is `[&quot;bef&quot;, &quot;vyz&quot;]`, and the remaining columns of `A` are `[&quot;b&quot;</code>,”<code></code>v”]<code>,</code>[“e”,”y”]<code>, and</code>[“f”,”z”]<code>.  (Formally, the</code>c<code>-th column is</code>[A[0][c], A[1][c], …, A[A.length-1][c]]<code>.)Suppose we chose a set of deletion indices</code>D<code>such that after deletions, each remaining column in A is in **non-decreasing** sorted order.Return the minimum possible value of</code>D.length`.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong><code>[&quot;cba&quot;,&quot;daf&quot;,&quot;ghi&quot;]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Explanation:</strong><br><code>After choosing D = {1}, each column [&quot;c&quot;,&quot;d&quot;,&quot;g&quot;] and [&quot;a&quot;,&quot;f&quot;,&quot;i&quot;] are in non-decreasing sorted order.If we chose D = {}, then a column [&quot;b&quot;,&quot;a&quot;,&quot;h&quot;] would not be in non-decreasing sorted order.</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[&quot;a&quot;,&quot;b&quot;]</code></p><p><strong>Output:</strong> <code>0</code></p><p><strong>Explanation:</strong> <code>D = {}</code></p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>[&quot;zyx&quot;,&quot;wvu&quot;,&quot;tsr&quot;]</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Explanation:</strong> <code>D = {0, 1, 2}</code></p><p><strong>Note:</strong></p><ol><li><code>1 &lt;= A.length &lt;= 100</code></li><li><code>1 &lt;= A[i].length &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>题意解析，非降序意味着列中不存在降序<br>故进行两次for循环，外层循环为列，内层循环为行，如果前一行某列字母大于后一行（ASCII），则返回值+1；<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int minDeletionSize(vector&lt;string&gt;&amp; A) {    int strLen = A[0].length();    int vLen = A.size();    int result = 0;    //列序号    for(int i = 0; i &lt; strLen; ++i)    {        //行序号        for(int j = 0; j &lt; vLen - 1; ++j)        {            if(A[j][i] &gt; A[j+1][i])            {                result++;                break;//跳出循环            }        }    }    return result;}};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：942.DI String Match</title>
+      <link href="/2019/02/24/di-string-match/"/>
+      <url>/2019/02/24/di-string-match/</url>
+      
+        <content type="html"><![CDATA[<h4 id="942-DI-String-Match"><a href="#942-DI-String-Match" class="headerlink" title="942. DI String Match"></a><a href="https://leetcode-cn.com/problems/di-string-match/" target="_blank" rel="noopener">942. DI String Match</a></h4><p>Given a string <code>S</code> that <strong>only</strong> contains “I” (increase) or “D” (decrease), let <code>N = S.length</code>.<br>Return <strong>any</strong> permutation <code>A</code> of <code>[0, 1, ..., N]</code> such that for all <code>i = 0, ..., N-1</code>:</p><ul><li>If <code>S[i] == &quot;I&quot;</code>, then <code>A[i] &lt; A[i+1]</code></li><li>If <code>S[i] == &quot;D&quot;</code>, then <code>A[i] &gt; A[i+1]</code></li><li><strong>Example 1:</strong></li></ul><p><strong>Input:</strong> <code>&quot;IDID&quot;</code></p><p><strong>Output:</strong> <code>[0,4,1,3,2]</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>&quot;III&quot;</code></p><p><strong>Output:</strong> <code>[0,1,2,3]</code></p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>&quot;DDI&quot;</code></p><p><strong>Output:</strong> <code>[3,2,0,1]</code></p><p><strong>Note:</strong></p><ol><li><code>1 &lt;= S.length &lt;= 10000</code></li><li><code>S</code> only contains characters <code>&quot;I&quot;</code> or <code>&quot;D&quot;</code>.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>如果字符为<code>I</code>，则数字从0开始递增，如果字符为<code>D</code>，则数字从N开始递减；<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:vector&lt;int&gt; diStringMatch(string S) {    int len = S.length();    vector&lt;int&gt; A;    int incNum = 0;    int decNum = len;    for(int i = 0; i &lt; len; ++i)    {        if(S[i] == &#39;I&#39;)            A.push_back(incNum++);        else            A.push_back(decNum--);    }    A.push_back(incNum);    return A;}};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：929.Unique Email Addresses</title>
+      <link href="/2019/02/24/unique-email-addresses/"/>
+      <url>/2019/02/24/unique-email-addresses/</url>
+      
+        <content type="html"><![CDATA[<h4 id="929-Unique-Email-Addresses"><a href="#929-Unique-Email-Addresses" class="headerlink" title="929. Unique Email Addresses"></a><a href="https://leetcode-cn.com/problems/unique-email-addresses/" target="_blank" rel="noopener">929. Unique Email Addresses</a></h4><p>Every email consists of a local name and a domain name, separated by the @ sign.<br>For example, in <a href="mailto:`alice@leetcode.com" target="_blank" rel="noopener">`alice@leetcode.com</a><code>,</code>alice<code>is the local name, and</code>leetcode.com<code>is the domain name.Besides lowercase letters, these emails may contain</code>‘.’<code>s or</code>‘+’<code>s.If you add periods (</code>‘.’<code>) between some characters in the **local name** part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example,</code>“<a href="mailto:alice.z@leetcode.com" target="_blank" rel="noopener">alice.z@leetcode.com</a>“<code>and</code>“<a href="mailto:alicez@leetcode.com" target="_blank" rel="noopener">alicez@leetcode.com</a>“<code>forward to the same email address.  (Note that this rule does not apply for domain names.)If you add a plus (</code>‘+’<code>) in the **local name**, everything after the first plus sign will be **ignored**. This allows certain emails to be filtered, for example</code><a href="mailto:m.y+name@email.com" target="_blank" rel="noopener">m.y+name@email.com</a><code>will be forwarded to</code><a href="mailto:my@email.com" target="_blank" rel="noopener">my@email.com</a><code>.  (Again, this rule does not apply for domain names.)It is possible to use both of these rules at the same time.Given a list of</code>emails`, we send one email to each address in the list.  How many different addresses actually receive mails? </p><p><strong>Example 1:</strong></p><pre><code>Input:[&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]Output: 2Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails</code></pre><p><strong>Note:</strong></p><ul><li><code>1 &lt;= emails[i].length &lt;= 100</code></li><li><code>1 &lt;= emails.length &lt;= 100</code></li><li>Each <code>emails[i]</code>contains exactly one <code>&#39;@&#39;</code>character.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li></ul><ol><li>若邮箱中含有‘+’，先将‘+’和‘@’之间的字符删掉</li><li>将新的邮箱中‘@’之前的‘.’删掉</li><li>将最后的邮箱插入到无序容器<code>unordered_set&lt;string&gt; result;</code><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public: int numUniqueEmails(vector&lt;string&gt;&amp; emails) {     unordered_set&lt;string&gt; result; //无序容器-C++ Primer P394；     for(auto email = emails.begin(); email != emails.end(); ++email)     {         auto plus_pos = (*email).find(&#39;+&#39;);//获取‘+’的位置         auto at_pos = (*email).find(&#39;@&#39;);         if(plus_pos &lt; at_pos)         {             auto len = at_pos - plus_pos;             (*email).erase(plus_pos, len);//移除‘+’和‘@’中间的内容         }         auto dot_pos = (*email).find(&#39;.&#39;);         at_pos = (*email).find(&#39;@&#39;);         while(dot_pos &lt; at_pos)         {             //删除所有‘@’前的‘.’             (*email).erase(dot_pos, 1);             dot_pos = (*email).find(&#39;.&#39;);             at_pos--;         }         result.insert(*email);     }     return result.size(); }};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：922.Sort Array By Parity II</title>
+      <link href="/2019/02/24/sort-array-by-parity-ii/"/>
+      <url>/2019/02/24/sort-array-by-parity-ii/</url>
+      
+        <content type="html"><![CDATA[<h4 id="922-Sort-Array-By-Parity-II"><a href="#922-Sort-Array-By-Parity-II" class="headerlink" title="922. Sort Array By Parity II"></a><a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/" target="_blank" rel="noopener">922. Sort Array By Parity II</a></h4><p>Given an array <code>A</code> of non-negative integers, half of the integers in A are odd, and half of the integers are even.<br>Sort the array so that whenever <code>A[i]</code> is odd, <code>i</code> is odd; and whenever <code>A[i]</code> is even, <code>i</code> is even.<br>You may return any answer array that satisfies this condition.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[4,2,5,7]</code></p><p><strong>Output:</strong> <code>[4,5,2,7]</code></p><p><strong>Explanation:</strong> <code>[4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.</code></p><p><strong>Note:</strong></p><ol><li><code>2 &lt;= A.length &lt;= 20000</code></li><li><code>A.length % 2 == 0</code></li><li><code>0 &lt;= A[i] &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li><li>先将数组A按照奇偶分为两个数组odd和even，然后按照偶数、奇数的顺序依次插入到结果数组；</li><li><p>思路和1类似，利用vector的<code>top()</code>取出栈顶元素和<code>pop()</code>删除栈顶元素；</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1:// 80msclass Solution {public: vector&lt;int&gt; sortArrayByParityII(vector&lt;int&gt;&amp; A) {     vector&lt;int&gt; odd, even, result;     for(auto vint = A.begin(); vint != A.end(); ++vint)     {         if((*vint) % 2 == 0)             even.push_back(*vint);         else             odd.push_back(*vint);     }     size_t len = A.size();     auto e = even.begin();     auto o = odd.begin();     for(auto i = 0; i &lt; len; ++i)     {         if(i % 2 == 0)         {             result.push_back(*e);             e++;         }                         else         {             result.push_back(*o);             o++;         }     }     return result; }};// code 2：// 64msclass Solution {public: vector&lt;int&gt; sortArrayByParityII(vector&lt;int&gt;&amp; A)  {     stack&lt;int&gt; odd;     stack&lt;int&gt; even;     vector&lt;int&gt;::iterator iter;     int a=0;//奇偶标志位     for(iter=A.begin();iter!=A.end();iter++)     {         if(*iter%2==0)             even.push(*iter);         else             odd.push(*iter);     }     for(iter=A.begin();iter!=A.end();iter++)     {           //top()取出栈顶元素，pop()删除栈顶元素；           if(a==0)           {             *iter=even.top();              even.pop();           }         else         {             *iter=odd.top();              odd.pop();         }         a=1-a;//奇偶变换     }     return A; }};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：905.Sort Array By Parity</title>
+      <link href="/2019/02/24/sort-array-by-parity/"/>
+      <url>/2019/02/24/sort-array-by-parity/</url>
+      
+        <content type="html"><![CDATA[<h4 id="905-Sort-Array-By-Parity"><a href="#905-Sort-Array-By-Parity" class="headerlink" title="905. Sort Array By Parity"></a><a href="https://leetcode-cn.com/problems/sort-array-by-parity/" target="_blank" rel="noopener">905. Sort Array By Parity</a></h4><p>Given an array <code>A</code> of non-negative integers, return an array consisting of all the even elements of <code>A</code>, followed by all the odd elements of <code>A</code>.<br>You may return any answer array that satisfies this condition.</p><p><strong>Example 1:</strong></p><pre><code>Input: [3,1,2,4]Output: [2,4,3,1]The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.</code></pre><p><strong>Note:</strong></p><ol><li><code>1 &lt;= A.length &lt;= 5000</code></li><li><code>0 &lt;= A[i] &lt;= 5000</code></li></ol><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>创建临时容器存放偶数和奇数，最后存入到结果容器并返回。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    vector&lt;int&gt; sortArrayByParity(vector&lt;int&gt;&amp; A) {        vector&lt;int&gt; odd, even, result;        for(auto vint = A.begin(); vint != A.end(); ++vint)        {            if((*vint) % 2 == 0)                even.push_back(*vint);            else                odd.push_back(*vint);        }        result.insert(result.end(), even.begin(), even.end());//将even插入result；        result.insert(result.end(), odd.begin(), odd.end());//将odd插入result；        return result;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：867.Transpose Matrix</title>
+      <link href="/2019/02/24/transpose-matrix/"/>
+      <url>/2019/02/24/transpose-matrix/</url>
+      
+        <content type="html"><![CDATA[<h4 id="867-Transpose-Matrix"><a href="#867-Transpose-Matrix" class="headerlink" title="867. Transpose Matrix"></a><a href="https://leetcode-cn.com/problems/transpose-matrix/" target="_blank" rel="noopener">867. Transpose Matrix</a></h4><p>Given a matrix <code>A</code>, return the transpose of <code>A</code>.<br>The transpose of a matrix is the matrix flipped over it’s main diagonal, switching the row and column indices of the matrix.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[[1,2,3],[4,5,6],[7,8,9]]</code></p><p><strong>Output:</strong> <code>[[1,4,7],[2,5,8],[3,6,9]]</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[[1,2,3],[4,5,6]]</code></p><p><strong>Output:</strong> <code>[[1,4],[2,5],[3,6]]</code></p><p><strong>Note:</strong></p><ol><li><code>1 &lt;= A.length &lt;= 1000</code></li><li><code>1 &lt;= A[0].length &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>A为<code>m * n</code>的矩阵，所以A的转置为<code>n * m</code>的矩阵，故先创建<code>n * m</code>的矩阵<code>result</code>，通过遍历令<code>result[j][i] = A[i][j]</code>,最后返回<code>result</code><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:vector&lt;vector&lt;int&gt;&gt; transpose(vector&lt;vector&lt;int&gt;&gt;&amp; A) {    int m = A.size();    int n = A[0].size();    /*     * A为m * n的矩阵，则A的转置为n * m的矩阵     * 所以定义result为n * m的矩阵     */    vector&lt;vector&lt;int&gt;&gt; result(n);    for(int i = 0; i &lt; n; ++i)        result[i].resize(m);    for(int i = 0; i &lt; m; ++i)    {          for(int j = 0; j &lt; n; ++j)        {            result[j][i] = A[i][j];        }    }    return result;}};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：852.Peak Index in a Mountain Array</title>
+      <link href="/2019/02/24/peak-index-in-a-mountain-array/"/>
+      <url>/2019/02/24/peak-index-in-a-mountain-array/</url>
+      
+        <content type="html"><![CDATA[<h4 id="852-Peak-Index-in-a-Mountain-Array"><a href="#852-Peak-Index-in-a-Mountain-Array" class="headerlink" title="852. Peak Index in a Mountain Array"></a><a href="https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/" target="_blank" rel="noopener">852. Peak Index in a Mountain Array</a></h4><p>Let’s call an array <code>A</code> a <em>mountain</em> if the following properties hold:</p><ul><li><code>A.length &gt;= 3</code></li><li>There exists some <code>0 &lt; i &lt; A.length - 1</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code><br>Given an array that is definitely a mountain, return any <code>i</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code>.</li></ul><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[0,1,0]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[0,2,1,0]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Note:</strong></p><ol><li><code>3 &lt;= A.length &lt;= 10000</code></li><li><code>0 &lt;= A[i] &lt;= 10^6</code></li><li>A is a mountain, as defined above.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>指定临时变量<code>peak</code>和<code>peak_index</code>，<code>peak</code>与<code>A[i]</code>进行比较，若peak小于A[i]，则令<code>peak = A[i]; peak_index = i;</code>，遍历数组，直到<code>peak</code>取到最大值，<code>peak_index</code>为<code>peak</code>取最大时的i值<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int peakIndexInMountainArray(vector&lt;int&gt;&amp; A) {    int peak = 0, peak_index = 0;    auto len = A.size() - 1;    for(int i = 0; i &lt; len; ++i)    {        if(peak &lt; A[i])        {            peak = A[i];            peak_index = i;        }    }    return peak_index;}};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：832.Flipping an Image</title>
+      <link href="/2019/02/24/flipping-an-image/"/>
+      <url>/2019/02/24/flipping-an-image/</url>
+      
+        <content type="html"><![CDATA[<h4 id="832-Flipping-an-Image"><a href="#832-Flipping-an-Image" class="headerlink" title="832. Flipping an Image"></a><a href="https://leetcode-cn.com/problems/flipping-an-image/" target="_blank" rel="noopener">832. Flipping an Image</a></h4><p>Given a binary matrix <code>A</code>, we want to flip the image horizontally, then invert it, and return the resulting image.<br>To flip an image horizontally means that each row of the image is reversed.  For example, flipping <code>[1, 1, 0]</code> horizontally results in <code>[0, 1, 1]</code>.<br>To invert an image means that each <code>0</code> is replaced by <code>1</code>, and each <code>1</code> is replaced by <code>0</code>. For example, inverting <code>[0, 1, 1]</code> results in <code>[1, 0, 0]</code>.</p><p><strong>Example 1:</strong></p><pre><code>Input: [[1,1,0],[1,0,1],[0,0,0]]Output: [[1,0,0],[0,1,0],[1,1,1]]Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</code></pre><p><strong>Notes:</strong></p><ul><li><code>1 &lt;= A.length = A[0].length &lt;= 20</code></li><li><code>0 &lt;= A[i][j] &lt;= 1</code></li></ul><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>翻转：利用临时数组反转</li><li>反转：与1异或获得反转效果或者利用if-else判断，<strong>不可按位取反</strong><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:  vector&lt;vector&lt;int&gt;&gt; flipAndInvertImage(vector&lt;vector&lt;int&gt;&gt;&amp; A) {      for(auto vint = A.begin(); vint != A.end(); ++vint)      {          int len = (*vint).size();          vector&lt;int&gt; tmp(len, 0);          for(int i = 0; i &lt; len; i++)              tmp[i] = (*vint)[len - 1 - i];          for(auto &amp;i : tmp)          {              i ^= 1;          }          *vint = tmp;      }      return A;  }};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：807.Max Increase to Keep City Skyline</title>
+      <link href="/2019/02/24/max-increase-to-keep-city-skyline/"/>
+      <url>/2019/02/24/max-increase-to-keep-city-skyline/</url>
+      
+        <content type="html"><![CDATA[<h4 id="807-Max-Increase-to-Keep-City-Skyline"><a href="#807-Max-Increase-to-Keep-City-Skyline" class="headerlink" title="807. Max Increase to Keep City Skyline"></a><a href="https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline/" target="_blank" rel="noopener">807. Max Increase to Keep City Skyline</a></h4><p>In a 2 dimensional array <code>grid</code>, each value <code>grid[i][j]</code> represents the height of a building located there. We are allowed to increase the height of any number of buildings, by any amount (the amounts can be different for different buildings). Height 0 is considered to be a building as well.<br>At the end, the “skyline” when viewed from all four directions of the grid, i.e. top, bottom, left, and right, must be the same as the skyline of the original grid. A city’s skyline is the outer contour of the rectangles formed by all the buildings when viewed from a distance. See the following example.<br>What is the maximum total sum that the height of the buildings can be increased?</p><p><strong>Example:</strong></p><p><strong>Input:</strong> <code>grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]</code></p><p><strong>Output:</strong> <code>35</code></p><p><strong>Explanation:</strong> </p><pre><code>The grid is:[ [3, 0, 8, 4],   [2, 4, 5, 7],  [9, 2, 6, 3],  [0, 3, 1, 0] ]The skyline viewed from top or bottom is: [9, 4, 8, 7]The skyline viewed from left or right is: [8, 7, 9, 3]The grid after increasing the height of buildings without affecting skylines is:gridNew = [ [8, 4, 8, 7],            [7, 4, 7, 7],            [9, 4, 8, 7],            [3, 3, 3, 3] ]</code></pre><p><strong>Notes:</strong></p><ul><li><code>1 &lt; grid.length = grid[0].length &lt;= 50</code>.</li><li>All heights <code>grid[i][j]</code> are in the range <code>[0, 100]</code>.</li><li>All buildings in <code>grid[i][j]</code> occupy the entire grid cell: that is, they are a <code>1 x 1 x grid[i][j]</code> rectangular prism.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li><li>遍历<code>grid</code>获取skyline数值存入到<code>col</code>和<code>row</code>中；</li><li>遍历<code>grid</code>，利用<code>col</code>和<code>row</code>中最小的skyline值来计算最大增量，最后得出结果；<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:  int maxIncreaseKeepingSkyline(vector&lt;vector&lt;int&gt;&gt;&amp; grid) {  int len = grid.size();  int result = 0;  vector&lt;int&gt; col(len, 0), row(len, 0);  for (int i = 0; i &lt; len; ++i) {      for (int j = 0; j &lt; len; ++j) {          row[i] = max(row[i], grid[i][j]);          col[j] = max(col[j], grid[i][j]);      }  }  for (int i = 0; i &lt; len; ++i)      for (int j = 0; j &lt; len; ++j)          result += min(row[i], col[j]) - grid[i][j];  return result;}};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：804.Unique Morse Code Words</title>
+      <link href="/2019/02/24/unique-morse-code-words/"/>
+      <url>/2019/02/24/unique-morse-code-words/</url>
+      
+        <content type="html"><![CDATA[<h4 id="804-Unique-Morse-Code-Words"><a href="#804-Unique-Morse-Code-Words" class="headerlink" title="804. Unique Morse Code Words"></a><a href="https://leetcode-cn.com/problems/unique-morse-code-words/" target="_blank" rel="noopener">804. Unique Morse Code Words</a></h4><p>International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows: <code>&quot;a&quot;</code> maps to <code>&quot;.-&quot;</code>, <code>&quot;b&quot;</code>maps to <code>&quot;-...&quot;</code>, <code>&quot;c&quot;</code> maps to <code>&quot;-.-.&quot;</code>, and so on.<br>For convenience, the full table for the 26 letters of the English alphabet is given below:</p><pre><code>[&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;]</code></pre><p>Now, given a list of words, each word can be written as a concatenation of the Morse code of each letter. For example, “cab” can be written as “-.-..–…”, (which is the concatenation “-.-.” + “-…” + “.-“). We’ll call such a concatenation, the transformation of a word.<br>Return the number of different transformations among all words we have.</p><p><strong>Example:</strong></p><p><strong>Input:</strong> <code>words = [&quot;gin&quot;, &quot;zen&quot;, &quot;gig&quot;, &quot;msg&quot;]</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Explanation:</strong><br>The transformation of each word is:<br>“gin” -&gt; “–…-.”<br>“zen” -&gt; “–…-.”<br>“gig” -&gt; “–…–.”<br>“msg” -&gt; “–…–.”<br>There are 2 different transformations, “–…-.” and “–…–.”.</p><p><strong>Note:</strong></p><ul><li>The length of <code>words</code> will be at most <code>100</code>.</li><li>Each <code>words[i]</code> will have length in range <code>[1, 12]</code>.</li><li><code>words[i]</code> will only consist of lowercase letters.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>将words中word的字母逐个转换为morsecode，并存入临时string，之后将其插入到无序容器<code>unordered_set&lt;string&gt; result;</code>中，然后获取不同元素的数量。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int uniqueMorseRepresentations(vector&lt;string&gt;&amp; words) {    unordered_set&lt;string&gt; result;    //vector&lt;string&gt;morseWords;    vector&lt;string&gt; morseCode{&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;};    for(auto word = words.begin(); word != words.end(); ++word)    {        string tmp = &quot;&quot;;        for(auto letter : *word)        {            tmp += morseCode[letter - &#39;a&#39;];        }        result.insert(tmp);    }    return result.size();}};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：771.Jewels and Stones</title>
+      <link href="/2019/02/24/jewels-and-stones/"/>
+      <url>/2019/02/24/jewels-and-stones/</url>
+      
+        <content type="html"><![CDATA[<h4 id="771-Jewels-and-Stones"><a href="#771-Jewels-and-Stones" class="headerlink" title="771. Jewels and Stones"></a><a href="https://leetcode-cn.com/problems/jewels-and-stones/" target="_blank" rel="noopener">771. Jewels and Stones</a></h4><p>You’re given strings <code>J</code>representing the types of stones that are jewels, and <code>S</code> representing the stones you have.  Each character in <code>S</code> is a type of stone you have.  You want to know how many of the stones you have are also jewels.<br>The letters in <code>J</code> are guaranteed distinct, and all characters in <code>J</code> and <code>S</code> are letters. Letters are case sensitive, so <code>&quot;a&quot;</code> is considered a different type of stone from <code>&quot;A&quot;</code>.</p><p><strong>Example 1:</strong></p><pre><code>Input:J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;Output: 3</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: J = &quot;z&quot;, S = &quot;ZZ&quot;Output: 0</code></pre><p><strong>Note:</strong></p><ul><li><code>S</code> and <code>J</code> will consist of letters and have length at most 50.</li><li>The characters in <code>J</code> are distinct.</li></ul><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1： 遍历J和S，两者相等，计数+1；</li><li>思路2： 创建临时数组a[256]，先以J中元素的ASCII值作为a的索引并作标记。后以S中元素的ASCII值作为a的索引，判断该位置是否为零，如果不为零，则计数+1；</li><li>思路3： 和2类似，不过将大小写字母分开，减少了数组的长度。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//code 1：//运行时间大于4ms；class Solution {public:  int numJewelsInStones(string J, string S) {      int num = 0;      for (int i = 0; i &lt; J.length(); i++)      {          for (int j = 0; j&lt; S.length(); j++)              if (J[i] == S[j])                  num += 1;      }      return num;  }};//code 2://运行时间4ms；class Solution {public:  int numJewelsInStones(string J, string S) {      char a[256]={0};       for(int i=0;i&lt;J.length();++i)          a[J[i]]++; //相应字母的ASCII值作为索引；      int ans=0;       for(int i=0;i&lt;S.length();++i)          if(a[S[i]])               ans++;      return ans;       }};// code  3://运行时间0ms；class Solution {public:  int numJewelsInStones(string J, string S) {      int a_upper[26] = {0} , a_lower[26] = {0};            for(auto ch : J)      {          int x;                      if(isupper(ch))          {              x = ch - &#39;A&#39;;              a_upper[x] = 1;          }          else          {              x = ch - &#39;a&#39;;              a_lower[x] = 1;          }      }       int num = 0;      for(auto ch : S)      {          int x;          if(isupper(ch))          {              x = ch - &#39;A&#39;;              if(a_upper[x])  ++num;          }          else          {              x = ch - &#39;a&#39;;              if(a_lower[x])  ++num;          }       }       return num;  }};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：709.To Lower Case</title>
+      <link href="/2019/02/24/to-lower-case/"/>
+      <url>/2019/02/24/to-lower-case/</url>
+      
+        <content type="html"><![CDATA[<h4 id="709-To-Lower-Case"><a href="#709-To-Lower-Case" class="headerlink" title="709. To Lower Case"></a><a href="https://leetcode-cn.com/problems/to-lower-case/" target="_blank" rel="noopener">709. To Lower Case</a></h4><p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.<br><strong>Example 1:</strong></p><pre><code>Input: &quot;Hello&quot;Output: &quot;hello&quot;</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: &quot;here&quot;Output: &quot;here&quot;</code></pre><p><strong>Example 3:</strong></p><pre><code>Input: &quot;LOVELY&quot;Output: &quot;lovely&quot;</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>利用C++ tolower()函数；</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    string toLowerCase(string str) {        for(auto &amp;letter : str)        {            letter = tolower(letter);        }        return str;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：657.Robot Return to Origin</title>
+      <link href="/2019/02/24/robot-return-to-origin/"/>
+      <url>/2019/02/24/robot-return-to-origin/</url>
+      
+        <content type="html"><![CDATA[<h4 id="657-Robot-Return-to-Origin"><a href="#657-Robot-Return-to-Origin" class="headerlink" title="657. Robot Return to Origin"></a><a href="https://leetcode-cn.com/problems/robot-return-to-origin/" target="_blank" rel="noopener">657. Robot Return to Origin</a></h4><p>There is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot <strong>ends up at (0, 0)</strong> after it completes its moves.<br>The move sequence is represented by a string, and the character moves[i] represents its ith move. Valid moves are R (right), L (left), U (up), and D (down). If the robot returns to the origin after it finishes all of its moves, return true. Otherwise, return false.</p><p><strong>Note</strong>: The way that the robot is “facing” is irrelevant. “R” will always make the robot move to the right once, “L” will always make it move left, etc. Also, assume that the magnitude of the robot’s movement is the same for each move.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> “UD”</p><p><strong>Output:</strong> true </p><p><strong>Explanation</strong>: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> “LL”</p><p><strong>Output:</strong> false</p><p><strong>Explanation</strong>: The robot moves left twice. It ends up two “moves” to the left of the origin. We return false because it is not at the origin at the end of its moves.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>设置四个标志位，利用switch-case判断moves的值，相应标志位+1。<br>当‘上’=‘下’并且‘左’=‘右’的时候，机器人回到原点。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1：// 8msclass Solution {public:    bool judgeCircle(string moves) {        vector&lt;int&gt; sign(4,0);        for(auto c : moves)        {            switch(c)            {                case &#39;U&#39;:                    sign[0]++;                    break;                case &#39;D&#39;:                    sign[1]++;                    break;                case &#39;L&#39;:                    sign[2]++;                    break;                case &#39;R&#39;:                    sign[3]++;                    break;            }        }        return sign[0] == sign[1] &amp;&amp; sign[2] == sign[3];    }};// code 2：// 4msclass Solution {public:    bool judgeCircle(string moves) {        int a = 0, b = 0, c = 0, d = 0;        for(int i=0;i&lt;moves.size();i++){            a+=moves[i]==&#39;R&#39;;            b+=moves[i]==&#39;L&#39;;            c+=moves[i]==&#39;U&#39;;            d+=moves[i]==&#39;D&#39;;        }        return a == b &amp;&amp; c == d;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：627.Swap Salary</title>
+      <link href="/2019/02/24/swap-salary/"/>
+      <url>/2019/02/24/swap-salary/</url>
+      
+        <content type="html"><![CDATA[<h4 id="627-Swap-Salary"><a href="#627-Swap-Salary" class="headerlink" title="627. Swap Salary"></a><a href="https://leetcode-cn.com/problems/swap-salary/" target="_blank" rel="noopener">627. Swap Salary</a></h4><p>SQL架构</p><pre><code>create table if not exists salary(id int, name varchar(100), sex char(1), salary int)Truncate table salaryinsert into salary (id, name, sex, salary) values (&#39;1&#39;, &#39;A&#39;, &#39;m&#39;, &#39;2500&#39;)insert into salary (id, name, sex, salary) values (&#39;2&#39;, &#39;B&#39;, &#39;f&#39;, &#39;1500&#39;)insert into salary (id, name, sex, salary) values (&#39;3&#39;, &#39;C&#39;, &#39;m&#39;, &#39;5500&#39;)insert into salary (id, name, sex, salary) values (&#39;4&#39;, &#39;D&#39;, &#39;f&#39;, &#39;500&#39;)</code></pre><p>Given a table <code>salary</code>, such as the one below, that has m=male and f=female values. Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.For example:</p><pre><code>| id | name | sex | salary ||----|------|-----|--------|| 1  | A    | m   | 2500   || 2  | B    | f   | 1500   || 3  | C    | m   | 5500   || 4  | D    | f   | 500    |</code></pre><p>After running your query, the above salary table should have the following rows:</p><pre><code>| id | name | sex | salary ||----|------|-----|--------|| 1  | A    | f   | 2500   || 2  | B    | m   | 1500   || 3  | C    | f   | 5500   || 4  | D    | m   | 500    |</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>利用SQL中的case-when多条件判断语句，类似C++中的switch-case语句</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>UPDATE salarySET sex = (CASE sex WHEN &#39;m&#39; THEN &#39;f&#39;                    WHEN &#39;f&#39; THEN &#39;m&#39;           END)</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：620.Not Boring Movies</title>
+      <link href="/2019/02/24/not-boring-movies/"/>
+      <url>/2019/02/24/not-boring-movies/</url>
+      
+        <content type="html"><![CDATA[<h4 id="620-Not-Boring-Movies"><a href="#620-Not-Boring-Movies" class="headerlink" title="620. Not Boring Movies"></a><a href="https://leetcode-cn.com/problems/not-boring-movies/" target="_blank" rel="noopener">620. Not Boring Movies</a></h4><p>SQL架构</p><pre><code>Create table If Not Exists cinema (id int, movie varchar(255), description varchar(255), rating float(2, 1))Truncate table cinemainsert into cinema (id, movie, description, rating) values (&#39;1&#39;, &#39;War&#39;, &#39;great 3D&#39;, &#39;8.9&#39;)insert into cinema (id, movie, description, rating) values (&#39;2&#39;, &#39;Science&#39;, &#39;fiction&#39;, &#39;8.5&#39;)insert into cinema (id, movie, description, rating) values (&#39;3&#39;, &#39;irish&#39;, &#39;boring&#39;, &#39;6.2&#39;)insert into cinema (id, movie, description, rating) values (&#39;4&#39;, &#39;Ice song&#39;, &#39;Fantacy&#39;, &#39;8.6&#39;)insert into cinema (id, movie, description, rating) values (&#39;5&#39;, &#39;House card&#39;, &#39;Interesting&#39;, &#39;9.1&#39;)</code></pre><p>X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.<br>Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’. Order the result by rating.<br>For example, table <code>cinema</code>:</p><pre><code>+---------+-----------+--------------+-----------+|   id    | movie     |  description |  rating   |+---------+-----------+--------------+-----------+|   1     | War       |   great 3D   |   8.9     ||   2     | Science   |   fiction    |   8.5     ||   3     | irish     |   boring     |   6.2     ||   4     | Ice song  |   Fantacy    |   8.6     ||   5     | House card|   Interesting|   9.1     |+---------+-----------+--------------+-----------+</code></pre><p>For the example above, the output should be:</p><pre><code>+---------+-----------+--------------+-----------+|   id    | movie     |  description |  rating   |+---------+-----------+--------------+-----------+|   5     | House card|   Interesting|   9.1     ||   1     | War       |   great 3D   |   8.9     |+---------+-----------+--------------+-----------+</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>通过<code>description</code>和<code>id</code>进行筛选，然后通过<code>rating</code>进行倒序排序（<code>DESC</code>）</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>SELECT id, movie, description, ratingFROM cinemaWHERE id % 2 != 0 and description != &#39;boring&#39;ORDER BY rating DESC</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：595.Big Countries</title>
+      <link href="/2019/02/24/big-countries/"/>
+      <url>/2019/02/24/big-countries/</url>
+      
+        <content type="html"><![CDATA[<h4 id="595-Big-Countries"><a href="#595-Big-Countries" class="headerlink" title="595. Big Countries"></a><a href="https://leetcode-cn.com/problems/big-countries/" target="_blank" rel="noopener">595. Big Countries</a></h4><p>SQL架构</p><pre><code>Create table If Not Exists World (name varchar(255), continent varchar(255), area int, population int, gdp int)Truncate table Worldinsert into World (name, continent, area, population, gdp) values (&#39;Afghanistan&#39;, &#39;Asia&#39;, &#39;652230&#39;, &#39;25500100&#39;, &#39;20343000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Albania&#39;, &#39;Europe&#39;, &#39;28748&#39;, &#39;2831741&#39;, &#39;12960000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Algeria&#39;, &#39;Africa&#39;, &#39;2381741&#39;, &#39;37100000&#39;, &#39;188681000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Andorra&#39;, &#39;Europe&#39;, &#39;468&#39;, &#39;78115&#39;, &#39;3712000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Angola&#39;, &#39;Africa&#39;, &#39;1246700&#39;, &#39;20609294&#39;, &#39;100990000000&#39;)</code></pre><p>There is a table <code>World</code></p><pre><code>+-----------------+------------+------------+--------------+---------------+| name            | continent  | area       | population   | gdp           |+-----------------+------------+------------+--------------+---------------+| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      || Albania         | Europe     | 28748      | 2831741      | 12960000      || Algeria         | Africa     | 2381741    | 37100000     | 188681000     || Andorra         | Europe     | 468        | 78115        | 3712000       || Angola          | Africa     | 1246700    | 20609294     | 100990000     |+-----------------+------------+------------+--------------+---------------+</code></pre><p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.<br>Write a SQL solution to output big countries’ name, population and area.<br>For example, according to the above table, we should output:</p><pre><code>+--------------+-------------+--------------+| name         | population  | area         |+--------------+-------------+--------------+| Afghanistan  | 25500100    | 652230       || Algeria      | 37100000    | 2381741      |+--------------+-------------+--------------+</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>利用人口和面积进行筛选</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>select name, population, area from World where area &gt; 3000000 or population &gt; 25000000;</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：561.Array Partition I</title>
       <link href="/2019/02/24/array-partition-i/"/>
       <url>/2019/02/24/array-partition-i/</url>
       
         <content type="html"><![CDATA[<h4 id="561-Array-Partition-I"><a href="#561-Array-Partition-I" class="headerlink" title="561. Array Partition I"></a><a href="https://leetcode-cn.com/problems/array-partition-i/" target="_blank" rel="noopener">561. Array Partition I</a></h4><p>Given an array of <strong>2n</strong> integers, your task is to group these integers into <strong>n</strong> pairs of integer, say (a<sub>1</sub>, b<sub>1</sub>), (a<sub>2</sub>, b<sub>2</sub>), …, (a<sub>n</sub>, b<sub>n</sub>) which makes sum of min(a<sub>i</sub>, b<sub>i</sub>) for all i from 1 to n as large as possible.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[1,4,3,2]</code></p><p><strong>Output:</strong> <code>4</code></p><p><strong>Explanation:</strong> <code>n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).</code></p><p><strong>Note:</strong></p><ol><li><strong>n</strong> is a positive integer, which is in the range of [1, 10000].</li><li>All the integers in the array will be in the range of [-10000, 10000].<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>为得到最大的和，所以要保证第2大的数字和第1大的数字进行组合，第4大的数字和第3大的数字进行组合，以此类推。可以看出，我们将数组进行排序后，取<code>2n+1</code>项进行相加，即可得结果。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int arrayPairSum(vector&lt;int&gt;&amp; nums) {    int len = nums.size();    sort(nums.begin(), nums.end());    int result = 0;    for(int i = 0; i &lt; len; ++i)    {        result += nums[i];        ++i;    }    return result;}};</code></pre></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：509.Fibonacci Number</title>
+      <link href="/2019/02/24/fibonacci-number/"/>
+      <url>/2019/02/24/fibonacci-number/</url>
+      
+        <content type="html"><![CDATA[<h4 id="509-Fibonacci-Number"><a href="#509-Fibonacci-Number" class="headerlink" title="509. Fibonacci Number"></a><a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">509. Fibonacci Number</a></h4><p>The <strong>Fibonacci numbers</strong>, commonly denoted <code>F(n)</code> form a sequence, called the <strong>Fibonacci sequence</strong>, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,</p><pre><code>F(0) = 0,   F(1) = 1F(N) = F(N - 1) + F(N - 2), for N &gt; 1.</code></pre><p>Given <code>N</code>, calculate <code>F(N)</code>.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>2</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Explanation:</strong> <code>F(2) = F(1) + F(0) = 1 + 0 = 1.</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>3</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Explanation:</strong> <code>F(3) = F(2) + F(1) = 1 + 1 = 2.</code></p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>4</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Explanation:</strong> <code>F(4) = F(3) + F(2) = 2 + 1 = 3.</code></p><p><strong>Note:</strong><br>0 ≤ <code>N</code> ≤ 30.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1：采用递归的方法</li><li>思路2：采用数组，将斐波那契数存入到数组中。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1：//效率较低，运行时间20msint fibonacci(int n){  if(n == 0)      return 0;  else if(n == 1)      return 1;  return fibonacci(n-1) + fibonacci(n-2); }class Solution {public:  int fib(int N) {      return fibonacci(N);       }};//方法2：//运行时间0msclass Solution {public:  int fib(int N) {      int *p = new int[N+1];//开辟大小为N+1的数组      p[0] = 0;      p[1] = 1;      for(int i = 2; i &lt; N+1; ++i)      {          p[i] = p[i-1] + p[i-2];      }      return p[N];  }};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：476.Number Complement</title>
+      <link href="/2019/02/24/number-complement/"/>
+      <url>/2019/02/24/number-complement/</url>
+      
+        <content type="html"><![CDATA[<h4 id="476-Number-Complement"><a href="#476-Number-Complement" class="headerlink" title="476. Number Complement"></a><a href="https://leetcode-cn.com/problems/number-complement/" target="_blank" rel="noopener">476. Number Complement</a></h4><p>Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.</p><p><strong>Note:</strong></p><ol><li>The given integer is guaranteed to fit within the range of a 32-bit signed integer.</li><li>You could assume no leading zero bit in the integer’s binary representation.</li></ol><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>5</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Explanation:</strong> The binary representation of 5 is 101 (no leading zero bits), and its complement is 010. So you need to output 2.</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>1</code></p><p><strong>Output:</strong> <code>0</code></p><p><strong>Explanation:</strong> The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>题例中<code>5</code>的二进制为<code>101</code>，补数为<code>010</code>,补数可以通过<code>101 ^ 111</code>获得，所以首先获取与num相同二进制位数的<code>111</code>，通过判断<code>num</code>左移1位是否为空可以获得其位数，进而获取<code>mask</code>。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    int findComplement(int num) {        int mask = 2, tmp = num;        while(tmp &gt;&gt;= 1)        {            mask &lt;&lt;= 1;          }        return num ^ (mask-1);    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：461.Hamming Distance</title>
+      <link href="/2019/02/24/hamming-distance/"/>
+      <url>/2019/02/24/hamming-distance/</url>
+      
+        <content type="html"><![CDATA[<h4 id="461-Hamming-Distance"><a href="#461-Hamming-Distance" class="headerlink" title="461. Hamming Distance"></a><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" rel="noopener">461. Hamming Distance</a></h4><p>The <a href="https://en.wikipedia.org/wiki/Hamming_distance" target="_blank" rel="noopener">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.<br>Given two integers <code>x</code> and <code>y</code>, calculate the Hamming distance.</p><p><strong>Note:</strong><br>0 ≤ <code>x</code>, <code>y</code> &lt; 2<sup>31</sup>.</p><p><strong>Example:</strong></p><pre><code>Input: x = 1, y = 4Output: 2Explanation:1   (0 0 0 1)4   (0 1 0 0)       ↑   ↑The above arrows point to positions where the corresponding bits are different.</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>n = x ^ y，两数对应位置若不相同，则n的相应位置置1<br>利用n = n &amp; (n - 1)获取n中1的个数</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    int hammingDistance(int x, int y) {        int n = x^y, count = 0;        while(n){            count ++;            n = n&amp;(n-1);        }        return count;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：344.Reverse String</title>
+      <link href="/2019/02/24/reverse-string/"/>
+      <url>/2019/02/24/reverse-string/</url>
+      
+        <content type="html"><![CDATA[<h4 id="344-Reverse-String"><a href="#344-Reverse-String" class="headerlink" title="344. Reverse String"></a><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">344. Reverse String</a></h4><p>Write a function that takes a string as input and returns the string reversed.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> “hello”</p><p><strong>Output:</strong> “olleh”</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> “A man, a plan, a canal: Panama”</p><p><strong>Output:</strong> “amanaP :lanac a ,nalp a ,nam A”</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1： 通过<code>s.length()</code>获取<code>s</code>的字符长度，然后通过下标访问<code>s</code>，将<code>s</code>中的字符从尾到头拼接到<code>result</code>上，得到返回结果。</li><li>思路2： 利用<code>reverse</code>函数，<code>reverse(beg, end)</code>会将区间<code>(beg, end)</code>之间的元素全部逆转。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1: // 4msclass Solution {public:  string reverseString(string s) {      string result = &quot;&quot;;      auto len = s.length();      while(len &gt; 0)      {          result += s[len - 1];          --len;      }      return result;  }};// code 2:// 4msclass Solution {public:  string reverseString(string s) {      reverse(s.begin(),s.end());      return s;  }};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：268.Missing Number</title>
+      <link href="/2019/02/24/missing-number/"/>
+      <url>/2019/02/24/missing-number/</url>
+      
+        <content type="html"><![CDATA[<h4 id="268-Missing-Number"><a href="#268-Missing-Number" class="headerlink" title="268. Missing Number"></a><a href="https://leetcode-cn.com/problems/missing-number/" target="_blank" rel="noopener">268. Missing Number</a></h4><p>Given an array containing <em>n</em> distinct numbers taken from <code>0, 1, 2, ..., n</code>, find the one that is missing from the array.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[3,0,1]</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[9,6,4,2,3,5,7,0,1]</code></p><p><strong>Output:</strong> <code>8</code></p><p><strong>Note</strong>:<br>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>要求时间复杂度为O(n)；</p><ul><li>思路1： 采用和<a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">136. Single Number</a>类似的思路，将容器中所有的数字和有序数列<code>1,2,3……,n</code>异或，如果容器中存在数字<code>x</code>，那么和有序数列中对应的<code>x</code>异或结果为零，最终得到的结果便为缺失的数字。</li><li>思路2：采用求和相减，若容器长度为<code>n</code>，利用求和公式计算<code>s1 = n * (n+1) / 2</code>，减去容器中数字的求和<code>s2</code>，则可得缺失的数字。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1：class Solution {public:  int missingNumber(vector&lt;int&gt;&amp; nums) {      int result = 0;      int len = nums.size();      for(int i = 0; i &lt; len; ++i)      {          result ^= (i+1) ^ nums[i];      }      return result;  }};//方法2：class Solution {public:  int missingNumber(vector&lt;int&gt;&amp; nums) {      int n = nums.size();      int s1 = n * (n + 1) / 2;      int s2 = 0;      for(int i : nums)      {          s2 += i;      }      return s1 - s2;  }};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：231.Power of Two</title>
+      <link href="/2019/02/24/power-of-two/"/>
+      <url>/2019/02/24/power-of-two/</url>
+      
+        <content type="html"><![CDATA[<h4 id="231-Power-of-Two"><a href="#231-Power-of-Two" class="headerlink" title="231. Power of Two"></a><a href="https://leetcode-cn.com/problems/power-of-two/" target="_blank" rel="noopener">231. Power of Two</a></h4><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>1</code></p><p><strong>Output:</strong> <code>true</code></p><p><strong>Explanation:</strong> 2<sup>0</sup> = 1</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>16</code></p><p><strong>Output:</strong> <code>true</code></p><p><strong>Explanation:</strong> 2<sup>4</sup> = 16</p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>218</code></p><p><strong>Output:</strong> <code>false</code></p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>通过观察可知，如果一个数字为2的幂，那么这个数字中的二进制数中的最高位必为1，其它都为0，那么灵气减1，最高位变为0，其它位变为1。例如2<sup>3</sup>=8,其二进制形式为1000，那么8 - 1 = 7，7的二进制形式为0111，1000 &amp; 0111 = 0；我们可以通过这个性质来判断该数字是否为2的幂。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    bool isPowerOfTwo(int n) {        return (n &gt; 0) &amp;&amp; (! (n &amp; (n - 1) ) );    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：201.Bitwise AND of Numbers Range</title>
+      <link href="/2019/02/24/bitwise-and-of-numbers-range/"/>
+      <url>/2019/02/24/bitwise-and-of-numbers-range/</url>
+      
+        <content type="html"><![CDATA[<h4 id="201-Bitwise-AND-of-Numbers-Range"><a href="#201-Bitwise-AND-of-Numbers-Range" class="headerlink" title="201. Bitwise AND of Numbers Range"></a><a href="https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="noopener">201. Bitwise AND of Numbers Range</a></h4><p>Given a range [m, n] where 0 &lt;= m &lt;= n &lt;= 2147483647, return the bitwise AND of all numbers in this range, inclusive.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[5,7]</code></p><p><strong>Output:</strong> <code>4</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[0,1]</code></p><p><strong>Output:</strong> <code>0</code></p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>通过观察可以知道5的二进制为<strong>1</strong>01，6的二进制为<strong>1</strong>10，7的二进制为<strong>1</strong>11，输出4的二进制为<strong>1</strong>00，可以发现，只要找到二进制的左边公共部分即可。<br>可以先建立一个32位都是1的mask，然后每次左移一位，比较m和n是否相同，不同再继续左移一位，直至相同，然后把m和mask相与即得最终结果。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1class Solution {public:    int rangeBitwiseAnd(int m, int n) {        unsigned int mask = UINT_MAX;        while ((m &amp; mask) != (n &amp; mask)) {            mask &lt;&lt;= 1;        }        return mask &amp; m;    }};//方法2class Solution {public:    int rangeBitwiseAnd(int m, int n) {        int cnt = 0;        while(m!= n){            m&gt;&gt;=1;            n&gt;&gt;=1;            ++cnt;        }        return m&lt;&lt;cnt;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：191.Number of 1 Bits</title>
+      <link href="/2019/02/24/number-of-1-bits/"/>
+      <url>/2019/02/24/number-of-1-bits/</url>
+      
+        <content type="html"><![CDATA[<h3 id="191-Number-of-1-Bits"><a href="#191-Number-of-1-Bits" class="headerlink" title="191. Number of 1 Bits"></a><a href="https://leetcode-cn.com/problems/number-of-1-bits/" target="_blank" rel="noopener">191. Number of 1 Bits</a></h3><p>Write a function that takes an unsigned integer and return the number of ‘1’ bits it has (also known as the <a href="http://en.wikipedia.org/wiki/Hamming_weight" target="_blank" rel="noopener">Hamming weight</a>).</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>00000000000000000000000000001011</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Explanation:</strong> The input binary string <strong>00000000000000000000000000001011</strong> has a total of three ‘1’ bits.</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>00000000000000000000000010000000</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Explanation:</strong> The input binary string <strong>00000000000000000000000010000000</strong> has a total of one ‘1’ bit.</p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>11111111111111111111111111111101</code></p><p><strong>Output:</strong> <code>31</code></p><p><strong>Explanation:</strong> The input binary string <strong>11111111111111111111111111111101</strong> has a total of thirty one ‘1’ bits.</p><p><strong>Note:</strong></p><ul><li>Note that in some languages such as Java, there is no unsigned integer type. In this case, the input will be given as signed integer type and should not affect your implementation, as the internal binary representation of the integer is the same whether it is signed or unsigned.</li><li>In Java, the compiler represents the signed integers using <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="noopener">2’s complement notation</a>. Therefore, in <strong>Example 3</strong> above the input represents the signed integer <code>-3</code>.</li></ul><p><strong>Follow up</strong>:<br>If this function is called many times, how would you optimize it?</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1：除2取余法，末尾为1，除2取余后为1，末尾为0，除2取余后为0</li><li>思路2：与1相与，直接判定末位是否为1</li><li>思路3：直接去掉二进制中位置最靠后的1。假设<code>n=1100</code>，则<code>n-1=1011</code>，那么<code>n&amp;(n-1)=1000</code>,位置最靠后的1被去掉。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1class Solution {public:  int hammingWeight(uint32_t n) {      int cnt = 0;      while(n != 0)      {          cnt += n % 2;          n &gt;&gt;= 1;      }      return cnt;  }};//方法2class Solution {public:  int hammingWeight(uint32_t n) {      int cnt = 0;      while(n != 0)      {          cnt += n &amp; 1;          n &gt;&gt;= 1;      }      return cnt;  }};//方法3class Solution {public:  int hammingWeight(uint32_t n) {      int cnt = 0;      while(n != 0)      {          n = n &amp; (n-1);          cnt++;      }      return cnt;  }};</code></pre></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：182.Duplicate Emails</title>
+      <link href="/2019/02/24/duplicate-emails/"/>
+      <url>/2019/02/24/duplicate-emails/</url>
+      
+        <content type="html"><![CDATA[<h4 id="182-Duplicate-Emails"><a href="#182-Duplicate-Emails" class="headerlink" title="182. Duplicate Emails"></a><a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. Duplicate Emails</a></h4><p>SQL架构</p><pre><code>Create table If Not Exists Person (Id int, Email varchar(255))Truncate table Personinsert into Person (Id, Email) values (&#39;1&#39;, &#39;a@b.com&#39;)insert into Person (Id, Email) values (&#39;2&#39;, &#39;c@d.com&#39;)insert into Person (Id, Email) values (&#39;3&#39;, &#39;a@b.com&#39;)</code></pre><p>Write a SQL query to find all duplicate emails in a table named <code>Person</code>.</p><p><strong>Example:</strong></p><pre><code>+----+---------+| Id | Email   |+----+---------+| 1  | a@b.com || 2  | c@d.com || 3  | a@b.com |+----+---------+</code></pre><p>For example, your query should return the following for the above table:</p><pre><code>+---------+| Email   |+---------+| a@b.com |+---------+</code></pre><p><strong>Note</strong>: All emails are in lowercase.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>使用 GROUP BY 和 HAVING 条件：向 GROUP BY 添加条件的一种更常用的方法是使用 HAVING 子句，该子句更为简单高效。<br>GROUP BY 语句用于结合合计函数，根据一个或多个列对结果集进行分组。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>select Email from Persongroup by Email having count(Email) &gt; 1;</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：136.Single Number</title>
+      <link href="/2019/02/24/single-number/"/>
+      <url>/2019/02/24/single-number/</url>
+      
+        <content type="html"><![CDATA[<h4 id="136-Single-Number"><a href="#136-Single-Number" class="headerlink" title="136. Single Number"></a><a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">136. Single Number</a></h4><p>Given a <strong>non-empty</strong> array of integers, every element appears <em>twice</em> except for one. Find that single one.</p><p><strong>Note:</strong><br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[2,2,1]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[4,1,2,1,2]</code></p><p><strong>Output:</strong> <code>4</code></p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>题目要求算法的时间复杂度为O(n),空间复杂度为O(1)；<br>将容器的所有的数字进行异或运算，由于相同两个数字异或结果为0，所以所有元素异或的结果便为所寻单独的数字。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    int singleNumber(vector&lt;int&gt;&amp; nums) {        int result = 0;        for(auto ibeg = nums.begin(); ibeg != nums.end(); ++ibeg)        {            result ^= *ibeg;  //所有数字进行异或运算         }        return result;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：118.Pascal&#39;s Triangle</title>
+      <link href="/2019/02/24/pascals-triangle/"/>
+      <url>/2019/02/24/pascals-triangle/</url>
+      
+        <content type="html"><![CDATA[<h4 id="118-Pascal’s-Triangle"><a href="#118-Pascal’s-Triangle" class="headerlink" title="118. Pascal’s Triangle"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">118. Pascal’s Triangle</a></h4><p>Given a non-negative integer <em>numRows</em>, generate the first <em>numRows</em> of Pascal’s triangle.<br><img src="http://upload-images.jianshu.io/upload_images/14484228-f1bcb06c89999105.gif?imageMogr2/auto-orient/strip" alt="In Pascal&#39;s triangle, each number is the sum of the two numbers directly above it."></p><p><strong>Example:</strong></p><p><strong>Input:</strong> <code>5</code></p><p><strong>Output:</strong></p><pre><code>[     [1],    [1,1],   [1,2,1],  [1,3,3,1], [1,4,6,4,1]]</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>根据杨辉三角的特点创建容器，并将每行开头和结尾赋值为1，当行数大于2时，根据杨辉三角的运算规则进行运算</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    vector&lt;vector&lt;int&gt;&gt; generate(int numRows) {        vector&lt;vector&lt;int&gt;&gt; res(numRows, vector&lt;int&gt;());        for (int i = 0; i &lt; numRows; ++i)        {            res[i].resize(i + 1);  //确定每行数字的个数            //每行开头和结尾都为1            res[i][0] = 1;            res[i][i] = 1;        }        if (numRows &gt; 2)        {            for (int i = 2; i &lt; numRows; ++i)             {                for (int j = 1; j &lt; i; ++j)                     res[i][j] = res[i-1][j] + res[i-1][j-1];            }        }        return res;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：78.Subsets</title>
+      <link href="/2019/02/24/subsets/"/>
+      <url>/2019/02/24/subsets/</url>
+      
+        <content type="html"><![CDATA[<h4 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="78. Subsets"></a><a href="https://leetcode-cn.com/problems/subsets/" target="_blank" rel="noopener">78. Subsets</a></h4><p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).<br><strong>Note:</strong> The solution set must not contain duplicate subsets.</p><p><strong>Example:</strong></p><p><strong>Input:</strong> nums = [1,2,3]</p><p><strong>Output:</strong></p><pre><code>[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []]</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><pre><code>对集合的每一个元素进行迭代，迭代时，我们保留原来的子集，并在原来的子集后面加入新的元素，之后再加入集合迭代过程如下[] -&gt; 1 -&gt; [1][] [1] -&gt; 2 -&gt; [2] [1,2][] [1] [2] [1,2] -&gt; 3 -&gt; [3] [1,3] [2,3] [1,2,3][] [1] [2] [1,2] [3] [1,3] [2,3] [1,2,3]</code></pre><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    vector&lt;vector&lt;int&gt;&gt; subsets(vector&lt;int&gt;&amp; nums) {        vector&lt;vector&lt;int&gt;&gt; result;        vector&lt;int&gt; tmp;        result.push_back(tmp);        int len = nums.size();        for(int i =0; i &lt; len; ++i){            int resLen = result.size();            for(int j=0; j &lt; resLen; ++j){                vector&lt;int&gt; tmp = result[j];                tmp.push_back(nums[i]);                result.push_back(tmp);            }        }        return result;    }};</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LeetCode刷题：1.Two Sum</title>
+      <link href="/2019/02/24/two-sum/"/>
+      <url>/2019/02/24/two-sum/</url>
+      
+        <content type="html"><![CDATA[<h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p><p><strong>Example:</strong></p><pre><code>Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1].</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target)     {        vector&lt;int&gt; result;        int size = nums.size();        for (int i = 0; i &lt; size; i++)        {            int complement = target - nums[i];            for (int j = i + 1; j &lt; size; j++)            {                if (nums[j] == complement)                {                    result.push_back(i);                    result.push_back(j);                    return result;                }                }        }        return result;    }};</code></pre>]]></content>
       
       
       
@@ -37,398 +607,8 @@
     
     <entry>
       <title></title>
-      <link href="/2019/02/22/bitwise-and-of-numbers-range/"/>
-      <url>/2019/02/22/bitwise-and-of-numbers-range/</url>
-      
-        <content type="html"><![CDATA[<h4 id="201-Bitwise-AND-of-Numbers-Range"><a href="#201-Bitwise-AND-of-Numbers-Range" class="headerlink" title="201. Bitwise AND of Numbers Range"></a><a href="https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="noopener">201. Bitwise AND of Numbers Range</a></h4><p>Given a range [m, n] where 0 &lt;= m &lt;= n &lt;= 2147483647, return the bitwise AND of all numbers in this range, inclusive.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[5,7]</code></p><p><strong>Output:</strong> <code>4</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[0,1]</code></p><p><strong>Output:</strong> <code>0</code></p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>通过观察可以知道5的二进制为<strong>1</strong>01，6的二进制为<strong>1</strong>10，7的二进制为<strong>1</strong>11，输出4的二进制为<strong>1</strong>00，可以发现，只要找到二进制的左边公共部分即可。<br>可以先建立一个32位都是1的mask，然后每次左移一位，比较m和n是否相同，不同再继续左移一位，直至相同，然后把m和mask相与即得最终结果。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1class Solution {public:    int rangeBitwiseAnd(int m, int n) {        unsigned int mask = UINT_MAX;        while ((m &amp; mask) != (n &amp; mask)) {            mask &lt;&lt;= 1;        }        return mask &amp; m;    }};//方法2class Solution {public:    int rangeBitwiseAnd(int m, int n) {        int cnt = 0;        while(m!= n){            m&gt;&gt;=1;            n&gt;&gt;=1;            ++cnt;        }        return m&lt;&lt;cnt;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/02/22/power-of-two/"/>
-      <url>/2019/02/22/power-of-two/</url>
-      
-        <content type="html"><![CDATA[<h4 id="231-Power-of-Two"><a href="#231-Power-of-Two" class="headerlink" title="231. Power of Two"></a><a href="https://leetcode-cn.com/problems/power-of-two/" target="_blank" rel="noopener">231. Power of Two</a></h4><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>1</code></p><p><strong>Output:</strong> <code>true</code></p><p><strong>Explanation:</strong> 2<sup>0</sup> = 1</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>16</code></p><p><strong>Output:</strong> <code>true</code></p><p><strong>Explanation:</strong> 2<sup>4</sup> = 16</p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>218</code></p><p><strong>Output:</strong> <code>false</code></p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>通过观察可知，如果一个数字为2的幂，那么这个数字中的二进制数中的最高位必为1，其它都为0，那么灵气减1，最高位变为0，其它位变为1。例如2<sup>3</sup>=8,其二进制形式为1000，那么8 - 1 = 7，7的二进制形式为0111，1000 &amp; 0111 = 0；我们可以通过这个性质来判断该数字是否为2的幂。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    bool isPowerOfTwo(int n) {        return (n &gt; 0) &amp;&amp; (! (n &amp; (n - 1) ) );    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/02/22/number-of-1-bits/"/>
-      <url>/2019/02/22/number-of-1-bits/</url>
-      
-        <content type="html"><![CDATA[<h4 id="191-Number-of-1-Bits"><a href="#191-Number-of-1-Bits" class="headerlink" title="191. Number of 1 Bits"></a><a href="https://leetcode-cn.com/problems/number-of-1-bits/" target="_blank" rel="noopener">191. Number of 1 Bits</a></h4><p>Write a function that takes an unsigned integer and return the number of ‘1’ bits it has (also known as the <a href="http://en.wikipedia.org/wiki/Hamming_weight" target="_blank" rel="noopener">Hamming weight</a>).</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>00000000000000000000000000001011</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Explanation:</strong> The input binary string <strong>00000000000000000000000000001011</strong> has a total of three ‘1’ bits.</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>00000000000000000000000010000000</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Explanation:</strong> The input binary string <strong>00000000000000000000000010000000</strong> has a total of one ‘1’ bit.</p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>11111111111111111111111111111101</code></p><p><strong>Output:</strong> <code>31</code></p><p><strong>Explanation:</strong> The input binary string <strong>11111111111111111111111111111101</strong> has a total of thirty one ‘1’ bits.</p><p><strong>Note:</strong></p><ul><li>Note that in some languages such as Java, there is no unsigned integer type. In this case, the input will be given as signed integer type and should not affect your implementation, as the internal binary representation of the integer is the same whether it is signed or unsigned.</li><li>In Java, the compiler represents the signed integers using <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="noopener">2’s complement notation</a>. Therefore, in <strong>Example 3</strong> above the input represents the signed integer <code>-3</code>.</li></ul><p><strong>Follow up</strong>:<br>If this function is called many times, how would you optimize it?</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1：除2取余法，末尾为1，除2取余后为1，末尾为0，除2取余后为0</li><li>思路2：与1相与，直接判定末位是否为1</li><li>思路3：直接去掉二进制中位置最靠后的1。假设<code>n=1100</code>，则<code>n-1=1011</code>，那么<code>n&amp;(n-1)=1000</code>,位置最靠后的1被去掉。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1class Solution {public:  int hammingWeight(uint32_t n) {      int cnt = 0;      while(n != 0)      {          cnt += n % 2;          n &gt;&gt;= 1;      }      return cnt;  }};//方法2class Solution {public:  int hammingWeight(uint32_t n) {      int cnt = 0;      while(n != 0)      {          cnt += n &amp; 1;          n &gt;&gt;= 1;      }      return cnt;  }};//方法3class Solution {public:  int hammingWeight(uint32_t n) {      int cnt = 0;      while(n != 0)      {          n = n &amp; (n-1);          cnt++;      }      return cnt;  }};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/26/pascals-triangle/"/>
-      <url>/2019/01/26/pascals-triangle/</url>
-      
-        <content type="html"><![CDATA[<h4 id="118-Pascal’s-Triangle"><a href="#118-Pascal’s-Triangle" class="headerlink" title="118. Pascal’s Triangle"></a><a href="https://leetcode-cn.com/problems/pascals-triangle/" target="_blank" rel="noopener">118. Pascal’s Triangle</a></h4><p>Given a non-negative integer <em>numRows</em>, generate the first <em>numRows</em> of Pascal’s triangle.<br><img src="http://upload-images.jianshu.io/upload_images/14484228-f1bcb06c89999105.gif?imageMogr2/auto-orient/strip" alt="In Pascal&#39;s triangle, each number is the sum of the two numbers directly above it."></p><p><strong>Example:</strong></p><p><strong>Input:</strong> <code>5</code></p><p><strong>Output:</strong></p><pre><code>[     [1],    [1,1],   [1,2,1],  [1,3,3,1], [1,4,6,4,1]]</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>根据杨辉三角的特点创建容器，并将每行开头和结尾赋值为1，当行数大于2时，根据杨辉三角的运算规则进行运算</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    vector&lt;vector&lt;int&gt;&gt; generate(int numRows) {        vector&lt;vector&lt;int&gt;&gt; res(numRows, vector&lt;int&gt;());        for (int i = 0; i &lt; numRows; ++i)        {            res[i].resize(i + 1);  //确定每行数字的个数            //每行开头和结尾都为1            res[i][0] = 1;            res[i][i] = 1;        }        if (numRows &gt; 2)        {            for (int i = 2; i &lt; numRows; ++i)             {                for (int j = 1; j &lt; i; ++j)                     res[i][j] = res[i-1][j] + res[i-1][j-1];            }        }        return res;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/26/transpose-matrix/"/>
-      <url>/2019/01/26/transpose-matrix/</url>
-      
-        <content type="html"><![CDATA[<h4 id="867-Transpose-Matrix"><a href="#867-Transpose-Matrix" class="headerlink" title="867. Transpose Matrix"></a><a href="https://leetcode-cn.com/problems/transpose-matrix/" target="_blank" rel="noopener">867. Transpose Matrix</a></h4><p>Given a matrix <code>A</code>, return the transpose of <code>A</code>.<br>The transpose of a matrix is the matrix flipped over it’s main diagonal, switching the row and column indices of the matrix.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[[1,2,3],[4,5,6],[7,8,9]]</code></p><p><strong>Output:</strong> <code>[[1,4,7],[2,5,8],[3,6,9]]</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[[1,2,3],[4,5,6]]</code></p><p><strong>Output:</strong> <code>[[1,4],[2,5],[3,6]]</code></p><p><strong>Note:</strong></p><ol><li><code>1 &lt;= A.length &lt;= 1000</code></li><li><code>1 &lt;= A[0].length &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>A为<code>m * n</code>的矩阵，所以A的转置为<code>n * m</code>的矩阵，故先创建<code>n * m</code>的矩阵<code>result</code>，通过遍历令<code>result[j][i] = A[i][j]</code>,最后返回<code>result</code><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:vector&lt;vector&lt;int&gt;&gt; transpose(vector&lt;vector&lt;int&gt;&gt;&amp; A) {    int m = A.size();    int n = A[0].size();    /*     * A为m * n的矩阵，则A的转置为n * m的矩阵     * 所以定义result为n * m的矩阵     */    vector&lt;vector&lt;int&gt;&gt; result(n);    for(int i = 0; i &lt; n; ++i)        result[i].resize(m);    for(int i = 0; i &lt; m; ++i)    {          for(int j = 0; j &lt; n; ++j)        {            result[j][i] = A[i][j];        }    }    return result;}};</code></pre></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/26/fibonacci-number/"/>
-      <url>/2019/01/26/fibonacci-number/</url>
-      
-        <content type="html"><![CDATA[<h4 id="509-Fibonacci-Number"><a href="#509-Fibonacci-Number" class="headerlink" title="509. Fibonacci Number"></a><a href="https://leetcode-cn.com/problems/fibonacci-number/" target="_blank" rel="noopener">509. Fibonacci Number</a></h4><p>The <strong>Fibonacci numbers</strong>, commonly denoted <code>F(n)</code> form a sequence, called the <strong>Fibonacci sequence</strong>, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,</p><pre><code>F(0) = 0,   F(1) = 1F(N) = F(N - 1) + F(N - 2), for N &gt; 1.</code></pre><p>Given <code>N</code>, calculate <code>F(N)</code>.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>2</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Explanation:</strong> <code>F(2) = F(1) + F(0) = 1 + 0 = 1.</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>3</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Explanation:</strong> <code>F(3) = F(2) + F(1) = 1 + 1 = 2.</code></p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>4</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Explanation:</strong> <code>F(4) = F(3) + F(2) = 2 + 1 = 3.</code></p><p><strong>Note:</strong><br>0 ≤ <code>N</code> ≤ 30.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1：采用递归的方法</li><li>思路2：采用数组，将斐波那契数存入到数组中。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1：//效率较低，运行时间20msint fibonacci(int n){  if(n == 0)      return 0;  else if(n == 1)      return 1;  return fibonacci(n-1) + fibonacci(n-2); }class Solution {public:  int fib(int N) {      return fibonacci(N);       }};//方法2：//运行时间0msclass Solution {public:  int fib(int N) {      int *p = new int[N+1];//开辟大小为N+1的数组      p[0] = 0;      p[1] = 1;      for(int i = 2; i &lt; N+1; ++i)      {          p[i] = p[i-1] + p[i-2];      }      return p[N];  }};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/max-increase-to-keep-city-skyline/"/>
-      <url>/2019/01/25/max-increase-to-keep-city-skyline/</url>
-      
-        <content type="html"><![CDATA[<h4 id="807-Max-Increase-to-Keep-City-Skyline"><a href="#807-Max-Increase-to-Keep-City-Skyline" class="headerlink" title="807. Max Increase to Keep City Skyline"></a><a href="https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline/" target="_blank" rel="noopener">807. Max Increase to Keep City Skyline</a></h4><p>In a 2 dimensional array <code>grid</code>, each value <code>grid[i][j]</code> represents the height of a building located there. We are allowed to increase the height of any number of buildings, by any amount (the amounts can be different for different buildings). Height 0 is considered to be a building as well.<br>At the end, the “skyline” when viewed from all four directions of the grid, i.e. top, bottom, left, and right, must be the same as the skyline of the original grid. A city’s skyline is the outer contour of the rectangles formed by all the buildings when viewed from a distance. See the following example.<br>What is the maximum total sum that the height of the buildings can be increased?</p><p><strong>Example:</strong></p><p><strong>Input:</strong> <code>grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]</code></p><p><strong>Output:</strong> <code>35</code></p><p><strong>Explanation:</strong> </p><pre><code>The grid is:[ [3, 0, 8, 4],   [2, 4, 5, 7],  [9, 2, 6, 3],  [0, 3, 1, 0] ]The skyline viewed from top or bottom is: [9, 4, 8, 7]The skyline viewed from left or right is: [8, 7, 9, 3]The grid after increasing the height of buildings without affecting skylines is:gridNew = [ [8, 4, 8, 7],            [7, 4, 7, 7],            [9, 4, 8, 7],            [3, 3, 3, 3] ]</code></pre><p><strong>Notes:</strong></p><ul><li><code>1 &lt; grid.length = grid[0].length &lt;= 50</code>.</li><li>All heights <code>grid[i][j]</code> are in the range <code>[0, 100]</code>.</li><li>All buildings in <code>grid[i][j]</code> occupy the entire grid cell: that is, they are a <code>1 x 1 x grid[i][j]</code> rectangular prism.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li><li>遍历<code>grid</code>获取skyline数值存入到<code>col</code>和<code>row</code>中；</li><li>遍历<code>grid</code>，利用<code>col</code>和<code>row</code>中最小的skyline值来计算最大增量，最后得出结果；<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:  int maxIncreaseKeepingSkyline(vector&lt;vector&lt;int&gt;&gt;&amp; grid) {  int len = grid.size();  int result = 0;  vector&lt;int&gt; col(len, 0), row(len, 0);  for (int i = 0; i &lt; len; ++i) {      for (int j = 0; j &lt; len; ++j) {          row[i] = max(row[i], grid[i][j]);          col[j] = max(col[j], grid[i][j]);      }  }  for (int i = 0; i &lt; len; ++i)      for (int j = 0; j &lt; len; ++j)          result += min(row[i], col[j]) - grid[i][j];  return result;}};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/subsets/"/>
-      <url>/2019/01/25/subsets/</url>
-      
-        <content type="html"><![CDATA[<h4 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="78. Subsets"></a><a href="https://leetcode-cn.com/problems/subsets/" target="_blank" rel="noopener">78. Subsets</a></h4><p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).<br><strong>Note:</strong> The solution set must not contain duplicate subsets.</p><p><strong>Example:</strong></p><p><strong>Input:</strong> nums = [1,2,3]</p><p><strong>Output:</strong></p><pre><code>[  [3],  [1],  [2],  [1,2,3],  [1,3],  [2,3],  [1,2],  []]</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><pre><code>对集合的每一个元素进行迭代，迭代时，我们保留原来的子集，并在原来的子集后面加入新的元素，之后再加入集合迭代过程如下[] -&gt; 1 -&gt; [1][] [1] -&gt; 2 -&gt; [2] [1,2][] [1] [2] [1,2] -&gt; 3 -&gt; [3] [1,3] [2,3] [1,2,3][] [1] [2] [1,2] [3] [1,3] [2,3] [1,2,3]</code></pre><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    vector&lt;vector&lt;int&gt;&gt; subsets(vector&lt;int&gt;&amp; nums) {        vector&lt;vector&lt;int&gt;&gt; result;        vector&lt;int&gt; tmp;        result.push_back(tmp);        int len = nums.size();        for(int i =0; i &lt; len; ++i){            int resLen = result.size();            for(int j=0; j &lt; resLen; ++j){                vector&lt;int&gt; tmp = result[j];                tmp.push_back(nums[i]);                result.push_back(tmp);            }        }        return result;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/n-repeated-element-in-size-2n-array/"/>
-      <url>/2019/01/25/n-repeated-element-in-size-2n-array/</url>
-      
-        <content type="html"><![CDATA[<h4 id="961-N-Repeated-Element-in-Size-2N-Array"><a href="#961-N-Repeated-Element-in-Size-2N-Array" class="headerlink" title="961. N-Repeated Element in Size 2N Array"></a><a href="https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/" target="_blank" rel="noopener">961. N-Repeated Element in Size 2N Array</a></h4><p>In a array <code>A</code> of size <code>2N</code>, there are <code>N+1</code> unique elements, and exactly one of these elements is repeated N times.<br>Return the element repeated <code>N</code> times.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[1,2,3,3]</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[2,1,2,5,3,2]</code></p><p><strong>Output:</strong> <code>2</code><br><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>[5,1,5,2,5,3,5,4]</code></p><p><strong>Output:</strong> <code>5</code></p><p><strong>Note:</strong></p><ol><li><code>4 &lt;= A.length &lt;= 10000</code></li><li><code>0 &lt;= A[i] &lt; 10000</code></li><li><code>A.length</code> is even<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>根据题意，其余数字都是不同的，仅有目标值重复，故寻找出现次数大于1的数<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int repeatedNTimes(vector&lt;int&gt;&amp; A) {    int len = A.size();    for(int i  = 0; i &lt; len; ++i)        for(int j = i + 1; j &lt; len; ++j)            if(A[i] == A[j])                return A[i];}};</code></pre></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/delete-columns-to-make-sorted/"/>
-      <url>/2019/01/25/delete-columns-to-make-sorted/</url>
-      
-        <content type="html"><![CDATA[<h4 id="944-Delete-Columns-to-Make-Sorted"><a href="#944-Delete-Columns-to-Make-Sorted" class="headerlink" title="944. Delete Columns to Make Sorted"></a><a href="https://leetcode-cn.com/problems/delete-columns-to-make-sorted/" target="_blank" rel="noopener">944. Delete Columns to Make Sorted</a></h4><p>We are given an array <code>A</code> of <code>N</code> lowercase letter strings, all of the same length.<br>Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.<br>For example, if we have an array <code>A = [&quot;`</code>abcdef<code>&quot;,&quot;uvwxyz&quot;]` and deletion indices `{0, 2, 3}`, then the final array after deletions is `[&quot;bef&quot;, &quot;vyz&quot;]`, and the remaining columns of `A` are `[&quot;b&quot;</code>,”<code></code>v”]<code>,</code>[“e”,”y”]<code>, and</code>[“f”,”z”]<code>.  (Formally, the</code>c<code>-th column is</code>[A[0][c], A[1][c], …, A[A.length-1][c]]<code>.)Suppose we chose a set of deletion indices</code>D<code>such that after deletions, each remaining column in A is in **non-decreasing** sorted order.Return the minimum possible value of</code>D.length`.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong><code>[&quot;cba&quot;,&quot;daf&quot;,&quot;ghi&quot;]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Explanation:</strong><br><code>After choosing D = {1}, each column [&quot;c&quot;,&quot;d&quot;,&quot;g&quot;] and [&quot;a&quot;,&quot;f&quot;,&quot;i&quot;] are in non-decreasing sorted order.If we chose D = {}, then a column [&quot;b&quot;,&quot;a&quot;,&quot;h&quot;] would not be in non-decreasing sorted order.</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[&quot;a&quot;,&quot;b&quot;]</code></p><p><strong>Output:</strong> <code>0</code></p><p><strong>Explanation:</strong> <code>D = {}</code></p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>[&quot;zyx&quot;,&quot;wvu&quot;,&quot;tsr&quot;]</code></p><p><strong>Output:</strong> <code>3</code></p><p><strong>Explanation:</strong> <code>D = {0, 1, 2}</code></p><p><strong>Note:</strong></p><ol><li><code>1 &lt;= A.length &lt;= 100</code></li><li><code>1 &lt;= A[i].length &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>题意解析，非降序意味着列中不存在降序<br>故进行两次for循环，外层循环为列，内层循环为行，如果前一行某列字母大于后一行（ASCII），则返回值+1；<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int minDeletionSize(vector&lt;string&gt;&amp; A) {    int strLen = A[0].length();    int vLen = A.size();    int result = 0;    //列序号    for(int i = 0; i &lt; strLen; ++i)    {        //行序号        for(int j = 0; j &lt; vLen - 1; ++j)        {            if(A[j][i] &gt; A[j+1][i])            {                result++;                break;//跳出循环            }        }    }    return result;}};</code></pre></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/di-string-match/"/>
-      <url>/2019/01/25/di-string-match/</url>
-      
-        <content type="html"><![CDATA[<h4 id="942-DI-String-Match"><a href="#942-DI-String-Match" class="headerlink" title="942. DI String Match"></a><a href="https://leetcode-cn.com/problems/di-string-match/" target="_blank" rel="noopener">942. DI String Match</a></h4><p>Given a string <code>S</code> that <strong>only</strong> contains “I” (increase) or “D” (decrease), let <code>N = S.length</code>.<br>Return <strong>any</strong> permutation <code>A</code> of <code>[0, 1, ..., N]</code> such that for all <code>i = 0, ..., N-1</code>:</p><ul><li>If <code>S[i] == &quot;I&quot;</code>, then <code>A[i] &lt; A[i+1]</code></li><li>If <code>S[i] == &quot;D&quot;</code>, then <code>A[i] &gt; A[i+1]</code></li><li><strong>Example 1:</strong></li></ul><p><strong>Input:</strong> <code>&quot;IDID&quot;</code></p><p><strong>Output:</strong> <code>[0,4,1,3,2]</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>&quot;III&quot;</code></p><p><strong>Output:</strong> <code>[0,1,2,3]</code></p><p><strong>Example 3:</strong></p><p><strong>Input:</strong> <code>&quot;DDI&quot;</code></p><p><strong>Output:</strong> <code>[3,2,0,1]</code></p><p><strong>Note:</strong></p><ol><li><code>1 &lt;= S.length &lt;= 10000</code></li><li><code>S</code> only contains characters <code>&quot;I&quot;</code> or <code>&quot;D&quot;</code>.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>如果字符为<code>I</code>，则数字从0开始递增，如果字符为<code>D</code>，则数字从N开始递减；<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:vector&lt;int&gt; diStringMatch(string S) {    int len = S.length();    vector&lt;int&gt; A;    int incNum = 0;    int decNum = len;    for(int i = 0; i &lt; len; ++i)    {        if(S[i] == &#39;I&#39;)            A.push_back(incNum++);        else            A.push_back(decNum--);    }    A.push_back(incNum);    return A;}};</code></pre></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/unique-email-addresses/"/>
-      <url>/2019/01/25/unique-email-addresses/</url>
-      
-        <content type="html"><![CDATA[<h4 id="929-Unique-Email-Addresses"><a href="#929-Unique-Email-Addresses" class="headerlink" title="929. Unique Email Addresses"></a><a href="https://leetcode-cn.com/problems/unique-email-addresses/" target="_blank" rel="noopener">929. Unique Email Addresses</a></h4><p>Every email consists of a local name and a domain name, separated by the @ sign.<br>For example, in <a href="mailto:`alice@leetcode.com" target="_blank" rel="noopener">`alice@leetcode.com</a><code>,</code>alice<code>is the local name, and</code>leetcode.com<code>is the domain name.Besides lowercase letters, these emails may contain</code>‘.’<code>s or</code>‘+’<code>s.If you add periods (</code>‘.’<code>) between some characters in the **local name** part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example,</code>“<a href="mailto:alice.z@leetcode.com" target="_blank" rel="noopener">alice.z@leetcode.com</a>“<code>and</code>“<a href="mailto:alicez@leetcode.com" target="_blank" rel="noopener">alicez@leetcode.com</a>“<code>forward to the same email address.  (Note that this rule does not apply for domain names.)If you add a plus (</code>‘+’<code>) in the **local name**, everything after the first plus sign will be **ignored**. This allows certain emails to be filtered, for example</code><a href="mailto:m.y+name@email.com" target="_blank" rel="noopener">m.y+name@email.com</a><code>will be forwarded to</code><a href="mailto:my@email.com" target="_blank" rel="noopener">my@email.com</a><code>.  (Again, this rule does not apply for domain names.)It is possible to use both of these rules at the same time.Given a list of</code>emails`, we send one email to each address in the list.  How many different addresses actually receive mails? </p><p><strong>Example 1:</strong></p><pre><code>Input:[&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]Output: 2Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails</code></pre><p><strong>Note:</strong></p><ul><li><code>1 &lt;= emails[i].length &lt;= 100</code></li><li><code>1 &lt;= emails.length &lt;= 100</code></li><li>Each <code>emails[i]</code>contains exactly one <code>&#39;@&#39;</code>character.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li></ul><ol><li>若邮箱中含有‘+’，先将‘+’和‘@’之间的字符删掉</li><li>将新的邮箱中‘@’之前的‘.’删掉</li><li>将最后的邮箱插入到无序容器<code>unordered_set&lt;string&gt; result;</code><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public: int numUniqueEmails(vector&lt;string&gt;&amp; emails) {     unordered_set&lt;string&gt; result; //无序容器-C++ Primer P394；     for(auto email = emails.begin(); email != emails.end(); ++email)     {         auto plus_pos = (*email).find(&#39;+&#39;);//获取‘+’的位置         auto at_pos = (*email).find(&#39;@&#39;);         if(plus_pos &lt; at_pos)         {             auto len = at_pos - plus_pos;             (*email).erase(plus_pos, len);//移除‘+’和‘@’中间的内容         }         auto dot_pos = (*email).find(&#39;.&#39;);         at_pos = (*email).find(&#39;@&#39;);         while(dot_pos &lt; at_pos)         {             //删除所有‘@’前的‘.’             (*email).erase(dot_pos, 1);             dot_pos = (*email).find(&#39;.&#39;);             at_pos--;         }         result.insert(*email);     }     return result.size(); }};</code></pre></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/sort-array-by-parity-ii/"/>
-      <url>/2019/01/25/sort-array-by-parity-ii/</url>
-      
-        <content type="html"><![CDATA[<h4 id="922-Sort-Array-By-Parity-II"><a href="#922-Sort-Array-By-Parity-II" class="headerlink" title="922. Sort Array By Parity II"></a><a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/" target="_blank" rel="noopener">922. Sort Array By Parity II</a></h4><p>Given an array <code>A</code> of non-negative integers, half of the integers in A are odd, and half of the integers are even.<br>Sort the array so that whenever <code>A[i]</code> is odd, <code>i</code> is odd; and whenever <code>A[i]</code> is even, <code>i</code> is even.<br>You may return any answer array that satisfies this condition.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[4,2,5,7]</code></p><p><strong>Output:</strong> <code>[4,5,2,7]</code></p><p><strong>Explanation:</strong> <code>[4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.</code></p><p><strong>Note:</strong></p><ol><li><code>2 &lt;= A.length &lt;= 20000</code></li><li><code>A.length % 2 == 0</code></li><li><code>0 &lt;= A[i] &lt;= 1000</code><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5></li><li>先将数组A按照奇偶分为两个数组odd和even，然后按照偶数、奇数的顺序依次插入到结果数组；</li><li><p>思路和1类似，利用vector的<code>top()</code>取出栈顶元素和<code>pop()</code>删除栈顶元素；</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1:// 80msclass Solution {public: vector&lt;int&gt; sortArrayByParityII(vector&lt;int&gt;&amp; A) {     vector&lt;int&gt; odd, even, result;     for(auto vint = A.begin(); vint != A.end(); ++vint)     {         if((*vint) % 2 == 0)             even.push_back(*vint);         else             odd.push_back(*vint);     }     size_t len = A.size();     auto e = even.begin();     auto o = odd.begin();     for(auto i = 0; i &lt; len; ++i)     {         if(i % 2 == 0)         {             result.push_back(*e);             e++;         }                         else         {             result.push_back(*o);             o++;         }     }     return result; }};// code 2：// 64msclass Solution {public: vector&lt;int&gt; sortArrayByParityII(vector&lt;int&gt;&amp; A)  {     stack&lt;int&gt; odd;     stack&lt;int&gt; even;     vector&lt;int&gt;::iterator iter;     int a=0;//奇偶标志位     for(iter=A.begin();iter!=A.end();iter++)     {         if(*iter%2==0)             even.push(*iter);         else             odd.push(*iter);     }     for(iter=A.begin();iter!=A.end();iter++)     {           //top()取出栈顶元素，pop()删除栈顶元素；           if(a==0)           {             *iter=even.top();              even.pop();           }         else         {             *iter=odd.top();              odd.pop();         }         a=1-a;//奇偶变换     }     return A; }};</code></pre></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/sort-array-by-parity/"/>
-      <url>/2019/01/25/sort-array-by-parity/</url>
-      
-        <content type="html"><![CDATA[<h4 id="905-Sort-Array-By-Parity"><a href="#905-Sort-Array-By-Parity" class="headerlink" title="905. Sort Array By Parity"></a><a href="https://leetcode-cn.com/problems/sort-array-by-parity/" target="_blank" rel="noopener">905. Sort Array By Parity</a></h4><p>Given an array <code>A</code> of non-negative integers, return an array consisting of all the even elements of <code>A</code>, followed by all the odd elements of <code>A</code>.<br>You may return any answer array that satisfies this condition.</p><p><strong>Example 1:</strong></p><pre><code>Input: [3,1,2,4]Output: [2,4,3,1]The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.</code></pre><p><strong>Note:</strong></p><ol><li><code>1 &lt;= A.length &lt;= 5000</code></li><li><code>0 &lt;= A[i] &lt;= 5000</code></li></ol><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>创建临时容器存放偶数和奇数，最后存入到结果容器并返回。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    vector&lt;int&gt; sortArrayByParity(vector&lt;int&gt;&amp; A) {        vector&lt;int&gt; odd, even, result;        for(auto vint = A.begin(); vint != A.end(); ++vint)        {            if((*vint) % 2 == 0)                even.push_back(*vint);            else                odd.push_back(*vint);        }        result.insert(result.end(), even.begin(), even.end());//将even插入result；        result.insert(result.end(), odd.begin(), odd.end());//将odd插入result；        return result;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/peak-index-in-a-mountain-array/"/>
-      <url>/2019/01/25/peak-index-in-a-mountain-array/</url>
-      
-        <content type="html"><![CDATA[<h4 id="852-Peak-Index-in-a-Mountain-Array"><a href="#852-Peak-Index-in-a-Mountain-Array" class="headerlink" title="852. Peak Index in a Mountain Array"></a><a href="https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/" target="_blank" rel="noopener">852. Peak Index in a Mountain Array</a></h4><p>Let’s call an array <code>A</code> a <em>mountain</em> if the following properties hold:</p><ul><li><code>A.length &gt;= 3</code></li><li>There exists some <code>0 &lt; i &lt; A.length - 1</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code><br>Given an array that is definitely a mountain, return any <code>i</code> such that <code>A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] &gt; A[i+1] &gt; ... &gt; A[A.length - 1]</code>.</li></ul><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[0,1,0]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[0,2,1,0]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Note:</strong></p><ol><li><code>3 &lt;= A.length &lt;= 10000</code></li><li><code>0 &lt;= A[i] &lt;= 10^6</code></li><li>A is a mountain, as defined above.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>指定临时变量<code>peak</code>和<code>peak_index</code>，<code>peak</code>与<code>A[i]</code>进行比较，若peak小于A[i]，则令<code>peak = A[i]; peak_index = i;</code>，遍历数组，直到<code>peak</code>取到最大值，<code>peak_index</code>为<code>peak</code>取最大时的i值<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int peakIndexInMountainArray(vector&lt;int&gt;&amp; A) {    int peak = 0, peak_index = 0;    auto len = A.size() - 1;    for(int i = 0; i &lt; len; ++i)    {        if(peak &lt; A[i])        {            peak = A[i];            peak_index = i;        }    }    return peak_index;}};</code></pre></li></ol>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/flipping-an-image/"/>
-      <url>/2019/01/25/flipping-an-image/</url>
-      
-        <content type="html"><![CDATA[<h4 id="832-Flipping-an-Image"><a href="#832-Flipping-an-Image" class="headerlink" title="832. Flipping an Image"></a><a href="https://leetcode-cn.com/problems/flipping-an-image/" target="_blank" rel="noopener">832. Flipping an Image</a></h4><p>Given a binary matrix <code>A</code>, we want to flip the image horizontally, then invert it, and return the resulting image.<br>To flip an image horizontally means that each row of the image is reversed.  For example, flipping <code>[1, 1, 0]</code> horizontally results in <code>[0, 1, 1]</code>.<br>To invert an image means that each <code>0</code> is replaced by <code>1</code>, and each <code>1</code> is replaced by <code>0</code>. For example, inverting <code>[0, 1, 1]</code> results in <code>[1, 0, 0]</code>.</p><p><strong>Example 1:</strong></p><pre><code>Input: [[1,1,0],[1,0,1],[0,0,0]]Output: [[1,0,0],[0,1,0],[1,1,1]]Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</code></pre><p><strong>Notes:</strong></p><ul><li><code>1 &lt;= A.length = A[0].length &lt;= 20</code></li><li><code>0 &lt;= A[i][j] &lt;= 1</code></li></ul><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>翻转：利用临时数组反转</li><li>反转：与1异或获得反转效果或者利用if-else判断，<strong>不可按位取反</strong><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:  vector&lt;vector&lt;int&gt;&gt; flipAndInvertImage(vector&lt;vector&lt;int&gt;&gt;&amp; A) {      for(auto vint = A.begin(); vint != A.end(); ++vint)      {          int len = (*vint).size();          vector&lt;int&gt; tmp(len, 0);          for(int i = 0; i &lt; len; i++)              tmp[i] = (*vint)[len - 1 - i];          for(auto &amp;i : tmp)          {              i ^= 1;          }          *vint = tmp;      }      return A;  }};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/unique-morse-code-words/"/>
-      <url>/2019/01/25/unique-morse-code-words/</url>
-      
-        <content type="html"><![CDATA[<h4 id="804-Unique-Morse-Code-Words"><a href="#804-Unique-Morse-Code-Words" class="headerlink" title="804. Unique Morse Code Words"></a><a href="https://leetcode-cn.com/problems/unique-morse-code-words/" target="_blank" rel="noopener">804. Unique Morse Code Words</a></h4><p>International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows: <code>&quot;a&quot;</code> maps to <code>&quot;.-&quot;</code>, <code>&quot;b&quot;</code>maps to <code>&quot;-...&quot;</code>, <code>&quot;c&quot;</code> maps to <code>&quot;-.-.&quot;</code>, and so on.<br>For convenience, the full table for the 26 letters of the English alphabet is given below:</p><pre><code>[&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;]</code></pre><p>Now, given a list of words, each word can be written as a concatenation of the Morse code of each letter. For example, “cab” can be written as “-.-..–…”, (which is the concatenation “-.-.” + “-…” + “.-“). We’ll call such a concatenation, the transformation of a word.<br>Return the number of different transformations among all words we have.</p><p><strong>Example:</strong></p><p><strong>Input:</strong> <code>words = [&quot;gin&quot;, &quot;zen&quot;, &quot;gig&quot;, &quot;msg&quot;]</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Explanation:</strong><br>The transformation of each word is:<br>“gin” -&gt; “–…-.”<br>“zen” -&gt; “–…-.”<br>“gig” -&gt; “–…–.”<br>“msg” -&gt; “–…–.”<br>There are 2 different transformations, “–…-.” and “–…–.”.</p><p><strong>Note:</strong></p><ul><li>The length of <code>words</code> will be at most <code>100</code>.</li><li>Each <code>words[i]</code> will have length in range <code>[1, 12]</code>.</li><li><code>words[i]</code> will only consist of lowercase letters.<h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5>将words中word的字母逐个转换为morsecode，并存入临时string，之后将其插入到无序容器<code>unordered_set&lt;string&gt; result;</code>中，然后获取不同元素的数量。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:int uniqueMorseRepresentations(vector&lt;string&gt;&amp; words) {    unordered_set&lt;string&gt; result;    //vector&lt;string&gt;morseWords;    vector&lt;string&gt; morseCode{&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;};    for(auto word = words.begin(); word != words.end(); ++word)    {        string tmp = &quot;&quot;;        for(auto letter : *word)        {            tmp += morseCode[letter - &#39;a&#39;];        }        result.insert(tmp);    }    return result.size();}};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/jewels-and-stones/"/>
-      <url>/2019/01/25/jewels-and-stones/</url>
-      
-        <content type="html"><![CDATA[<h4 id="771-Jewels-and-Stones"><a href="#771-Jewels-and-Stones" class="headerlink" title="771. Jewels and Stones"></a><a href="https://leetcode-cn.com/problems/jewels-and-stones/" target="_blank" rel="noopener">771. Jewels and Stones</a></h4><p>You’re given strings <code>J</code>representing the types of stones that are jewels, and <code>S</code> representing the stones you have.  Each character in <code>S</code> is a type of stone you have.  You want to know how many of the stones you have are also jewels.<br>The letters in <code>J</code> are guaranteed distinct, and all characters in <code>J</code> and <code>S</code> are letters. Letters are case sensitive, so <code>&quot;a&quot;</code> is considered a different type of stone from <code>&quot;A&quot;</code>.</p><p><strong>Example 1:</strong></p><pre><code>Input:J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;Output: 3</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: J = &quot;z&quot;, S = &quot;ZZ&quot;Output: 0</code></pre><p><strong>Note:</strong></p><ul><li><code>S</code> and <code>J</code> will consist of letters and have length at most 50.</li><li>The characters in <code>J</code> are distinct.</li></ul><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1： 遍历J和S，两者相等，计数+1；</li><li>思路2： 创建临时数组a[256]，先以J中元素的ASCII值作为a的索引并作标记。后以S中元素的ASCII值作为a的索引，判断该位置是否为零，如果不为零，则计数+1；</li><li>思路3： 和2类似，不过将大小写字母分开，减少了数组的长度。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//code 1：//运行时间大于4ms；class Solution {public:  int numJewelsInStones(string J, string S) {      int num = 0;      for (int i = 0; i &lt; J.length(); i++)      {          for (int j = 0; j&lt; S.length(); j++)              if (J[i] == S[j])                  num += 1;      }      return num;  }};//code 2://运行时间4ms；class Solution {public:  int numJewelsInStones(string J, string S) {      char a[256]={0};       for(int i=0;i&lt;J.length();++i)          a[J[i]]++; //相应字母的ASCII值作为索引；      int ans=0;       for(int i=0;i&lt;S.length();++i)          if(a[S[i]])               ans++;      return ans;       }};// code  3://运行时间0ms；class Solution {public:  int numJewelsInStones(string J, string S) {      int a_upper[26] = {0} , a_lower[26] = {0};            for(auto ch : J)      {          int x;                      if(isupper(ch))          {              x = ch - &#39;A&#39;;              a_upper[x] = 1;          }          else          {              x = ch - &#39;a&#39;;              a_lower[x] = 1;          }      }       int num = 0;      for(auto ch : S)      {          int x;          if(isupper(ch))          {              x = ch - &#39;A&#39;;              if(a_upper[x])  ++num;          }          else          {              x = ch - &#39;a&#39;;              if(a_lower[x])  ++num;          }       }       return num;  }};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/to-lower-case/"/>
-      <url>/2019/01/25/to-lower-case/</url>
-      
-        <content type="html"><![CDATA[<h4 id="709-To-Lower-Case"><a href="#709-To-Lower-Case" class="headerlink" title="709. To Lower Case"></a><a href="https://leetcode-cn.com/problems/to-lower-case/" target="_blank" rel="noopener">709. To Lower Case</a></h4><p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.<br><strong>Example 1:</strong></p><pre><code>Input: &quot;Hello&quot;Output: &quot;hello&quot;</code></pre><p><strong>Example 2:</strong></p><pre><code>Input: &quot;here&quot;Output: &quot;here&quot;</code></pre><p><strong>Example 3:</strong></p><pre><code>Input: &quot;LOVELY&quot;Output: &quot;lovely&quot;</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>利用C++ tolower()函数；</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    string toLowerCase(string str) {        for(auto &amp;letter : str)        {            letter = tolower(letter);        }        return str;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/robot-return-to-origin/"/>
-      <url>/2019/01/25/robot-return-to-origin/</url>
-      
-        <content type="html"><![CDATA[<h4 id="657-Robot-Return-to-Origin"><a href="#657-Robot-Return-to-Origin" class="headerlink" title="657. Robot Return to Origin"></a><a href="https://leetcode-cn.com/problems/robot-return-to-origin/" target="_blank" rel="noopener">657. Robot Return to Origin</a></h4><p>There is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot <strong>ends up at (0, 0)</strong> after it completes its moves.<br>The move sequence is represented by a string, and the character moves[i] represents its ith move. Valid moves are R (right), L (left), U (up), and D (down). If the robot returns to the origin after it finishes all of its moves, return true. Otherwise, return false.</p><p><strong>Note</strong>: The way that the robot is “facing” is irrelevant. “R” will always make the robot move to the right once, “L” will always make it move left, etc. Also, assume that the magnitude of the robot’s movement is the same for each move.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> “UD”</p><p><strong>Output:</strong> true </p><p><strong>Explanation</strong>: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> “LL”</p><p><strong>Output:</strong> false</p><p><strong>Explanation</strong>: The robot moves left twice. It ends up two “moves” to the left of the origin. We return false because it is not at the origin at the end of its moves.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>设置四个标志位，利用switch-case判断moves的值，相应标志位+1。<br>当‘上’=‘下’并且‘左’=‘右’的时候，机器人回到原点。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1：// 8msclass Solution {public:    bool judgeCircle(string moves) {        vector&lt;int&gt; sign(4,0);        for(auto c : moves)        {            switch(c)            {                case &#39;U&#39;:                    sign[0]++;                    break;                case &#39;D&#39;:                    sign[1]++;                    break;                case &#39;L&#39;:                    sign[2]++;                    break;                case &#39;R&#39;:                    sign[3]++;                    break;            }        }        return sign[0] == sign[1] &amp;&amp; sign[2] == sign[3];    }};// code 2：// 4msclass Solution {public:    bool judgeCircle(string moves) {        int a = 0, b = 0, c = 0, d = 0;        for(int i=0;i&lt;moves.size();i++){            a+=moves[i]==&#39;R&#39;;            b+=moves[i]==&#39;L&#39;;            c+=moves[i]==&#39;U&#39;;            d+=moves[i]==&#39;D&#39;;        }        return a == b &amp;&amp; c == d;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/swap-salary/"/>
-      <url>/2019/01/25/swap-salary/</url>
-      
-        <content type="html"><![CDATA[<h4 id="627-Swap-Salary"><a href="#627-Swap-Salary" class="headerlink" title="627. Swap Salary"></a><a href="https://leetcode-cn.com/problems/swap-salary/" target="_blank" rel="noopener">627. Swap Salary</a></h4><p>SQL架构</p><pre><code>create table if not exists salary(id int, name varchar(100), sex char(1), salary int)Truncate table salaryinsert into salary (id, name, sex, salary) values (&#39;1&#39;, &#39;A&#39;, &#39;m&#39;, &#39;2500&#39;)insert into salary (id, name, sex, salary) values (&#39;2&#39;, &#39;B&#39;, &#39;f&#39;, &#39;1500&#39;)insert into salary (id, name, sex, salary) values (&#39;3&#39;, &#39;C&#39;, &#39;m&#39;, &#39;5500&#39;)insert into salary (id, name, sex, salary) values (&#39;4&#39;, &#39;D&#39;, &#39;f&#39;, &#39;500&#39;)</code></pre><p>Given a table <code>salary</code>, such as the one below, that has m=male and f=female values. Swap all f and m values (i.e., change all f values to m and vice versa) with a single update query and no intermediate temp table.For example:</p><pre><code>| id | name | sex | salary ||----|------|-----|--------|| 1  | A    | m   | 2500   || 2  | B    | f   | 1500   || 3  | C    | m   | 5500   || 4  | D    | f   | 500    |</code></pre><p>After running your query, the above salary table should have the following rows:</p><pre><code>| id | name | sex | salary ||----|------|-----|--------|| 1  | A    | f   | 2500   || 2  | B    | m   | 1500   || 3  | C    | f   | 5500   || 4  | D    | m   | 500    |</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>利用SQL中的case-when多条件判断语句，类似C++中的switch-case语句</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>UPDATE salarySET sex = (CASE sex WHEN &#39;m&#39; THEN &#39;f&#39;                    WHEN &#39;f&#39; THEN &#39;m&#39;           END)</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/not-boring-movies/"/>
-      <url>/2019/01/25/not-boring-movies/</url>
-      
-        <content type="html"><![CDATA[<h4 id="620-Not-Boring-Movies"><a href="#620-Not-Boring-Movies" class="headerlink" title="620. Not Boring Movies"></a><a href="https://leetcode-cn.com/problems/not-boring-movies/" target="_blank" rel="noopener">620. Not Boring Movies</a></h4><p>SQL架构</p><pre><code>Create table If Not Exists cinema (id int, movie varchar(255), description varchar(255), rating float(2, 1))Truncate table cinemainsert into cinema (id, movie, description, rating) values (&#39;1&#39;, &#39;War&#39;, &#39;great 3D&#39;, &#39;8.9&#39;)insert into cinema (id, movie, description, rating) values (&#39;2&#39;, &#39;Science&#39;, &#39;fiction&#39;, &#39;8.5&#39;)insert into cinema (id, movie, description, rating) values (&#39;3&#39;, &#39;irish&#39;, &#39;boring&#39;, &#39;6.2&#39;)insert into cinema (id, movie, description, rating) values (&#39;4&#39;, &#39;Ice song&#39;, &#39;Fantacy&#39;, &#39;8.6&#39;)insert into cinema (id, movie, description, rating) values (&#39;5&#39;, &#39;House card&#39;, &#39;Interesting&#39;, &#39;9.1&#39;)</code></pre><p>X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.<br>Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’. Order the result by rating.<br>For example, table <code>cinema</code>:</p><pre><code>+---------+-----------+--------------+-----------+|   id    | movie     |  description |  rating   |+---------+-----------+--------------+-----------+|   1     | War       |   great 3D   |   8.9     ||   2     | Science   |   fiction    |   8.5     ||   3     | irish     |   boring     |   6.2     ||   4     | Ice song  |   Fantacy    |   8.6     ||   5     | House card|   Interesting|   9.1     |+---------+-----------+--------------+-----------+</code></pre><p>For the example above, the output should be:</p><pre><code>+---------+-----------+--------------+-----------+|   id    | movie     |  description |  rating   |+---------+-----------+--------------+-----------+|   5     | House card|   Interesting|   9.1     ||   1     | War       |   great 3D   |   8.9     |+---------+-----------+--------------+-----------+</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>通过<code>description</code>和<code>id</code>进行筛选，然后通过<code>rating</code>进行倒序排序（<code>DESC</code>）</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>SELECT id, movie, description, ratingFROM cinemaWHERE id % 2 != 0 and description != &#39;boring&#39;ORDER BY rating DESC</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/big-countries/"/>
-      <url>/2019/01/25/big-countries/</url>
-      
-        <content type="html"><![CDATA[<h4 id="595-Big-Countries"><a href="#595-Big-Countries" class="headerlink" title="595. Big Countries"></a><a href="https://leetcode-cn.com/problems/big-countries/" target="_blank" rel="noopener">595. Big Countries</a></h4><p>SQL架构</p><pre><code>Create table If Not Exists World (name varchar(255), continent varchar(255), area int, population int, gdp int)Truncate table Worldinsert into World (name, continent, area, population, gdp) values (&#39;Afghanistan&#39;, &#39;Asia&#39;, &#39;652230&#39;, &#39;25500100&#39;, &#39;20343000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Albania&#39;, &#39;Europe&#39;, &#39;28748&#39;, &#39;2831741&#39;, &#39;12960000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Algeria&#39;, &#39;Africa&#39;, &#39;2381741&#39;, &#39;37100000&#39;, &#39;188681000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Andorra&#39;, &#39;Europe&#39;, &#39;468&#39;, &#39;78115&#39;, &#39;3712000000&#39;)insert into World (name, continent, area, population, gdp) values (&#39;Angola&#39;, &#39;Africa&#39;, &#39;1246700&#39;, &#39;20609294&#39;, &#39;100990000000&#39;)</code></pre><p>There is a table <code>World</code></p><pre><code>+-----------------+------------+------------+--------------+---------------+| name            | continent  | area       | population   | gdp           |+-----------------+------------+------------+--------------+---------------+| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      || Albania         | Europe     | 28748      | 2831741      | 12960000      || Algeria         | Africa     | 2381741    | 37100000     | 188681000     || Andorra         | Europe     | 468        | 78115        | 3712000       || Angola          | Africa     | 1246700    | 20609294     | 100990000     |+-----------------+------------+------------+--------------+---------------+</code></pre><p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.<br>Write a SQL solution to output big countries’ name, population and area.<br>For example, according to the above table, we should output:</p><pre><code>+--------------+-------------+--------------+| name         | population  | area         |+--------------+-------------+--------------+| Afghanistan  | 25500100    | 652230       || Algeria      | 37100000    | 2381741      |+--------------+-------------+--------------+</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>利用人口和面积进行筛选</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>select name, population, area from World where area &gt; 3000000 or population &gt; 25000000;</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/number-complement/"/>
-      <url>/2019/01/25/number-complement/</url>
-      
-        <content type="html"><![CDATA[<h4 id="476-Number-Complement"><a href="#476-Number-Complement" class="headerlink" title="476. Number Complement"></a><a href="https://leetcode-cn.com/problems/number-complement/" target="_blank" rel="noopener">476. Number Complement</a></h4><p>Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.</p><p><strong>Note:</strong></p><ol><li>The given integer is guaranteed to fit within the range of a 32-bit signed integer.</li><li>You could assume no leading zero bit in the integer’s binary representation.</li></ol><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>5</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Explanation:</strong> The binary representation of 5 is 101 (no leading zero bits), and its complement is 010. So you need to output 2.</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>1</code></p><p><strong>Output:</strong> <code>0</code></p><p><strong>Explanation:</strong> The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>题例中<code>5</code>的二进制为<code>101</code>，补数为<code>010</code>,补数可以通过<code>101 ^ 111</code>获得，所以首先获取与num相同二进制位数的<code>111</code>，通过判断<code>num</code>左移1位是否为空可以获得其位数，进而获取<code>mask</code>。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    int findComplement(int num) {        int mask = 2, tmp = num;        while(tmp &gt;&gt;= 1)        {            mask &lt;&lt;= 1;          }        return num ^ (mask-1);    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/hamming-distance/"/>
-      <url>/2019/01/25/hamming-distance/</url>
-      
-        <content type="html"><![CDATA[<h4 id="461-Hamming-Distance"><a href="#461-Hamming-Distance" class="headerlink" title="461. Hamming Distance"></a><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" rel="noopener">461. Hamming Distance</a></h4><p>The <a href="https://en.wikipedia.org/wiki/Hamming_distance" target="_blank" rel="noopener">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.<br>Given two integers <code>x</code> and <code>y</code>, calculate the Hamming distance.</p><p><strong>Note:</strong><br>0 ≤ <code>x</code>, <code>y</code> &lt; 2<sup>31</sup>.</p><p><strong>Example:</strong></p><pre><code>Input: x = 1, y = 4Output: 2Explanation:1   (0 0 0 1)4   (0 1 0 0)       ↑   ↑The above arrows point to positions where the corresponding bits are different.</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>n = x ^ y，两数对应位置若不相同，则n的相应位置置1<br>利用n = n &amp; (n - 1)获取n中1的个数</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    int hammingDistance(int x, int y) {        int n = x^y, count = 0;        while(n){            count ++;            n = n&amp;(n-1);        }        return count;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/reverse-string/"/>
-      <url>/2019/01/25/reverse-string/</url>
-      
-        <content type="html"><![CDATA[<h4 id="344-Reverse-String"><a href="#344-Reverse-String" class="headerlink" title="344. Reverse String"></a><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">344. Reverse String</a></h4><p>Write a function that takes a string as input and returns the string reversed.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> “hello”</p><p><strong>Output:</strong> “olleh”</p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> “A man, a plan, a canal: Panama”</p><p><strong>Output:</strong> “amanaP :lanac a ,nalp a ,nam A”</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><ul><li>思路1： 通过<code>s.length()</code>获取<code>s</code>的字符长度，然后通过下标访问<code>s</code>，将<code>s</code>中的字符从尾到头拼接到<code>result</code>上，得到返回结果。</li><li>思路2： 利用<code>reverse</code>函数，<code>reverse(beg, end)</code>会将区间<code>(beg, end)</code>之间的元素全部逆转。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>// code 1: // 4msclass Solution {public:  string reverseString(string s) {      string result = &quot;&quot;;      auto len = s.length();      while(len &gt; 0)      {          result += s[len - 1];          --len;      }      return result;  }};// code 2:// 4msclass Solution {public:  string reverseString(string s) {      reverse(s.begin(),s.end());      return s;  }};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/missing-number/"/>
-      <url>/2019/01/25/missing-number/</url>
-      
-        <content type="html"><![CDATA[<h4 id="268-Missing-Number"><a href="#268-Missing-Number" class="headerlink" title="268. Missing Number"></a><a href="https://leetcode-cn.com/problems/missing-number/" target="_blank" rel="noopener">268. Missing Number</a></h4><p>Given an array containing <em>n</em> distinct numbers taken from <code>0, 1, 2, ..., n</code>, find the one that is missing from the array.</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[3,0,1]</code></p><p><strong>Output:</strong> <code>2</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[9,6,4,2,3,5,7,0,1]</code></p><p><strong>Output:</strong> <code>8</code></p><p><strong>Note</strong>:<br>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>要求时间复杂度为O(n)；</p><ul><li>思路1： 采用和<a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">136. Single Number</a>类似的思路，将容器中所有的数字和有序数列<code>1,2,3……,n</code>异或，如果容器中存在数字<code>x</code>，那么和有序数列中对应的<code>x</code>异或结果为零，最终得到的结果便为缺失的数字。</li><li>思路2：采用求和相减，若容器长度为<code>n</code>，利用求和公式计算<code>s1 = n * (n+1) / 2</code>，减去容器中数字的求和<code>s2</code>，则可得缺失的数字。<h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//方法1：class Solution {public:  int missingNumber(vector&lt;int&gt;&amp; nums) {      int result = 0;      int len = nums.size();      for(int i = 0; i &lt; len; ++i)      {          result ^= (i+1) ^ nums[i];      }      return result;  }};//方法2：class Solution {public:  int missingNumber(vector&lt;int&gt;&amp; nums) {      int n = nums.size();      int s1 = n * (n + 1) / 2;      int s2 = 0;      for(int i : nums)      {          s2 += i;      }      return s1 - s2;  }};</code></pre></li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/duplicate-emails/"/>
-      <url>/2019/01/25/duplicate-emails/</url>
-      
-        <content type="html"><![CDATA[<h4 id="182-Duplicate-Emails"><a href="#182-Duplicate-Emails" class="headerlink" title="182. Duplicate Emails"></a><a href="https://leetcode-cn.com/problems/duplicate-emails/" target="_blank" rel="noopener">182. Duplicate Emails</a></h4><p>SQL架构</p><pre><code>Create table If Not Exists Person (Id int, Email varchar(255))Truncate table Personinsert into Person (Id, Email) values (&#39;1&#39;, &#39;a@b.com&#39;)insert into Person (Id, Email) values (&#39;2&#39;, &#39;c@d.com&#39;)insert into Person (Id, Email) values (&#39;3&#39;, &#39;a@b.com&#39;)</code></pre><p>Write a SQL query to find all duplicate emails in a table named <code>Person</code>.</p><p><strong>Example:</strong></p><pre><code>+----+---------+| Id | Email   |+----+---------+| 1  | a@b.com || 2  | c@d.com || 3  | a@b.com |+----+---------+</code></pre><p>For example, your query should return the following for the above table:</p><pre><code>+---------+| Email   |+---------+| a@b.com |+---------+</code></pre><p><strong>Note</strong>: All emails are in lowercase.</p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>使用 GROUP BY 和 HAVING 条件：向 GROUP BY 添加条件的一种更常用的方法是使用 HAVING 子句，该子句更为简单高效。<br>GROUP BY 语句用于结合合计函数，根据一个或多个列对结果集进行分组。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>select Email from Persongroup by Email having count(Email) &gt; 1;</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/single-number/"/>
-      <url>/2019/01/25/single-number/</url>
-      
-        <content type="html"><![CDATA[<h4 id="136-Single-Number"><a href="#136-Single-Number" class="headerlink" title="136. Single Number"></a><a href="https://leetcode-cn.com/problems/single-number/" target="_blank" rel="noopener">136. Single Number</a></h4><p>Given a <strong>non-empty</strong> array of integers, every element appears <em>twice</em> except for one. Find that single one.</p><p><strong>Note:</strong><br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p><p><strong>Example 1:</strong></p><p><strong>Input:</strong> <code>[2,2,1]</code></p><p><strong>Output:</strong> <code>1</code></p><p><strong>Example 2:</strong></p><p><strong>Input:</strong> <code>[4,1,2,1,2]</code></p><p><strong>Output:</strong> <code>4</code></p><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>题目要求算法的时间复杂度为O(n),空间复杂度为O(1)；<br>将容器的所有的数字进行异或运算，由于相同两个数字异或结果为0，所以所有元素异或的结果便为所寻单独的数字。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>class Solution {public:    int singleNumber(vector&lt;int&gt;&amp; nums) {        int result = 0;        for(auto ibeg = nums.begin(); ibeg != nums.end(); ++ibeg)        {            result ^= *ibeg;  //所有数字进行异或运算         }        return result;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/2019/01/25/two-sum-2/"/>
       <url>/2019/01/25/two-sum-2/</url>
-      
-        <content type="html"><![CDATA[<h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p><p><strong>Example:</strong></p><pre><code>Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1].</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target)     {        vector&lt;int&gt; result;        int size = nums.size();        for (int i = 0; i &lt; size; i++)        {            int complement = target - nums[i];            for (int j = i + 1; j &lt; size; j++)            {                if (nums[j] == complement)                {                    result.push_back(i);                    result.push_back(j);                    return result;                }                }        }        return result;    }};</code></pre>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2019/01/25/two-sum/"/>
-      <url>/2019/01/25/two-sum/</url>
       
         <content type="html"><![CDATA[<h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum</a></h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p><p><strong>Example:</strong></p><pre><code>Given nums = [2, 7, 11, 15], target = 9,Because nums[0] + nums[1] = 2 + 7 = 9,return [0, 1].</code></pre><h5 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h5><p>对数组进行遍历，将符合条件的数组元素返回；<br>另有高效率<strong>遍历哈希表法</strong>，待研究。</p><h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><pre><code>//暴力法：遍历整个数组，耗时较长（72ms）class Solution {public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target)     {        vector&lt;int&gt; result;        int size = nums.size();        for (int i = 0; i &lt; size; i++)        {            int complement = target - nums[i];            for (int j = i + 1; j &lt; size; j++)            {                if (nums[j] == complement)                {                    result.push_back(i);                    result.push_back(j);                    return result;                }                }        }        return result;    }};</code></pre>]]></content>
       
