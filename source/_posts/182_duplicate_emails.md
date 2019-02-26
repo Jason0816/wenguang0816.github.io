@@ -40,7 +40,7 @@ For example, your query should return the following for the above table:
 使用 GROUP BY 和 HAVING 条件：向 GROUP BY 添加条件的一种更常用的方法是使用 HAVING 子句，该子句更为简单高效。
 GROUP BY 语句用于结合合计函数，根据一个或多个列对结果集进行分组。
 ##### 解答：
-```
+```sql
 select Email from Person
 group by Email having count(Email) > 1;
 ```

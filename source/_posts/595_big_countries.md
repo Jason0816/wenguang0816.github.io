@@ -44,6 +44,6 @@ For example, according to the above table, we should output:
 ##### 解题思路：
 利用人口和面积进行筛选
 ##### 解答：
-```
+```sql
 select name, population, area from World where area > 3000000 or population > 25000000;
 ```

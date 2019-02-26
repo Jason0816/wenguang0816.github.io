@@ -36,7 +36,7 @@ After running your query, the above salary table should have the following rows:
 ##### 解题思路：
 利用SQL中的case-when多条件判断语句，类似C++中的switch-case语句
 ##### 解答：
-```
+```sql
 UPDATE salary
 SET sex = (CASE sex WHEN 'm' THEN 'f'
                     WHEN 'f' THEN 'm'

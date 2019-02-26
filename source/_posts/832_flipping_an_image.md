@@ -32,7 +32,7 @@ Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
 + 翻转：利用临时数组反转
 + 反转：与1异或获得反转效果或者利用if-else判断，**不可按位取反**
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {

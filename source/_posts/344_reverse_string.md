@@ -23,7 +23,7 @@ Write a function that takes a string as input and returns the string reversed.
 + 思路1： 通过`s.length()`获取`s`的字符长度，然后通过下标访问`s`，将`s`中的字符从尾到头拼接到`result`上，得到返回结果。
 + 思路2： 利用`reverse`函数，`reverse(beg, end)`会将区间`(beg, end)`之间的元素全部逆转。
 ##### 解答：
-```
+```cpp
 // code 1: 
 // 4ms
 class Solution {

@@ -35,7 +35,7 @@ There are 2 different transformations, "--...-." and "--...--.".
 ##### 解题思路：
 将words中word的字母逐个转换为morsecode，并存入临时string，之后将其插入到无序容器`unordered_set<string> result;`中，然后获取不同元素的数量。
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int uniqueMorseRepresentations(vector<string>& words) {

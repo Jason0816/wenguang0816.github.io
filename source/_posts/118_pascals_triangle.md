@@ -26,7 +26,7 @@ Given a non-negative integer *numRows*, generate the first *numRows* of Pasca
 ##### 解题思路：
 根据杨辉三角的特点创建容器，并将每行开头和结尾赋值为1，当行数大于2时，根据杨辉三角的运算规则进行运算
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {

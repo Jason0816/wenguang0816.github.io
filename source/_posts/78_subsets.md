@@ -38,7 +38,7 @@ Given a set of **distinct** integers, *nums*, return all possible subsets (th
 [] [1] [2] [1,2] [3] [1,3] [2,3] [1,2,3]
 ```
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {

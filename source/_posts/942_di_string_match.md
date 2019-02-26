@@ -35,7 +35,7 @@ Return **any** permutation `A` of `[0, 1, ..., N]` such that for all `i =
 ##### 解题思路：
 如果字符为`I`，则数字从0开始递增，如果字符为`D`，则数字从N开始递减；
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     vector<int> diStringMatch(string S) {

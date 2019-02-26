@@ -39,7 +39,7 @@ gridNew = [ [8, 4, 8, 7],
 * 遍历`grid`获取skyline数值存入到`col`和`row`中；
 * 遍历`grid`，利用`col`和`row`中最小的skyline值来计算最大增量，最后得出结果；
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {

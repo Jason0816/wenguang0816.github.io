@@ -42,7 +42,7 @@ For the example above, the output should be:
 ##### 解题思路：
 通过`description`和`id`进行筛选，然后通过`rating`进行倒序排序（`DESC`）
 ##### 解答：
-```
+```sql
 SELECT id, movie, description, rating
 FROM cinema
 WHERE id % 2 != 0 and description != 'boring'

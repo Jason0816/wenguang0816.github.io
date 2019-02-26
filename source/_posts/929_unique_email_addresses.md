@@ -30,7 +30,7 @@ Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually re
 2. 将新的邮箱中‘@’之前的‘.’删掉
 3. 将最后的邮箱插入到无序容器`unordered_set<string> result;`
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int numUniqueEmails(vector<string>& emails) {

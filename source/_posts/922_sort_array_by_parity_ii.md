@@ -26,7 +26,7 @@ You may return any answer array that satisfies this condition.
 1. 先将数组A按照奇偶分为两个数组odd和even，然后按照偶数、奇数的顺序依次插入到结果数组；
 2. 思路和1类似，利用vector的`top()`取出栈顶元素和`pop()`删除栈顶元素；
 ##### 解答：
-```
+```cpp
 // code 1:
 // 80ms
 class Solution {

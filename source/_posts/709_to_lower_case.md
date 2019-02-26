@@ -25,7 +25,7 @@ Output: "lovely"
 ##### 解题思路：
 利用C++ tolower()函数；
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     string toLowerCase(string str) {

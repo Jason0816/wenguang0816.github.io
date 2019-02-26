@@ -45,7 +45,7 @@ If we chose D = {}, then a column `["b","a","h"]` would not be in non-decreasing
 题意解析，非降序意味着列中不存在降序
 故进行两次for循环，外层循环为列，内层循环为行，如果前一行某列字母大于后一行（ASCII），则返回值+1；
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int minDeletionSize(vector<string>& A) {

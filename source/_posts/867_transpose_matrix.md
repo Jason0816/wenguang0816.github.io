@@ -27,7 +27,7 @@ The transpose of a matrix is the matrix flipped over it's main diagonal, switchi
 ##### 解题思路：
 A为`m * n`的矩阵，所以A的转置为`n * m`的矩阵，故先创建`n * m`的矩阵`result`，通过遍历令`result[j][i] = A[i][j]`,最后返回`result`
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     vector<vector<int>> transpose(vector<vector<int>>& A) {

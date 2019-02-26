@@ -22,7 +22,7 @@ The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
 ##### 解题思路：
 创建临时容器存放偶数和奇数，最后存入到结果容器并返回。
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     vector<int> sortArrayByParity(vector<int>& A) {

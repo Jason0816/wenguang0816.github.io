@@ -30,7 +30,7 @@ Given an array that is definitely a mountain, return any `i` such that `A[0] 
 ##### 解题思路：
 指定临时变量`peak`和`peak_index`，`peak`与`A[i]`进行比较，若peak小于A[i]，则令`peak = A[i]; peak_index = i;`，遍历数组，直到`peak`取到最大值，`peak_index`为`peak`取最大时的i值
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int peakIndexInMountainArray(vector<int>& A) {

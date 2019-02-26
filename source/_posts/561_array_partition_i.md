@@ -22,7 +22,7 @@ Given an array of **2n** integers, your task is to group these integers into 
 ##### 解题思路：
 为得到最大的和，所以要保证第2大的数字和第1大的数字进行组合，第4大的数字和第3大的数字进行组合，以此类推。可以看出，我们将数组进行排序后，取`2n+1`项进行相加，即可得结果。
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int arrayPairSum(vector<int>& nums) {

@@ -26,7 +26,7 @@ The above arrows point to positions where the corresponding bits are different.
 n = x ^ y，两数对应位置若不相同，则n的相应位置置1
 利用n = n & (n - 1)获取n中1的个数
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int hammingDistance(int x, int y) {

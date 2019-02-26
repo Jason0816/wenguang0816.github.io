@@ -43,7 +43,7 @@ If this function is called many times, how would you optimize it?
 + 思路2：与1相与，直接判定末位是否为1
 + 思路3：直接去掉二进制中位置最靠后的1。假设`n=1100`，则`n-1=1011`，那么`n&(n-1)=1000`,位置最靠后的1被去掉。
 ##### 解答：
-```
+```cpp
 //方法1
 class Solution {
 public:

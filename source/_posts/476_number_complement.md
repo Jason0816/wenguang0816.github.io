@@ -30,7 +30,7 @@ Given a positive integer, output its complement number. The complement strategy 
 ##### 解题思路：
 题例中`5`的二进制为`101`，补数为`010`,补数可以通过`101 ^ 111`获得，所以首先获取与num相同二进制位数的`111`，通过判断`num`左移1位是否为空可以获得其位数，进而获取`mask`。
 ##### 解答：
-```
+```cpp
 class Solution {
 public:
     int findComplement(int num) {

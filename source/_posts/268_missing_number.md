@@ -29,7 +29,7 @@ Your algorithm should run in linear runtime complexity. Could you implement it u
 + 思路1： 采用和[136\. Single Number](https://leetcode-cn.com/problems/single-number/)类似的思路，将容器中所有的数字和有序数列`1,2,3……,n`异或，如果容器中存在数字`x`，那么和有序数列中对应的`x`异或结果为零，最终得到的结果便为缺失的数字。
 + 思路2：采用求和相减，若容器长度为`n`，利用求和公式计算`s1 = n * (n+1) / 2`，减去容器中数字的求和`s2`，则可得缺失的数字。
 ##### 解答：
-```
+```cpp
 //方法1：
 class Solution {
 public:

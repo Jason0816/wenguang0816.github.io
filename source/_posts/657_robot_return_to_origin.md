@@ -30,7 +30,7 @@ The move sequence is represented by a string, and the character moves[i] represe
 设置四个标志位，利用switch-case判断moves的值，相应标志位+1。
 当‘上’=‘下’并且‘左’=‘右’的时候，机器人回到原点。
 ##### 解答：
-```
+```cpp
 // code 1：
 // 8ms
 class Solution {
