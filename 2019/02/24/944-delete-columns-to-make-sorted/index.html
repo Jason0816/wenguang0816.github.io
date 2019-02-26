@@ -368,7 +368,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        378
+                        392
                     </div>
                     
 
@@ -391,14 +391,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="944-Delete-Columns-to-Make-Sorted"><a href="#944-Delete-Columns-to-Make-Sorted" class="headerlink" title="944. Delete Columns to Make Sorted"></a><a href="https://leetcode-cn.com/problems/delete-columns-to-make-sorted/" target="_blank" rel="noopener">944. Delete Columns to Make Sorted</a></h4><p>We are given an array <code>A</code> of <code>N</code> lowercase letter strings, all of the same length.<br>Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.<br>For example, if we have an array <code>A = [&quot;`</code>abcdef<code>&quot;,&quot;uvwxyz&quot;]` and deletion indices `{0, 2, 3}`, then the final array after deletions is `[&quot;bef&quot;, &quot;vyz&quot;]`, and the remaining columns of `A` are `[&quot;b&quot;</code>,”<code></code>v”]<code>,</code>[“e”,”y”]<code>, and</code>[“f”,”z”]<code>.  (Formally, the</code>c<code>-th column is</code>[A[0][c], A[1][c], …, A[A.length-1][c]]<code>.)
-Suppose we chose a set of deletion indices</code>D<code>such that after deletions, each remaining column in A is in **non-decreasing** sorted order.
-Return the minimum possible value of</code>D.length`.</p>
+                <h4 id="944-Delete-Columns-to-Make-Sorted"><a href="#944-Delete-Columns-to-Make-Sorted" class="headerlink" title="944. Delete Columns to Make Sorted"></a><a href="https://leetcode-cn.com/problems/delete-columns-to-make-sorted/" target="_blank" rel="noopener">944. Delete Columns to Make Sorted</a></h4><p>We are given an array <code>A</code> of <code>N</code> lowercase letter strings, all of the same length.<br>Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.<br>For example, if we have an array <code>A = [&quot;abcdef&quot;,&quot;uvwxyz&quot;]</code> and deletion indices <code>{0, 2, 3}</code>, then the final array after deletions is <code>[&quot;bef&quot;, &quot;vyz&quot;]</code>, and the remaining columns of <code>A</code> are <code>[&quot;b&quot;,&quot;v&quot;]</code>, <code>[&quot;e&quot;,&quot;y&quot;]</code>, and <code>[&quot;f&quot;,&quot;z&quot;]</code>.  (Formally, the <code>c</code>-th column is <code>[A[0][c], A[1][c], ..., A[A.length-1][c]]</code>.)<br>Suppose we chose a set of deletion indices <code>D</code> such that after deletions, each remaining column in A is in <strong>non-decreasing</strong> sorted order.<br>Return the minimum possible value of <code>D.length</code>.</p>
 <p><strong>Example 1:</strong></p>
 <p><strong>Input:</strong><code>[&quot;cba&quot;,&quot;daf&quot;,&quot;ghi&quot;]</code></p>
 <p><strong>Output:</strong> <code>1</code></p>
-<p><strong>Explanation:</strong><br><code>After choosing D = {1}, each column [&quot;c&quot;,&quot;d&quot;,&quot;g&quot;] and [&quot;a&quot;,&quot;f&quot;,&quot;i&quot;] are in non-decreasing sorted order.
-If we chose D = {}, then a column [&quot;b&quot;,&quot;a&quot;,&quot;h&quot;] would not be in non-decreasing sorted order.</code></p>
+<p><strong>Explanation:</strong><br>After choosing D = {1}, each column <code>[&quot;c&quot;,&quot;d&quot;,&quot;g&quot;]</code> and <code>[&quot;a&quot;,&quot;f&quot;,&quot;i&quot;]</code> are in non-decreasing sorted order.<br>If we chose D = {}, then a column <code>[&quot;b&quot;,&quot;a&quot;,&quot;h&quot;]</code> would not be in non-decreasing sorted order.</p>
 <p><strong>Example 2:</strong></p>
 <p><strong>Input:</strong> <code>[&quot;a&quot;,&quot;b&quot;]</code></p>
 <p><strong>Output:</strong> <code>0</code></p>
