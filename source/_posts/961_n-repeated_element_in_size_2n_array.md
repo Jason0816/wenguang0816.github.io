@@ -33,7 +33,7 @@ Return the element repeated `N` times.
 ##### 解题思路：
 根据题意，其余数字都是不同的，仅有目标值重复，故寻找出现次数大于1的数
 ##### 解答：
-```
+``` C++
 class Solution {
 public:
     int repeatedNTimes(vector<int>& A) {
