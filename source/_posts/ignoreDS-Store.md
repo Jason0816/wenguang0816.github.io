@@ -26,23 +26,23 @@ tags:
 
 3. 如果项目中已经出现了`.DS_Store`文件并且已经提交了，我们需要将`.DS_Store`文件删除，并再次提交。
 + 删除项目中的所有.DS_Store。这会跳过不在项目中的 .DS_Store
-    ```
-    find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
-    ```
+```
+find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
+```
 + 更新项目
-    ```
-    git add --all
-    git commit -m '.DS_Store banished!'
-    ```
+```
+git add --all
+git commit -m '.DS_Store banished!'
+```
 4. 当然也可以通过修改系统设置来禁止生成`.DS_Store`（*不推荐此做法*）。
 + 禁止`.DS_Store`生成：
-    ```
-    defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
-    ```
+```
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+```
 + 恢复`.DS_Store`生成
-    ```
-    defaults delete com.apple.desktopservices DSDontWriteNetworkStores
-    ```
+```
+defaults delete com.apple.desktopservices DSDontWriteNetworkStores
+```
 参考博客：
 
 1. [简书-iOSReverse-如何删除GIT中的.DS_Store](https://www.jianshu.com/p/fdaa8be7f6c3)
