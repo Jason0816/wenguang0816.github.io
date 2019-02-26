@@ -18,12 +18,8 @@ script:
     - hexo g # 生成
 
 after_script:
-    - git clone https://${GH_REF} .deploy_git
-    - cd .deploy_git
-    - git checkout master
-    - cd ../
-    - mv .deploy_git/.git/ ./public/
     - cd ./public
+    - git init
     - git config user.name "2572880761" # 修改name
     - git config user.email "2572880761@qq.com" # 修改email
     - git add .
