@@ -368,7 +368,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        420
+                        423
                     </div>
                     
 
@@ -391,9 +391,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="929-Unique-Email-Addresses"><a href="#929-Unique-Email-Addresses" class="headerlink" title="929. Unique Email Addresses"></a><a href="https://leetcode-cn.com/problems/unique-email-addresses/" target="_blank" rel="noopener">929. Unique Email Addresses</a></h4><p>Every email consists of a local name and a domain name, separated by the @ sign.<br>For example, in <code>alice@leetcode.com</code>, <code>alice</code> is the local name, and <code>leetcode.com</code> is the domain name.<br>Besides lowercase letters, these emails may contain <code>&#39;.&#39;</code>s or <code>&#39;+&#39;</code>s.<br>If you add periods (<code>&#39;.&#39;</code>) between some characters in the <strong>local name</strong> part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, <code>&quot;alice.z@leetcode.com&quot;</code>and <code>&quot;alicez@leetcode.com&quot;</code>forward to the same email address.  (Note that this rule does not apply for domain names.)<br>If you add a plus (<code>&#39;+&#39;</code>) in the <strong>local name</strong>, everything after the first plus sign will be <strong>ignored</strong>. This allows certain emails to be filtered, for example <a href="mailto:`m.y+name@email.com" target="_blank" rel="noopener">`m.y+name@email.com</a><code>will be forwarded to</code><a href="mailto:my@email.com" target="_blank" rel="noopener">my@email.com</a><code>.  (Again, this rule does not apply for domain names.)
-It is possible to use both of these rules at the same time.
-Given a list of</code>emails`, we send one email to each address in the list.  How many different addresses actually receive mails? </p>
+                <h4 id="929-Unique-Email-Addresses"><a href="#929-Unique-Email-Addresses" class="headerlink" title="929. Unique Email Addresses"></a><a href="https://leetcode-cn.com/problems/unique-email-addresses/" target="_blank" rel="noopener">929. Unique Email Addresses</a></h4><p>Every email consists of a local name and a domain name, separated by the @ sign.<br>For example, in <code>alice@leetcode.com</code>, <code>alice</code> is the local name, and <code>leetcode.com</code> is the domain name.<br>Besides lowercase letters, these emails may contain <code>&#39;.&#39;</code>s or <code>&#39;+&#39;</code>s.<br>If you add periods (<code>&#39;.&#39;</code>) between some characters in the <strong>local name</strong> part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, <code>&quot;alice.z@leetcode.com&quot;</code>and <code>&quot;alicez@leetcode.com&quot;</code>forward to the same email address.  (Note that this rule does not apply for domain names.)<br>If you add a plus (<code>&#39;+&#39;</code>) in the <strong>local name</strong>, everything after the first plus sign will be <strong>ignored</strong>. This allows certain emails to be filtered, for example <code>m.y+name@email.com</code> will be forwarded to <code>my@email.com</code>.  (Again, this rule does not apply for domain names.)<br>It is possible to use both of these rules at the same time.</p>
+<p>Given a list of <code>emails</code>, we send one email to each address in the list.  How many different addresses actually receive mails? </p>
 <p><strong>Example 1:</strong></p>
 <pre><code>Input:[&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]
 Output: 2
