@@ -4,11 +4,12 @@ date: 2019-02-24 13:05:00
 categories: LeetCode
 tags:
   - LeetCode
+  - 数据库
 ---
 #### [182\. Duplicate Emails](https://leetcode-cn.com/problems/duplicate-emails/)
 
 SQL架构
-```
+```sql
 Create table If Not Exists Person (Id int, Email varchar(255))
 Truncate table Person
 insert into Person (Id, Email) values ('1', 'a@b.com')

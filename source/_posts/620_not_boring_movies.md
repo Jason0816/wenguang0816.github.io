@@ -4,10 +4,11 @@ date: 2019-02-24 13:16:00
 categories: LeetCode
 tags:
   - LeetCode
+  - 数据库
 ---
 #### [620\. Not Boring Movies](https://leetcode-cn.com/problems/not-boring-movies/)
 SQL架构
-```
+```sql
 Create table If Not Exists cinema (id int, movie varchar(255), description varchar(255), rating float(2, 1))
 Truncate table cinema
 insert into cinema (id, movie, description, rating) values ('1', 'War', 'great 3D', '8.9')

@@ -4,11 +4,12 @@ date: 2019-02-24 13:15:00
 categories: LeetCode
 tags:
   - LeetCode
+  - 数据库
 ---
 #### [595\. Big Countries](https://leetcode-cn.com/problems/big-countries/)
 
 SQL架构
-```
+```sql
 Create table If Not Exists World (name varchar(255), continent varchar(255), area int, population int, gdp int)
 Truncate table World
 insert into World (name, continent, area, population, gdp) values ('Afghanistan', 'Asia', '652230', '25500100', '20343000000')

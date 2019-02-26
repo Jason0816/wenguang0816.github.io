@@ -4,10 +4,11 @@ date: 2019-02-24 13:17:00
 categories: LeetCode
 tags:
   - LeetCode
+  - 数据库
 ---
 #### [627\. Swap Salary](https://leetcode-cn.com/problems/swap-salary/)
 SQL架构
-```
+```sql
 create table if not exists salary(id int, name varchar(100), sex char(1), salary int)
 Truncate table salary
 insert into salary (id, name, sex, salary) values ('1', 'A', 'm', '2500')
