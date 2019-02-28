@@ -1,6 +1,8 @@
 ---
 title: QT5串口通信（Hex格式传输）
 date: 2019-02-28 09:36:33
+img: https://upload-images.jianshu.io/upload_images/14484228-06891a8bb97b3885.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+summary: 通过QT5开发了一款用于FPGA参数调节的上位机程序！
 categories: 分享
 tags:
   - QT5

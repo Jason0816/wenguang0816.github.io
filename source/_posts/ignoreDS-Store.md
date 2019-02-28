@@ -1,6 +1,7 @@
 ---
 title: macOS下忽略.DS_Store文件
 date: 2019-02-26 18:58:56
+summary: macOS平台使用git时全局忽略.DS_Store文件
 categories: 分享
 tags:
   - git
