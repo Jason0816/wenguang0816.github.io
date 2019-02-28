@@ -19,23 +19,19 @@ insert into Person (Id, Email) values ('3', 'a@b.com')
 Write a SQL query to find all duplicate emails in a table named `Person`.
 
 **Example:**
-```
-+----+---------+
+
 | Id | Email   |
-+----+---------+
+|----|---------|
 | 1  | a@b.com |
 | 2  | c@d.com |
 | 3  | a@b.com |
-+----+---------+
-```
+
 For example, your query should return the following for the above table:
-```
-+---------+
+
 | Email   |
-+---------+
+|---------|
 | a@b.com |
-+---------+
-```
+
 **Note**: All emails are in lowercase.
 ##### 解题思路：
 使用 GROUP BY 和 HAVING 条件：向 GROUP BY 添加条件的一种更常用的方法是使用 HAVING 子句，该子句更为简单高效。

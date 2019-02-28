@@ -8,13 +8,15 @@ tags:
   - QT5
   - 串口通信
 ---
-# 参考博客：
+## 参考博客
 1. 博客园-菜头大大：[QT串口通信](https://www.cnblogs.com/wurenzhong/p/8186437.html)
 2. CSDN-宗师之路：[QT实现串口通信(附源码下载)](https://blog.csdn.net/qq_27312943/article/details/52900527)
 3. CSDN-xz-c：[C++将10进制字符串转为16进制字符串](https://blog.csdn.net/u014602230/article/details/52752683)
+
 ## 本文改进
 1. 在前辈们的代码基础上进行改进，使操作更符合逻辑
 2. 优化代码结构，提高了代码的可移植性
+
 ## QT实现串口通信
 1. 在工程文件（.pro）中添加串口通信相关运行库：`QT       += serialport`
 2. 在头文件中添加
@@ -23,7 +25,8 @@ tags:
     #include <QtSerialPort/QSerialPortInfo>
     ```
 3. 在头文件中定义全局的串口对象：`QSerialPort *serial;`
-## 串口通讯步骤
+
+## 串口通信步骤
 1. 设置串口名称
     + 寻找可用串口
         ```cpp
@@ -86,6 +89,7 @@ tags:
     ```cpp
     serial->write(QString2Hex(formatInput(hexStr)));
     ```
+
 ## 进制转换及格式化
 由于下位机需求，需要两帧将数据发送过去，经过多番考虑，最终决定将十进制转换为16进制，然后以Hex进行发送
 1. 十进制转换为16进制字符串
@@ -196,7 +200,9 @@ tags:
         return hexStr;
     }
     ```
+
 ## UI展示
 ![界面展示](https://upload-images.jianshu.io/upload_images/14484228-06891a8bb97b3885.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## 源码下载：
 [Github](https://github.com/2572880761/FPGA_Controller)

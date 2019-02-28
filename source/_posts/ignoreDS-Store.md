@@ -1,13 +1,13 @@
 ---
 title: macOS下忽略.DS_Store文件
 date: 2019-02-26 18:58:56
+toc: false
 summary: macOS平台使用git时全局忽略.DS_Store文件
 categories: 分享
 tags:
   - git
   - 全局忽略
 ---
-# macOS下忽略.DS_Store文件
 在macOS平台下会自动生成`.DS_Store`文件，在使用git提交的过程中，会发现git将`.DS_Store`文件一并提交了，这是我们不需要的。我们可以在项目中新建一个`.gitignore`文件，将`.DS_Store`添加进去，但是这种方式只对当前项目有效，新建项目之后仍会出现上述问题，所以这里介绍全局忽略`.DS_Store`的方法。
 1. 在`home`目录下新建`.gitignore_global`文件，文件内容如下
 ```bash
