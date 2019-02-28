@@ -13,30 +13,27 @@ Suppose we chose a set of deletion indices `D` such that after deletions, each
 Return the minimum possible value of `D.length`.
 
 **Example 1:**
-
-**Input:**` ["cba","daf","ghi"]`
-
-**Output:** `1`
-
-**Explanation:** 
+>**Input:**` ["cba","daf","ghi"]`
+>
+>**Output:** `1`
+>
+>**Explanation:** 
 After choosing D = {1}, each column `["c","d","g"]` and `["a","f","i"]` are in non-decreasing sorted order.
 If we chose D = {}, then a column `["b","a","h"]` would not be in non-decreasing sorted order.
 
 **Example 2:**
-
-**Input:** `["a","b"]`
-
-**Output:** `0`
-
-**Explanation:** `D = {}`
+>**Input:** `["a","b"]`
+>
+>**Output:** `0`
+>
+>**Explanation:** `D = {}`
 
 **Example 3:**
-
-**Input:** `["zyx","wvu","tsr"]`
-
-**Output:** `3`
-
-**Explanation:** `D = {0, 1, 2}`
+>**Input:** `["zyx","wvu","tsr"]`
+>
+>**Output:** `3`
+>
+>**Explanation:** `D = {0, 1, 2}`
 
 **Note:**
 1.  `1 <= A.length <= 100`
