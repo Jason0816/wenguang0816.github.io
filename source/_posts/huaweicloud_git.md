@@ -27,7 +27,7 @@ tags:
 1. 设置SSH密钥
 ![设置我的SSH密钥](https://upload-images.jianshu.io/upload_images/14484228-6d86fc7c297486f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![添加SSH密钥](https://upload-images.jianshu.io/upload_images/14484228-9cefaa877952082b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-2. 从本地获取SSH公钥
+2. 从本地获取SSH公钥（默认已安装git）
 如果之前设置过github或gitee，那么系统是存在密钥的，密钥路径为`~/.ssh/id_rsa.pub`。
 如果没有系统不存在密钥，那么在根目录执行以下命令创建密钥:
 ```bash
@@ -47,6 +47,7 @@ pbcopy < ~/.ssh/id_rsa.pub
 xclip -sel clip < ~/.ssh/id_rsa.pub
 ```
 接下来，我们尝试将新建的仓库克隆到本地
+
 ### 克隆仓库及常用git指令
 1. 获取仓库地址
 ![仓库地址](https://upload-images.jianshu.io/upload_images/14484228-2a2f547bb1ef3853.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
