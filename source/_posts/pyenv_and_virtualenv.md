@@ -1,11 +1,11 @@
 ---
-title: MacOS中Python多版本管理与虚拟环境
+title: macOS中Python多版本管理与虚拟环境
 date: 2019-03-10 22:25:37
 summary: 通过pyenv版本管理和virtualenv虚拟环境进行python管理
 img: https://upload-images.jianshu.io/upload_images/14484228-ba330c89b1eefdd6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
 categories: 分享
 tags:
-  - MacOS
+  - macOS
   - Python
   - pyenv
   - virtualenv
