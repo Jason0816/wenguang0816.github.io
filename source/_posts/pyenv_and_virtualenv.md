@@ -79,19 +79,26 @@ $ pyenv virtualenv 3.5.2 env
   env
 ```
 ### 切换到虚拟环境
+在切换到虚拟环境之前，我们还需要执行以下指令
+```bash
+$ eval  “ $（ pyenv init  - ） ”
+$ eval  “ $（ pyenv virtualenv-init  - ） ”
+```
 通过一下命令切换到虚拟环境
 ```bash
 $ pyenv activate env
 ```
 我们可以通过`python`命令查看版本号
+如果要退出虚拟环境，执行以下指令：
+```bash
+pyenv deactivate
+```
 如果需要删除虚拟环境，可以执行以下指令：
 ```bash
 $ pyenv uninstall env
 ```
 在实际应用过程中，多加利用这两个工具，可以让你的电脑整洁如新！
-
 ***
-
 #### 补充
 在最新系统Mojave 10.14中，执行`pyenv install 3.x.x`可能会出现以下错误：
 ```bash
@@ -102,5 +109,5 @@ $ zipimport.ZipImportError: can't decompress data; zlib not available
 $ sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 $ pyenv install 3.6.6
 ```
-**参考博客：**[Pluviophile's Blog
+**参考博客：**[[Pluviophile's Blog
 -Mojave使用pyenv安装python-zlib错误](https://lisupy.github.io/2018/10/01/2018-10-01-Mojave使用pyenv安装python/)
