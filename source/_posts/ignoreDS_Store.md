@@ -31,12 +31,16 @@ tags:
 ```bash
 find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
 ```
++ 如果要删除目录及其子目录下的`.DS_Store`，执行以下指令
+```bash
+find . -name '*.DS_Store' -type f -delete
+```
 + 更新项目
 ```bash
 git add --all
 git commit -m '.DS_Store banished!'
 ```
-4. 当然也可以在终端通过修改系统设置来禁止生成`.DS_Store`（*不推荐此做法*）。
+4. 当然也可以在终端通过修改系统设置来禁止生成`.DS_Store`（*好像不能禁止本地生成*）。
 + 禁止`.DS_Store`生成：
 ```bash
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
