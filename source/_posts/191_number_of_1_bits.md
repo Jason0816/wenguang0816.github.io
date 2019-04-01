@@ -3,7 +3,7 @@ title: LeetCode刷题：191.Number of 1 Bits
 date: 2019-02-24 13:06:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 位运算
 ---
 ### [191\. Number of 1 Bits](https://leetcode-cn.com/problems/number-of-1-bits/)
 Write a function that takes an unsigned integer and return the number of '1' bits it has (also known as the [Hamming weight](http://en.wikipedia.org/wiki/Hamming_weight)).
