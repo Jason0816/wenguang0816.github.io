@@ -87,14 +87,14 @@ indexbtn:
   enable: true
   name: Github
   icon: fa-github
-  url: https://github.com/2572880761/
+  url: https://github.com/wenguang0816/
 
 # The configurations of the second line of home banner
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
   qq: 
-  github: https://github.com/2572880761/
+  github: https://github.com/wenguang0816/
   email: wenguang0816@qq.com
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
@@ -269,7 +269,7 @@ valine:
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
   enable: true
-  url: https://github.com/2572880761/
+  url: https://github.com/wenguang0816/
   title: Follow Me
 
 # The password verification feature of read post. To use this feature,

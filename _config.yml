@@ -95,5 +95,5 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/2572880761/2572880761.github.io.git
+  repo: https://github.com/wenguang0816/wenguang0816.github.io.git
   branch: master
