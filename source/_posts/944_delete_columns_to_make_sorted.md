@@ -3,7 +3,7 @@ title: LeetCode刷题：944.Delete Columns to Make Sorted
 date: 2019-02-24 13:30:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 贪心算法
 ---
 #### [944\. Delete Columns to Make Sorted](https://leetcode-cn.com/problems/delete-columns-to-make-sorted/)
 We are given an array `A` of `N` lowercase letter strings, all of the same length.

@@ -3,7 +3,7 @@ title: LeetCode刷题：929.Unique Email Addresses
 date: 2019-02-24 13:28:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 字符串
 ---
 #### [929\. Unique Email Addresses](https://leetcode-cn.com/problems/unique-email-addresses/)
 Every email consists of a local name and a domain name, separated by the @ sign.

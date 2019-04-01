@@ -3,7 +3,7 @@ title: LeetCode刷题：201.Bitwise AND of Numbers Range
 date: 2019-02-24 13:07:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 位运算
 ---
 #### [201\. Bitwise AND of Numbers Range](https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/)
 Given a range [m, n] where 0 <= m <= n <= 2147483647, return the bitwise AND of all numbers in this range, inclusive.

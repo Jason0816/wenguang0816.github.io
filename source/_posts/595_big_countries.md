@@ -3,7 +3,6 @@ title: LeetCode刷题：595.Big Countries
 date: 2019-02-24 13:15:00
 categories: LeetCode
 tags:
-  - LeetCode
   - 数据库
 ---
 #### [595\. Big Countries](https://leetcode-cn.com/problems/big-countries/)

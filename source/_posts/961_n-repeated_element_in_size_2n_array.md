@@ -3,7 +3,7 @@ title: LeetCode刷题：961.N-Repeated Element in Size 2N Array
 date: 2019-02-24 13:31:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 哈希表
 ---
 #### [961\. N-Repeated Element in Size 2N Array](https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/)
 In a array `A` of size `2N`, there are `N+1` unique elements, and exactly one of these elements is repeated N times.

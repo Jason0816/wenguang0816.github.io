@@ -3,7 +3,7 @@ title: LeetCode刷题：942.DI String Match
 date: 2019-02-24 13:29:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 数学
 ---
 #### [942\. DI String Match](https://leetcode-cn.com/problems/di-string-match/)
 Given a string `S` that **only** contains "I" (increase) or "D" (decrease), let `N = S.length`.

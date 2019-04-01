@@ -3,7 +3,7 @@ title: LeetCode刷题：804.Unique Morse Code Words
 date: 2019-02-24 13:21:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 字符串
 ---
 #### [804\. Unique Morse Code Words](https://leetcode-cn.com/problems/unique-morse-code-words/)
 International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows: `"a"` maps to `".-"`, `"b"`maps to `"-..."`, `"c"` maps to `"-.-."`, and so on.

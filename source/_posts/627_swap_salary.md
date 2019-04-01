@@ -3,7 +3,6 @@ title: LeetCode刷题：627.Swap Salary
 date: 2019-02-24 13:17:00
 categories: LeetCode
 tags:
-  - LeetCode
   - 数据库
 ---
 #### [627\. Swap Salary](https://leetcode-cn.com/problems/swap-salary/)

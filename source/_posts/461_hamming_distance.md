@@ -3,7 +3,7 @@ title: LeetCode刷题：461.Hamming Distance
 date: 2019-02-24 13:11:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 位运算
 ---
 #### [461\. Hamming Distance](https://leetcode-cn.com/problems/hamming-distance/)
 The [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) between two integers is the number of positions at which the corresponding bits are different.
@@ -30,10 +30,10 @@ n = x ^ y，两数对应位置若不相同，则n的相应位置置1
 class Solution {
 public:
     int hammingDistance(int x, int y) {
-        int n = x^y, count = 0;
+        int n = x ^ y, count = 0;
         while(n){
             count ++;
-            n = n&(n-1);
+            n = n & (n - 1);
         }
         return count;
     }

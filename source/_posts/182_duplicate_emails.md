@@ -3,7 +3,6 @@ title: LeetCode刷题：182.Duplicate Emails
 date: 2019-02-24 13:05:00
 categories: LeetCode
 tags:
-  - LeetCode
   - 数据库
 ---
 #### [182\. Duplicate Emails](https://leetcode-cn.com/problems/duplicate-emails/)

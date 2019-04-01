@@ -3,7 +3,7 @@ title: LeetCode刷题：709.To Lower Case
 date: 2019-02-24 13:19:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 字符串
 ---
 #### [709\. To Lower Case](https://leetcode-cn.com/problems/to-lower-case/)
 Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.

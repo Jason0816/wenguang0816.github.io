@@ -3,7 +3,7 @@ title: LeetCode刷题：852.Peak Index in a Mountain Array
 date: 2019-02-24 13:24:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 二分查找
 ---
 #### [852\. Peak Index in a Mountain Array](https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/)
 Let's call an array `A` a *mountain* if the following properties hold:

@@ -3,7 +3,8 @@ title: LeetCode刷题：231.Power of Two
 date: 2019-02-24 13:08:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 位运算
+  - 数学
 ---
 #### [231\. Power of Two](https://leetcode-cn.com/problems/power-of-two/)
 **Example 1:**

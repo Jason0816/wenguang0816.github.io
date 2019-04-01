@@ -3,7 +3,6 @@ title: LeetCode刷题：620.Not Boring Movies
 date: 2019-02-24 13:16:00
 categories: LeetCode
 tags:
-  - LeetCode
   - 数据库
 ---
 #### [620\. Not Boring Movies](https://leetcode-cn.com/problems/not-boring-movies/)

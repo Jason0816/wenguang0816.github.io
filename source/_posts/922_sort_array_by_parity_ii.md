@@ -4,6 +4,7 @@ date: 2019-02-24 13:27:00
 categories: LeetCode
 tags:
   - 数组
+  - 排序
 ---
 #### [922\. Sort Array By Parity II](https://leetcode-cn.com/problems/sort-array-by-parity-ii/)
 Given an array `A` of non-negative integers, half of the integers in A are odd, and half of the integers are even.

@@ -3,7 +3,7 @@ title: LeetCode刷题：136.Single Number
 date: 2019-02-24 13:04:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 位运算
 ---
 #### [136\. Single Number](https://leetcode-cn.com/problems/single-number/)
 Given a **non-empty** array of integers, every element appears *twice* except for one. Find that single one.

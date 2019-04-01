@@ -3,7 +3,7 @@ title: LeetCode刷题：344.Reverse String
 date: 2019-02-24 13:10:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 字符串
 ---
 #### [344\. Reverse String](https://leetcode-cn.com/problems/reverse-string/)
 Write a function that takes a string as input and returns the string reversed.

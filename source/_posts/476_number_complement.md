@@ -3,7 +3,7 @@ title: LeetCode刷题：476.Number Complement
 date: 2019-02-24 13:12:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 位运算
 ---
 #### [476\. Number Complement](https://leetcode-cn.com/problems/number-complement/)
 Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.

@@ -3,7 +3,7 @@ title: LeetCode刷题：657.Robot Return to Origin
 date: 2019-02-24 13:18:00
 categories: LeetCode
 tags:
-  - LeetCode
+  - 字符串
 ---
 #### [657\. Robot Return to Origin](https://leetcode-cn.com/problems/robot-return-to-origin/)
 There is a robot starting at position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot **ends up at (0, 0)** after it completes its moves.
