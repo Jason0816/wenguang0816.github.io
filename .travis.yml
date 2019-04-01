@@ -24,7 +24,7 @@ after_script:
     - cd ../
     - mv .deploy_git/.git/ ./public/
     - cd ./public
-    - git config user.name "2572880761" # 修改name
+    - git config user.name "wenguang0816" # 修改name
     - git config user.email "2572880761@qq.com" # 修改email
     - git add .
     - git commit -m "Travis CI Auto Builder"
@@ -36,4 +36,4 @@ branches:
 
 env:
     global:
-        - GH_REF: github.com/2572880761/2572880761.github.io.git #设置GH_REF，注意更改yourname
+        - GH_REF: github.com/wenguang0816/wenguang0816.github.io.git #设置GH_REF，注意更改yourname
