@@ -171,7 +171,7 @@ public:
 Node* reverseLinkedList(Node *head)
 {
     if(head == NULL || head->next == NULL)
-        return NULL;
+        return head;
     Node *p1 = head;
     Node *p2 = head->next;
     Node *p3 = NULL;
