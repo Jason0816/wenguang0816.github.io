@@ -40,8 +40,8 @@ public:
         ListNode* pNode = head;
         while(pNode != NULL)
         {
-            nodes.push(pNode -> val);
-            pNode = pNode -> next;
+            nodes.push(pNode->val);
+            pNode = pNode->next;
         }
         while(!nodes.empty())
         {
@@ -59,8 +59,8 @@ public:
         ListNode* pNode = head;
         while(pNode != NULL)
         {
-            ans.insert(ans.begin(), pNode -> val);
-            pNode = pNode -> next;
+            ans.insert(ans.begin(), pNode->val);
+            pNode = pNode->next;
         }
         return ans;
     }

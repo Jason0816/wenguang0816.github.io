@@ -86,6 +86,8 @@ tags:
 
 ![](https://upload-images.jianshu.io/upload_images/14484228-64d00c433eed1d41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+> Java:
+
 ```java
 private static Node head;
 public static void reverseLinkedList()
@@ -148,7 +150,77 @@ public static void main(String[] args)
     }
 }
 ```
+> C++
 
+```cpp
+#include <iostream>
+using namespace std;
+
+class Node
+{
+public:
+    int data;
+    Node* next;
+    Node(int da, Node* p = NULL)
+    {
+        this->data =  da;
+        this->next = p;
+    }
+};
+
+Node* reverseLinkedList(Node *head)
+{
+    if(head == NULL || head->next == NULL)
+        return NULL;
+    Node *p1 = head;
+    Node *p2 = head->next;
+    Node *p3 = NULL;
+    while(p2 != NULL)
+    {
+        p3 = p2->next;
+        p2->next = p1;
+        p1 = p2;
+        p2 = p3;
+    }
+    head->next = NULL;
+    head = p1;
+    return head;
+}
+
+int main()
+{
+    // 初始化链表
+    Node *head;
+    head = new Node(3);
+    head->next = new Node(5);
+    Node *tmp = head->next;
+    tmp->next = new Node(1);
+    tmp = tmp->next;
+    tmp->next = new Node(4);
+    tmp = tmp->next;
+    tmp->next = new Node(9);
+
+    cout << "逆序前" << endl;
+    // 逆序前输出链表
+    tmp = head;
+    while(tmp != NULL)
+    {
+        cout << tmp->data << endl;
+        tmp = tmp->next;
+    }
+    // 逆序链表
+    head = reverseLinkedList(head);
+
+    cout << "逆序后" << endl;
+    // 逆序后输出链表
+    tmp = head;
+    while(tmp != NULL)
+    {
+        cout << tmp->data << endl;
+        tmp = tmp->next;
+    }
+}
+```
 链表反转的逻辑本身，都在reverseLinkedList方法当中。在这里我们把链表的头节点作为了静态成员，实际上也可以作为方法参数传入，只是逻辑上需要一些小小的修改。
 
 ![](https://upload-images.jianshu.io/upload_images/14484228-e251580228482082.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
