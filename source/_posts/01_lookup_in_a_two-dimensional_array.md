@@ -2,7 +2,7 @@
 title: 二维数组中的查找
 date: 2019-04-01 15:20:00
 img: https://upload-images.jianshu.io/upload_images/14484228-487989f30ef13848.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
-summary: 剑指 offer： 刷题笔记第一天：1、二维数组中的查找
+summary: 剑指 offer：刷题笔记第一天：1、二维数组中的查找
 categories: 剑指 offer
 tags:
   - 查找
