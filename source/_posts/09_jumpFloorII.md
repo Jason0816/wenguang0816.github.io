@@ -1,7 +1,7 @@
 ---
 title: 变态跳台阶
 date: 2019-04-03 15:25:00
-img: https://upload-images.jianshu.io/upload_images/14484228-093208558abbeeac.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://upload-images.jianshu.io/upload_images/14484228-dd70f6a8a2cfe109.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
 summary: 剑指 offer：刷题笔记第三天：9、变态跳台阶
 categories: 剑指 offer
 tags:
