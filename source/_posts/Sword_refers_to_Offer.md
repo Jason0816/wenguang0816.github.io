@@ -110,7 +110,7 @@ tags:
 
 [50、数组中重复的数字]()
 
-[51、构建乘积数组](http://blog.wenguang0816.top/2019/04/04/51-multiplay/)
+[51、构建乘积数组](http://blog.wenguang0816.top/2019/04/04/51-multiply/)
 
 [52、正则表达式匹配]()
 
