@@ -15,8 +15,17 @@ tags:
 ### 解题思路：
 + 思路1: 遍历数组，时间复杂度O(n)
 + 思路2: 
-    ![](https://upload-images.jianshu.io/upload_images/14484228-9c24eabfb132c9df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-    通过观察，B<sub>i</sub>的值可以看作表格中每一行的乘积，下三角连乘易求得，上三角，从下向上也是连乘，所以我们可以先计算下三角中的连乘，再算上三角的连乘，将B<sub>i</sub>两部分相乘即可。
+
+| B<sub>i</sub>   | A<sub>0</sub> | A<sub>1</sub> | A<sub>2</sub> | ... | A<sub>n-2</sub> | A<sub>n-1</sub> |
+|-----------------|---------------|---------------|---------------|-----|-----------------|-----------------|
+| B<sub>0</sub>   | **1**         | A<sub>1</sub> | A<sub>2</sub> | ... | A<sub>n-2</sub> | A<sub>n-1</sub> |
+| B<sub>1</sub>   | A<sub>0</sub> | **1**         | A<sub>2</sub> | ... | A<sub>n-2</sub> | A<sub>n-1</sub> |
+| B<sub>2</sub>   | A<sub>0</sub> | A<sub>1</sub> | **1**         | ... | A<sub>n-2</sub> | A<sub>n-1</sub> |
+| B<sub>0</sub>   | ...           | ...           | ...           | ... | ...             | ...             |
+| B<sub>n-2</sub> | A<sub>0</sub> | A<sub>1</sub> | A<sub>2</sub> | ... | **1**           | A<sub>n-1</sub> |
+| B<sub>n-1</sub> | A<sub>0</sub> | A<sub>1</sub> | A<sub>2</sub> | ... | A<sub>n-2</sub> | **1**           |
+
+通过观察，B<sub>i</sub>的值可以看作表格中每一行的乘积，下三角连乘易求得，上三角，从下向上也是连乘，所以我们可以先计算下三角中的连乘，再算上三角的连乘，将B<sub>i</sub>两部分相乘即可。
 
 ### 解答：
 
