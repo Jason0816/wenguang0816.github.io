@@ -24,11 +24,11 @@ tags:
 
 [7、斐波那契数列](http://blog.wenguang0816.top/2019/04/01/07-fibonacci-series/)
 
-[8、跳台阶]()
+[8、跳台阶](http://blog.wenguang0816.top/2019/04/03/08-jumpfloor/)
 
-[9、变态跳台阶]()
+[9、变态跳台阶](http://blog.wenguang0816.top/2019/04/03/09-jumpfloorii/)
 
-[10、矩形覆盖]()
+[10、矩形覆盖](http://blog.wenguang0816.top/2019/04/04/10-rectcover/)
 
 [11、二进制中1的个数](http://blog.wenguang0816.top/2019/04/01/11-number-of-1-bits/)
 
@@ -110,7 +110,7 @@ tags:
 
 [50、数组中重复的数字]()
 
-[51、构建乘积数组]()
+[51、构建乘积数组](http://blog.wenguang0816.top/2019/04/04/51-multiplay/)
 
 [52、正则表达式匹配]()
 
