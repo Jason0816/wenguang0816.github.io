@@ -2,7 +2,7 @@
 title: 矩形覆盖
 date: 2019-04-04 10:30:00
 img: https://upload-images.jianshu.io/upload_images/14484228-bed5c3df25430959.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
-summary: 剑指 offer：刷题笔记第一天：10、矩形覆盖
+summary: 剑指 offer：10、矩形覆盖
 categories: 剑指 offer
 tags:
   - 递归

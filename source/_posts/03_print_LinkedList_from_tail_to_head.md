@@ -2,7 +2,7 @@
 title: 从尾到头打印链表
 date: 2019-04-02 15:00:00
 img: https://upload-images.jianshu.io/upload_images/14484228-9d6dab50e206e76a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
-summary: 剑指 offer：刷题笔记第二天：3、从尾到头打印链表
+summary: 剑指 offer：3、从尾到头打印链表
 categories: 剑指 offer
 tags:
   - 链表

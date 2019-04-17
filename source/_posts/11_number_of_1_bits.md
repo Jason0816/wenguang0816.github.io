@@ -2,7 +2,7 @@
 title: 二进制中1的个数
 date: 2019-04-01 16:50:00
 img: https://upload-images.jianshu.io/upload_images/14484228-26e2f4acf35e6c48.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
-summary: 剑指 offer： 刷题笔记第一天：11、二进制中1的个数
+summary: 剑指 offer：11、二进制中1的个数
 categories: 剑指 offer
 tags:
   - 位运算
