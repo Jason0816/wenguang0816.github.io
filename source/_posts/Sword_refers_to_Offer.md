@@ -18,7 +18,7 @@ tags:
 
 [4、重建二叉树]()
 
-[5、用两个站实现队列]()
+[5、用两个栈实现队列](http://blog.wenguang0816.top/2019/04/18/05-queue-with-two-stacks/)
 
 [6、循转数组的最小数字]()
 
@@ -44,7 +44,7 @@ tags:
 
 [17、树的字结构]()
 
-[18、二叉树的镜像](http://blog.wenguang0816.top/2019/04/17/18-mirror)
+[18、二叉树的镜像](http://blog.wenguang0816.top/2019/04/17/18-mirror/)
 
 [19、顺时针打印矩阵]()
 
@@ -84,7 +84,7 @@ tags:
 
 [37、数字在排序数组中出现的次数]()
 
-[38、二叉树的深度](http://blog.wenguang0816.top/2019/04/17/38-treedepth)
+[38、二叉树的深度](http://blog.wenguang0816.top/2019/04/17/38-treedepth/)
 
 [39、平衡二叉树]()
 
