@@ -48,8 +48,7 @@ highlight:
 prism_plugin:
   mode: 'preprocess'  #realtime/preprocess
   #theme: 'a11y-dark'
-  #theme: 'xonokai'
-  theme: 'tomorrow'
+  theme: 'xonokai'
   line_number: false  #default false
   custom_css:
 
