@@ -23,7 +23,7 @@ after_script:
     - git checkout master
     - cd ../
     - mv .deploy_git/.git/ ./public/
-    - mv .deploy_git/google142c557f28c5c987.html ./public
+    - mv .deploy_git/google142c557f28c5c987.html ./public/
     - cd ./public
     - git config user.name "wenguang0816" # 修改name
     - git config user.email "2572880761@qq.com" # 修改email
