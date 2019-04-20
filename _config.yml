@@ -6,7 +6,7 @@
 title: 云中的Jason
 subtitle: Jason's Blog
 description: 个人博客
-keywords:
+keywords: 云中的Jason
 author: Jason
 language: zh-CN
 timezone:
@@ -40,17 +40,18 @@ relative_link: false
 future: true
 highlight:
   enable: false
-  line_number: false
+  line_number: true
   auto_detect: true
-  tab_replace: true
+  tab_replace: 
 
 # 代码高亮
 prism_plugin:
   mode: 'preprocess'  #realtime/preprocess
   #theme: 'a11y-dark'
-  theme: 'xonokai'
+  #theme: 'xonokai'
+  theme: 'tomorrow'
   line_number: false  #default false
-#  custom_css:
+  custom_css:
 
 # 搜索
 search:
