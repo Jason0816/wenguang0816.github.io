@@ -36,7 +36,7 @@ tags:
 
 [13、调整数组顺序使奇数位于偶数前面]()
 
-[14、链表中倒数第k个节点]()
+[14、链表中倒数第k个节点](http://blog.wenguang0816.top/2019/04/23/14-findkthtotail/)
 
 [15、反转链表](http://blog.wenguang0816.top/2019/04/02/15-reverse-linkedlist/)
 
@@ -118,7 +118,7 @@ tags:
 
 [54、字符流中第一个不重复的字符]()
 
-[55、链表中环的入口节点]()
+[55、链表中环的入口节点](http://blog.wenguang0816.top/2019/04/23/55-entrynodeofloop/)
 
 [56、删除链表中重复的节点]()
 
