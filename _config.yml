@@ -42,7 +42,7 @@ highlight:
   enable: false
   line_number: true
   auto_detect: true
-  tab_replace: 
+  tab_replace:
 
 # 代码高亮
 prism_plugin:
@@ -60,7 +60,7 @@ search:
 permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -69,7 +69,7 @@ index_generator:
   path: ''
   per_page: 12
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -98,3 +98,9 @@ deploy:
   type: git
   repo: https://github.com/wenguang0816/wenguang0816.github.io.git
   branch: master
+
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
