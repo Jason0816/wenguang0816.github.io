@@ -49,7 +49,7 @@ $ pyenv global 3.5.2
 ```
 查看切换结果
 ```bash
-  system 
+  system
 * 3.5.2 (set by /home/tony/.pyenv/version)
 ```
 切换回系统默认版本
@@ -67,7 +67,7 @@ $ pyenv uninstall x.x.x
 $ brew install pyenv-virtualenv
 ```
 
-### 安装制定python版本的虚拟环境
+### 安装指定python版本的虚拟环境
 ```bash
 $ pyenv virtualenv 3.5.2 env
 ```
