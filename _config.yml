@@ -59,7 +59,7 @@ search:
 # 中文链接转拼音
 permalink_pinyin:
   enable: true
-  separator: '-' # default: '-'
+  separator: '_' # default: '-'
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
