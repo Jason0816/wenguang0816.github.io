@@ -95,7 +95,7 @@ indexbtn:
 socialLink:
   qq: 
   github: https://github.com/wenguang0816/
-  email: wenguang0816@qq.com
+  email: wenguang.gao@qq.com
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # You can add `toc: false` to the Front-matter of a post to turn off the TOC.
@@ -121,7 +121,7 @@ reward:
 # minCharNumber: Approve copyright information by copying at least how many characters.
 # 是否激活复制文章时追加博客和作者的版权信息.
 copyright:
-  enable: false
+  enable: true
   minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
   description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
 
@@ -221,13 +221,14 @@ postCalendar: true
 # the Gitalk config，default disabled
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
-  enable: false
-  owner:
-  repo:
+  enable: true
+  owner: wenguang0816 # Github 用户名
+  repo: wenguang0816.github.io # 存储评论issue的Github仓库名
   oauth:
-    clientId:
-    clientSecret:
+    clientId: 4c2423d5ea6af1e1c9b9
+    clientSecret: 99c649b12596cfca11f4e9825ad1952a71918596
   admin:
+    - wenguang0816
 
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
