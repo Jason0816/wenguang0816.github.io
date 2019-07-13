@@ -1,7 +1,7 @@
 ---
 title: 二叉树的创建和遍历
 date: 2019-05-11 00:00:00
-img: https://upload-images.jianshu.io/upload_images/14484228-c68e683dea155b2d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190511-1.jpg
 summary: 二叉树的创建和遍历
 categories: 分享
 tags:
@@ -15,17 +15,17 @@ tags:
 ### 二叉树形式
 1. 满二叉树
    > 一个二叉树的所有非叶子节点都存在左右孩子，并且所有叶子节点都在同意层级上，则该树为满二叉树
-   > ![满二叉树](https://upload-images.jianshu.io/upload_images/14484228-fa0842af007a91d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+   > ![满二叉树](https://gitee.com/wenguang0816/blogPic/raw/master/20190511-2.jpg)
 
 2. 完全二叉树
    > 对一个有n个节点的二叉树，按层级顺序编号，则所有节点的编号从1到n。如果这个树所有的节点和同样深度的满二叉树的编号从1到n的节点位置相同，则这个二叉树为完全二叉树
-   > ![完全二叉树](https://upload-images.jianshu.io/upload_images/14484228-09eafcf79007bb05.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+   > ![完全二叉树](https://gitee.com/wenguang0816/blogPic/raw/master/20190511-3.jpg)
 
 ### 二叉树存储方式
 1. 链式存储
-   >  ![链式存储](https://upload-images.jianshu.io/upload_images/14484228-976d4832e0f48f9e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+   >  ![链式存储](https://gitee.com/wenguang0816/blogPic/raw/master/20190511-4.jpg)
 2. 数组存储
-   >  ![数组存储](https://upload-images.jianshu.io/upload_images/14484228-c74f2777154b3004.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+   >  ![数组存储](https://gitee.com/wenguang0816/blogPic/raw/master/20190511-5.jpg)
    在数组存储中，如果父节点下标为`parent`， 那么他的左孩子节点下标为`2 * parent + 1`，右孩子节点下标为`2 * parent + 2`。
 
 ## 二叉树的遍历
@@ -223,5 +223,5 @@ int main()
 ```
 
 **致谢：**本文部分文字和图片引自**程序员小灰**的新书**漫画算法**，为表感谢，特附上程序员小灰公众号二维码，大家快扫码学习新知识哈！
-![程序员小灰](https://upload-images.jianshu.io/upload_images/14484228-2e504c60210295e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![程序员小灰](https://gitee.com/wenguang0816/blogPic/raw/master/20190511-6.jpg)
 
