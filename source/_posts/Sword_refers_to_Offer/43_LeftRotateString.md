@@ -1,7 +1,7 @@
 ---
 title: 左旋转字符串
 date: 2019-04-21 18:23:00
-img: https://upload-images.jianshu.io/upload_images/14484228-33cd3e32d0e5e2a0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190421-2.jpg
 summary: 剑指 offer：43、左旋转字符串
 categories: 剑指 offer
 tags:

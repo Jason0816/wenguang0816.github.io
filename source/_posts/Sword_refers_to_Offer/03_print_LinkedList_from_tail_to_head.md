@@ -1,7 +1,7 @@
 ---
 title: 从尾到头打印链表
 date: 2019-04-02 15:00:00
-img: https://upload-images.jianshu.io/upload_images/14484228-9d6dab50e206e76a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190402-1.jpg
 summary: 剑指 offer：3、从尾到头打印链表
 categories: 剑指 offer
 tags:

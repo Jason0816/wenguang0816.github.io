@@ -1,7 +1,7 @@
 ---
 title: 二叉树的深度
 date: 2019-04-17 20:46:00
-img: https://upload-images.jianshu.io/upload_images/14484228-9b59ae88fcbbab2a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190417-2.jpg
 summary: 剑指 offer：38、二叉树的深度
 categories: 剑指 offer
 tags:

@@ -1,7 +1,7 @@
 ---
 title: 斐波那契数列
 date: 2019-04-01 16:50:00
-img: https://upload-images.jianshu.io/upload_images/14484228-85685db844f2ddfd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190401-3.jpg
 summary: 剑指 offer：7、斐波那契数列
 categories: 剑指 offer
 tags:

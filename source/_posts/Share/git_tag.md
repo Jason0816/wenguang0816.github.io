@@ -1,7 +1,7 @@
 ---
 title: git分支(branch)和标签(tag)操作
 date: 2019-04-01 10:50:00
-img: https://upload-images.jianshu.io/upload_images/14484228-41398eed6fdb4297.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190401-1.jpg
 summary: 汇总git中branch和tag的常用命令，更好的进行版本管理
 categories: 分享
 tags:

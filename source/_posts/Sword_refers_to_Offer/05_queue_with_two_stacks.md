@@ -1,7 +1,7 @@
 ---
 title: 用两个栈实现队列
 date: 2019-04-18 09:20:00
-img: https://upload-images.jianshu.io/upload_images/14484228-efcde61513427cec.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190418-1.jpg
 summary: 剑指 offer：5、用两个栈实现队列
 categories: 剑指 offer
 tags:

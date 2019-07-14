@@ -1,7 +1,7 @@
 ---
 title: 把字符串转换成整数
 date: 2019-04-21 17:51:00
-img: https://upload-images.jianshu.io/upload_images/14484228-45e79649ee869a59.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190421-3.jpg
 summary: 剑指 offer：49、把字符串转换成整数
 categories: 剑指 offer
 tags:

@@ -3,7 +3,7 @@ title: 剑指 offer 刷题笔记链接汇总
 date: 2019-04-03 14:20:00
 toc: false
 top: true
-img: https://upload-images.jianshu.io/upload_images/14484228-487989f30ef13848.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190403-3.jpg
 summary: 剑指 offer 刷题笔记链接汇总
 categories: 剑指 offer
 tags:

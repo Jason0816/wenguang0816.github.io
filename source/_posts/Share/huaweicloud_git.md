@@ -1,7 +1,7 @@
 ---
 title: 华为云代码托管服务及团队协作教程
 date: 2019-03-05 23:51:56
-img: https://upload-images.jianshu.io/upload_images/14484228-d9cd99ebf0b356a4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190305-1.jpg
 summary: 在华为云实现代码托管服务以及完成团队协作开发任务
 categories: 分享
 tags:
@@ -17,16 +17,16 @@ tags:
 
 ### 新建仓库
 1. 进入项目管理
-![进入项目管理](https://upload-images.jianshu.io/upload_images/14484228-ff10131724ce0407.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![进入项目管理](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-2.jpg)
 2. 通过左侧菜单栏进入代码托管
-![代码托管](https://upload-images.jianshu.io/upload_images/14484228-bb944beaff06d6df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![代码托管](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-3.jpg)
 3. 根据自己的需求新建仓库
-![新建仓库](https://upload-images.jianshu.io/upload_images/14484228-13625af197158062.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![新建仓库](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-4.jpg)
 
 ### 连接华为仓库
 1. 设置SSH密钥
-![设置我的SSH密钥](https://upload-images.jianshu.io/upload_images/14484228-6d86fc7c297486f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-![添加SSH密钥](https://upload-images.jianshu.io/upload_images/14484228-9cefaa877952082b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![设置我的SSH密钥](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-5.jpg)
+![添加SSH密钥](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-6.jpg)
 2. 从本地获取SSH公钥（默认已安装git）
 如果之前设置过github或gitee，那么系统是存在密钥的，密钥路径为`~/.ssh/id_rsa.pub`。
 如果没有系统不存在密钥，那么在根目录执行以下命令创建密钥:
@@ -50,7 +50,7 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 
 ### 克隆仓库及常用git指令
 1. 获取仓库地址
-![仓库地址](https://upload-images.jianshu.io/upload_images/14484228-2a2f547bb1ef3853.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![仓库地址](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-7.jpg)
 2. 在终端执行克隆指令
 ```bash
 git clone 刚复制的地址
@@ -74,13 +74,13 @@ git push origin master
 
 ### 添加成员
 1. 进入项目**设置**界面
-![设置](https://upload-images.jianshu.io/upload_images/14484228-3f9c2be21ab371cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![设置](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-8.jpg)
 2. 在**成员管理**中添加成员，通过链接邀请
-![邀请成员](https://upload-images.jianshu.io/upload_images/14484228-4286aee7a16d917d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![邀请成员](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-9.jpg)
 3. 在**待审核**界面通过审核，即可在项目成员中看到所邀请的用户，可以根据角色权限说明来自行决定项目角色。
 *PS：个人仓库可以最多五个人协同开发*
 4. 之后进入对应仓库的**成员**页面，添加成员即可
-![添加成员到仓库](https://upload-images.jianshu.io/upload_images/14484228-4df135ee0783de63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![添加成员到仓库](https://gitee.com/wenguang0816/blogPic/raw/master/20190305-10.jpg)
 *PS：被邀请成员也要设置好SSH密钥，才能克隆远程仓库*
 基本内容就这些了，以后想到再补充！
 

@@ -1,7 +1,7 @@
 ---
 title: 链表中倒数第k个节点
 date: 2019-04-23 19:00:00
-img: https://upload-images.jianshu.io/upload_images/14484228-37e3dd898451c942.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20190423-1.jpg
 summary: 剑指 offer：14、链表中倒数第k个节点
 categories: 剑指 offer
 tags:
