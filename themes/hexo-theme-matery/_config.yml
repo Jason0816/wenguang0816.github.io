@@ -93,7 +93,7 @@ indexbtn:
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  qq: 
+  qq:
   github: https://github.com/wenguang0816/
   email: wenguang.gao@qq.com
 
@@ -104,6 +104,7 @@ socialLink:
 toc:
   enable: true
   heading: h2, h3, h4
+  showToggleBtn: true # 是否显示切换TOC目录展开收缩的按钮
 
 # Whether the code is broken.
 # 代码是否折行
@@ -331,7 +332,7 @@ libs:
 
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
-featureImages: 
+featureImages:
 - https://gitee.com/wenguang0816/blogPic/raw/master/medias/featureimages/0.jpg
 - https://gitee.com/wenguang0816/blogPic/raw/master/medias/featureimages/1.jpg
 - https://gitee.com/wenguang0816/blogPic/raw/master/medias/featureimages/2.jpg
@@ -356,3 +357,26 @@ featureImages:
 - https://gitee.com/wenguang0816/blogPic/raw/master/medias/featureimages/21.jpg
 - https://gitee.com/wenguang0816/blogPic/raw/master/medias/featureimages/22.jpg
 - https://gitee.com/wenguang0816/blogPic/raw/master/medias/featureimages/23.jpg
+
+  # default configs that the default policy for every articles/posts
+  # default 配置文章的默认转载规则
+
+  # you can define reprint policy for a single article in the front-matter of the specific md file using this key: reprintPolicy
+  # 您可以使用在文章md文件的 front-matter 中指定 reprintPolicy 来给单个文章配置转载规则
+
+  # 可用的转载规则有（available reprint policies are）：
+  # 这些转载规则的意义请参考(you can refer to this link FMI)：https://creativecommons.org/choose/?lang=zh
+  # cc_by（知识共享署名 4.0 国际许可协议 Creative Commons Attribution-NoDerivatives 4.0 International License）
+  # cc_by_nd（知识共享署名-禁止演绎 4.0 国际许可协议 Creative Commons Attribution-NoDerivatives 4.0 International License）
+  # cc_by_sa（知识共享署名-相同方式共享 4.0 国际许可协议 Creative Commons Attribution-ShareAlike 4.0 International License）
+  # cc_by_nc（知识共享署名-非商业性使用 4.0 国际许可协议 Creative Commons Attribution-NoDerivatives 4.0 International License）
+  # cc_by_nc_nd（知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License）
+  # cc_by_nc_sa（知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License）
+
+  # cc0（CC0 1.0 通用 (CC0 1.0) 公共领域贡献 CC0 1.0 Universal (CC0 1.0) Public Domain Dedication） https://creativecommons.org/publicdomain/zero/1.0/deed.zh
+
+  # noreprint（不允许转载 not allowed to reprint）
+  # pay（付费转载 pay for reprinting）
+reprint:
+  enable: true # whether enable reprint section 是否启用“转载规则限定模块”
+  default: cc_by

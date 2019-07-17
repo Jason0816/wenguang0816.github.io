@@ -63,7 +63,7 @@
                 <span><%- date(post.date, 'YYYY-MM-DD').substring(8, 10) %></span>
             </div>
             <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
+                <div class="article col s12 m6 overflow-policy">
                     <div class="card">
                         <a href="<%- url_for(post.path) %>">
                             <div class="card-image">
@@ -81,11 +81,11 @@
                             </div>
                         </a>
                         <div class="card-content article-content">
-                            <div class="summary">
+                            <div class="summary block-with-text">
                                 <% if (post.summary && post.summary.length > 0) { %>
                                     <%- post.summary %>
                                 <% } else { %>
-                                    <%- strip_html(post.content).substring(0, 80) %>
+                                    <%- strip_html(post.content).substring(0, 120) %>
                                 <% } %>
                             </div>
                             <div class="publish-info">

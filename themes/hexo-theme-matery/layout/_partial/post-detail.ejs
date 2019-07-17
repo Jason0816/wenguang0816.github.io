@@ -6,7 +6,7 @@
                 <div class="col s7">
                     <% if (page.tags && page.tags.length) { %>
                     <div class="article-tag">
-                        <% page.tags.each(function(tag) { %>
+                        <% page.tags.forEach(function(tag) { %>
                             <a href="<%- url_for(tag.path) %>" target="_blank">
                                 <span class="chip bg-color"><%= tag.name %></span>
                             </a>
@@ -75,16 +75,7 @@
 
             <%- partial('_partial/share') %>
 
-            <div class="reprint">
-                <p>
-                    <span class="reprint-tip">
-                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;<%= __('reprint') %>:
-                    </span>
-                    <a href="<%- config.url %>" class="b-link-green"><%- config.title %></a>
-                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="<%- url_for(page.path) %>" class="b-link-green"><%= page.title %></a>
-                </p>
-            </div>
+            <%- partial('_partial/reprint-statement') %>
         </div>
     </div>
 

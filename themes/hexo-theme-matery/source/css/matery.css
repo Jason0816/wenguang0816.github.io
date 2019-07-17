@@ -935,8 +935,8 @@ article .article-tags .chip {
 }
 
 #artDetail .reprint .reprint-tip {
-    margin-right: 3px;
-    font-size: 1.05rem;
+    margin: 0 3px 22px 0;
+    font-size: 1.5rem;
     font-weight: 500;
 }
 
@@ -982,14 +982,14 @@ article .article-tags .chip {
 }
 
 #articleContent ol,
-ul {
+#articleContent ul {
     display: block;
     padding-left: 2em !important;
     word-spacing: 0.05rem;
 }
 
 #articleContent ul li,
-ol li {
+#articleContent ol li {
     display: list-item;
     line-height: 1.8rem;
     font-size: 1rem;
@@ -1667,7 +1667,7 @@ footer .copy-right {
     display: none;
     position: fixed;
     right: 20px;
-    bottom: 30px;
+    bottom: 15px;
     padding-top: 15px;
     margin-bottom: 0;
     z-index: 998;
@@ -1742,4 +1742,52 @@ footer .copy-right {
 .lg-sub-html .center-caption {
     color: #fff !important;
     border-bottom: none;
+}
+
+.overflow-policy {
+    overflow: hidden;
+}
+
+/* styles for '...' */
+.block-with-text {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.5em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 4.5em;
+    /* fix problem when last visible word doesn't adjoin right side  */
+    text-align: justify;
+    /* place for '...' */
+    margin-right: -1em;
+    padding-right: 1em;
+}
+
+/* create the ... style */
+.block-with-text:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
 }
