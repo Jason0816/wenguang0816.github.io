@@ -47,8 +47,9 @@ highlight:
 # 代码高亮
 prism_plugin:
   mode: 'preprocess'  #realtime/preprocess
-  #theme: 'a11y-dark'
+  # theme: 'a11y-dark'
   theme: 'xonokai'
+  # theme: 'tomorrow'
   line_number: false  #default false
   custom_css:
 
