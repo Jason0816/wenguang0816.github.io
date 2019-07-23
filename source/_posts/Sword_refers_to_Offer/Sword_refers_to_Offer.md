@@ -104,7 +104,7 @@ tags:
 
 [47、求1+2+3+…+n](http://blog.wenguang0816.top/2019/04/02/sword_refers_to_offer/47_sum/)
 
-[48、不用加减乘除做加法](http://blog.wenguang0816.top/2019/04/02/sword_refers_to_offer/48_add/)
+[48、不用加减乘除做加法](http://blog.wenguang0816.top/2019/07/22/sword_refers_to_offer/48_add/)
 
 [49、把字符串转换成整数](http://blog.wenguang0816.top/2019/04/21/sword_refers_to_offer/49_strtoint/)
 
