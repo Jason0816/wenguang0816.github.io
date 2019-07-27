@@ -68,7 +68,7 @@ tags:
 
 [29、最小的k个数]
 
-[30、连续子数组的最大和]
+[30、连续子数组的最大和](http://blog.wenguang0816.top/2019/07/25/sword_refers_to_offer/30_findgreatestsumofsubarray/)
 
 [31、整数中1出现的次数（从1到n整数中1出现的次数）]
 
@@ -86,7 +86,7 @@ tags:
 
 [38、二叉树的深度](http://blog.wenguang0816.top/2019/04/17/sword_refers_to_offer/38_treedepth/)
 
-[39、平衡二叉树]
+[39、平衡二叉树](http://blog.wenguang0816.top/2019/07/27/sword_refers_to_offer/39_isbalanced/)
 
 [40、数组中只出现一次的数字]
 

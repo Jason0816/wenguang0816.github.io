@@ -6,8 +6,7 @@ summary: 剑指 offer：48、不用加减乘除做加法
 categories: 剑指 offer
 tags:
   - 递归
-  - 逻辑与
-  - 逻辑异或
+  - 逻辑运算
 ---
 ### [48\. 不用加减乘除做加法](https://www.nowcoder.com/practice/59ac416b4b944300b617d4f7f111b215?tpId=13&tqId=11201&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
 
