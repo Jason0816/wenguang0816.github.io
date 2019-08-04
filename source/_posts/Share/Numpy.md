@@ -10,7 +10,6 @@ tags:
 ## 安装Numpy
 ```bash
 pip install numpy
-pip install pandas
 ```
 
 ## 导入Numpy
