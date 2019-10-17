@@ -20,7 +20,7 @@ tags:
 
 [5、用两个栈实现队列](http://blog.wenguang0816.top/2019/04/18/sword_refers_to_offer/05_queue_with_two_stacks/)
 
-[6、循转数组的最小数字]
+[6、旋转数组的最小数字]
 
 [7、斐波那契数列](http://blog.wenguang0816.top/2019/04/01/sword_refers_to_offer/07_fibonacci_series/)
 
@@ -42,13 +42,13 @@ tags:
 
 [16、合并两个排序的链表]
 
-[17、树的字结构]
+[17、树的子结构]
 
 [18、二叉树的镜像](http://blog.wenguang0816.top/2019/04/17/sword_refers_to_offer/18_mirror/)
 
 [19、顺时针打印矩阵]
 
-[20、包含min函数的栈]
+[20、包含min函数的栈](http://blog.wenguang0816.top/2019/04/17/sword_refers_to_offer/20_min/)
 
 [21、栈的压入、弹出序列]
 
