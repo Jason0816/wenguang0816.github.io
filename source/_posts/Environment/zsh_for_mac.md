@@ -23,13 +23,14 @@ macOS Catalina中默认安装了`zsh`，如果你使用的macOS的其他版本�
 ```bash
 cat /etc/shells
 
-/bin/bash
-/bin/csh
-/bin/dash
-/bin/ksh
-/bin/sh
-/bin/tcsh
+    /bin/bash
+    /bin/csh
+    /bin/dash
+    /bin/ksh
+    /bin/sh
+    /bin/tcsh
 ```
+
 2. 使用homebrew安装zsh
 ```bash
 brew install zsh
