@@ -1,7 +1,7 @@
 ---
 title: 修改ubuntu用户名
 date: 2019-11-25 19:06:00
-img: https://gitee.com/wenguang0816/blogPic/raw/master/20190305-1.jpg
+img: https://gitee.com/wenguang0816/blogPic/raw/master/20191125-1.jpg
 summary: 通过命令行修改ubuntu的用户名
 categories: 分享
 tags:
