@@ -12,7 +12,7 @@ tags:
 
 [1、二维数组中的查找](http://blog.wenguang0816.top/2019/04/01/sword_refers_to_offer/01_lookup_in_a_two_dimensional_array/)
 
-[2、替换空格]
+[2、替换空格](http://blog.wenguang0816.top/2020/02/01/sword_refers_to_offer/02_replacespace/)
 
 [3、从尾到头打印链表](http://blog.wenguang0816.top/2019/04/02/sword_refers_to_offer/03_print_linkedlist_from_tail_to_head/)
 
