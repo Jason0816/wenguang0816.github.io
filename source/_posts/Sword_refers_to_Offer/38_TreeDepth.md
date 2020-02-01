@@ -27,7 +27,7 @@ struct TreeNode {
 	struct TreeNode *left;
 	struct TreeNode *right;
 	TreeNode(int x) :
-			val(x), left(NULL), right(NULL) {
+			val(x), left(nullptr), right(nullptr) {
 	}
 };*/
 // 解法1:

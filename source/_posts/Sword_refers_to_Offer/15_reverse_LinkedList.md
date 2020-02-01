@@ -23,25 +23,25 @@ struct ListNode {
 	int val;
 	struct ListNode *next;
 	ListNode(int x) :
-			val(x), next(NULL) {
+			val(x), next(nullptr) {
 	}
 };*/
 class Solution {
 public:
     ListNode* ReverseList(ListNode* pHead) {
-        if(pHead == NULL || pHead->next == NULL)
+        if(pHead == nullptr || pHead->next == nullptr)
             return pHead;
         ListNode *p1 = pHead;
         ListNode *p2 = pHead->next;
-        ListNode *p3 = NULL;
-        while(p2 != NULL)
+        ListNode *p3 = nullptr;
+        while(p2 != nullptr)
         {
             p3 = p2->next;
             p2->next = p1;
             p1 = p2;
             p2 = p3;
         }
-        pHead->next = NULL;
+        pHead->next = nullptr;
         pHead = p1;
         return pHead;
     }

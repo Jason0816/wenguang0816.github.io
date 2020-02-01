@@ -161,7 +161,7 @@ class Node
 public:
     int data;
     Node* next;
-    Node(int da, Node* p = NULL)
+    Node(int da, Node* p = nullptr)
     {
         this->data =  da;
         this->next = p;
@@ -170,19 +170,19 @@ public:
 
 Node* reverseLinkedList(Node *head)
 {
-    if(head == NULL || head->next == NULL)
+    if(head == nullptr || head->next == nullptr)
         return head;
     Node *p1 = head;
     Node *p2 = head->next;
-    Node *p3 = NULL;
-    while(p2 != NULL)
+    Node *p3 = nullptr;
+    while(p2 != nullptr)
     {
         p3 = p2->next;
         p2->next = p1;
         p1 = p2;
         p2 = p3;
     }
-    head->next = NULL;
+    head->next = nullptr;
     head = p1;
     return head;
 }
@@ -203,7 +203,7 @@ int main()
     cout << "逆序前" << endl;
     // 逆序前输出链表
     tmp = head;
-    while(tmp != NULL)
+    while(tmp != nullptr)
     {
         cout << tmp->data << endl;
         tmp = tmp->next;
@@ -214,7 +214,7 @@ int main()
     cout << "逆序后" << endl;
     // 逆序后输出链表
     tmp = head;
-    while(tmp != NULL)
+    while(tmp != nullptr)
     {
         cout << tmp->data << endl;
         tmp = tmp->next;

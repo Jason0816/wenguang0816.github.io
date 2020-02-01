@@ -30,13 +30,13 @@ struct ListNode {
 	int val;
 	struct ListNode *next;
 	ListNode(int x) :
-			val(x), next(NULL) {
+			val(x), next(nullptr) {
 	}
 };*/
 class Solution {
 public:
     ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
-        if(pListHead == NULL || k == 0)
+        if(pListHead == nullptr || k == 0)
             return nullptr;
         ListNode* pAhead = pListHead;
         ListNode* pBehind = nullptr;

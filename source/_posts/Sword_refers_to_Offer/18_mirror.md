@@ -16,7 +16,7 @@ tags:
 
 #### 输入描述
 ```
-二叉树的镜像定义：源二叉树 
+二叉树的镜像定义：源二叉树
     	    8
     	   /  \
     	  6   10
@@ -42,7 +42,7 @@ struct TreeNode {
 	struct TreeNode *left;
 	struct TreeNode *right;
 	TreeNode(int x) :
-			val(x), left(NULL), right(NULL) {
+			val(x), left(nullptr), right(nullptr) {
 	}
 };*/
 class Solution {

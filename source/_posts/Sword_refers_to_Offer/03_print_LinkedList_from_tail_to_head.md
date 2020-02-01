@@ -26,7 +26,7 @@ tags:
  *        int val;
  *        struct ListNode *next;
  *        ListNode(int x) :
- *              val(x), next(NULL) {
+ *              val(x), next(nullptr) {
  *        }
  *  };
  */
@@ -38,7 +38,7 @@ public:
         vector<int> ans;
         stack<int> nodes;
         ListNode* pNode = head;
-        while(pNode != NULL)
+        while(pNode != nullptr)
         {
             nodes.push(pNode->val);
             pNode = pNode->next;
@@ -57,7 +57,7 @@ public:
     vector<int> printListFromTailToHead(ListNode* head) {
         vector<int> ans;
         ListNode* pNode = head;
-        while(pNode != NULL)
+        while(pNode != nullptr)
         {
             ans.insert(ans.begin(), pNode->val);
             pNode = pNode->next;

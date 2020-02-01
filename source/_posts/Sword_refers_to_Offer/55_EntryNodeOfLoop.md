@@ -11,7 +11,7 @@ tags:
 ### [55\. 链表中环的入口节点](https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=13&tqId=11208&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
 
 ### 题目描述
-给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。
+给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出nullptr。
 
 ### 解题思路：
 + 确定是否有环：定义两个指针，同时从链表头节点出发，慢指针每次走一步，快指针每次走两步，如果快指针追上了慢指针，那么链表中有环，如果快指针走到了链表末尾都没有追上慢指针，那么链表中没有环
@@ -32,7 +32,7 @@ struct ListNode {
     int val;
     struct ListNode *next;
     ListNode(int x) :
-        val(x), next(NULL) {
+        val(x), next(nullptr) {
     }
 };
 */
