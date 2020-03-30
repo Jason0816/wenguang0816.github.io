@@ -5,7 +5,7 @@ img: https://gitee.com/wenguang0816/blogPic/raw/master/20200201-1.jpg
 summary: 剑指 offer：2、替换空格
 categories: 剑指 offer
 tags:
-  - 字符串
+  - 数组
 ---
 ### [2\. 替换空格](https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
 
