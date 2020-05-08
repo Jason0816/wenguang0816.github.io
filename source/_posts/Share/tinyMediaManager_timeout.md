@@ -5,7 +5,7 @@ img: https://gitee.com/wenguang0816/blogPic/raw/master/20200413-1.jpg
 summary: tinyMediaManager域名被ban
 categories: 分享
 tags:
-  - 群呼
+  - 群晖
 ---
 # 起因
 在看了阿文菌的帖子[手把手教您用tMM刮削影片信息，让KODI、Jellyfin、PLEX、使用本地媒体电影墙！](https://post.smzdm.com/p/a4wkqw37/)后开始使用tinyMediaManager代替emby原始的刮削工具，但是在换了电脑之后发现tinyMediaManager无法使用了。
