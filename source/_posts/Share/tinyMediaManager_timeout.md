@@ -23,25 +23,25 @@ tags:
 1. 打开`C:\WINDOWS\system32\drivers\etc`路径
 2. 找到`hosts`文件并复制到桌面上
 3. 用记事本打开`hosts`文件，在最后一行添加以下内容后保存
-```bash
-13.224.161.90   api.themoviedb.org
-```
+  ```bash
+  13.224.161.90   api.themoviedb.org
+  ```
 4. 将`hosts`复制到`C:\WINDOWS\system32\drivers\etc`路径并覆盖
 
 ## mac上修改`hosts`文件的方法
 1. 打开终端，切换到`root`账户
- ```bash
- sudo -i
-# 会提示输入密码，输入即可
- ```
+  ```bash
+  sudo -i
+  # 会提示输入密码，输入即可
+  ```
 2. 修改`hosts`文件
-```bash
-vim /etc/hosts
-```
+  ```bash
+  vim /etc/hosts
+  ```
 3. 按下`i`键进入编辑模式，在最后一行添加以下内容
-```bash
-13.224.161.90   api.themoviedb.org
-```
+  ```bash
+  13.224.161.90   api.themoviedb.org
+  ```
 4. 按下`Esc`退出编辑模式，并输入`:wq`保存退出
 
 现在，就可以正常使用tMM进行刮削了
