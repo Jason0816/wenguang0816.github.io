@@ -1,6 +1,7 @@
 language: node_js # 设置语言
 
 node_js: v11.10.0 # 设置相应版本
+# node_js: stable
 
 cache:
     apt: true
