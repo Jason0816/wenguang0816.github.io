@@ -14,24 +14,33 @@ install:
     - npm install # 安装hexo及插件
     - npm install hexo-generator-sitemap --save
     - npm install hexo-generator-baidu-sitemap --save
-    - npm i hexo-wordcount --save 
+    - npm i hexo-wordcount --save
 
 script:
     - hexo clean # 清除
     - hexo g # 生成
 
+# after_script:
+#     - git clone https://${GH_REF} .deploy_git
+#     - cd .deploy_git
+#     - git checkout master
+#     - cd ../
+#     - mv .deploy_git/.git/ ./public/
+#     - cd ./public
+#     - git config user.name "wenguang0816" # 修改name
+#     - git config user.email "2572880761@qq.com" # 修改email
+#     - git add .
+#     - git commit -m "Travis CI Auto Builder"
+#     - git push --force --quiet "https://${Travis_Token}@${GH_REF}" master:master # GH_TOKEN是在Travis中配置token的名称
+
 after_script:
-    - git clone https://${GH_REF} .deploy_git
-    - cd .deploy_git
-    - git checkout master
-    - cd ../
-    - mv .deploy_git/.git/ ./public/
     - cd ./public
-    - git config user.name "wenguang0816" # 修改name
-    - git config user.email "2572880761@qq.com" # 修改email
+    - git init
+    - git config user.name "wenguang0816"
+    - git config user.email "2572880761@qq.com"
     - git add .
     - git commit -m "Travis CI Auto Builder"
-    - git push --force --quiet "https://${Travis_Token}@${GH_REF}" master:master # GH_TOKEN是在Travis中配置token的名称
+    - git push --force --quiet "https://${Travis_Token}@${GH_REF}" master:master
 
 branches:
     only:
